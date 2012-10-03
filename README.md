@@ -4,6 +4,7 @@ gameon 2012
 gameon was first run in 2010 by Mozilla Labs. In 2012 Mozilla hope to run the 
 challenge again, and this site will contain the details when we have them.
 
+[See what happened when we first ran game on][gameon-2012]
 
 [gameon-2012]: https://gaming.mozillalabs.com/
 
