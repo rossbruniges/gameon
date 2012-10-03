@@ -1,6 +1,5 @@
 # This is your project's main settings file that can be committed to your
 # repo. If you need to override a setting locally, use settings_local.py
-
 from funfactory.settings_base import *
 
 # Name of the top-level module where you put all your apps.
@@ -13,10 +12,12 @@ PROJECT_MODULE = 'gameon'
 ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 
 INSTALLED_APPS = list(INSTALLED_APPS) + [
+    # Django admin
+    'django.contrib.admin',
     # Application base, containing global templates.
     '%s.base' % PROJECT_MODULE,
-    # Example code. Can (and should) be removed for actual projects.
-    '%s.examples' % PROJECT_MODULE,
+    # Static website base, containing global templates.
+    '%s.static_site' % PROJECT_MODULE,
 ]
 
 LOCALE_PATHS = (

@@ -1,6 +1,15 @@
-playdoh
-=======
+===========
+gameon 2012
+===========
+gameon was first run in 2010 by Mozilla Labs. In 2012 Mozilla hope to run the 
+challenge again, and this site will contain the details when we have them.
 
+
+[gameon-2012]: https://gaming.mozillalabs.com/
+
+
+Built using playdoh
+-------------------
 Mozilla's Playdoh is a web application template based on [Django][django].
 
 Patches are welcome! Feel free to fork and contribute to this project on
