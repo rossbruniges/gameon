@@ -18,6 +18,8 @@ INSTALLED_APPS = list(INSTALLED_APPS) + [
     '%s.base' % PROJECT_MODULE,
     # Static website base, containing global templates.
     '%s.static_site' % PROJECT_MODULE,
+    '%s.users' % PROJECT_MODULE,
+    'south',
 ]
 
 LOCALE_PATHS = (
@@ -37,13 +39,20 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+AUTH_PROFILE_MODULE = 'users.Profile'
+
 SITE_URL = 'http://127.0.0.1:8000'
 LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = 'examples.home'
-LOGIN_REDIRECT_URL_FAILURE = 'examples.home'
+LOGIN_REDIRECT_URL = 'static_site.home'
+
+BROWSERID_CREATE_USER = True
 
 TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
     'django_browserid.context_processors.browserid_form',
+]
+
+MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
+    'gameon.users.middleware.ProfileMiddleware',
 ]
 
 # Should robots.txt deny everything or disallow a calculated list of URLs we

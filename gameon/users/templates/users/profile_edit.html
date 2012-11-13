@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Edit Profile{% endblock %}
+{% block page_id %}edit_profile{% endblock %}
+{% block section_class %}profile{% endblock %}
+
+{% block content %}
+<h1>EDIT MY PROFILE ({{ profile.display_name }})</h1>
+{{ page_mode }}
+<form action="{{ url('users_edit') }}" method="post">
+    {{ csrf() }}
+    {{ form.as_p() }}
+    <input type="submit" name="submit" value="Submit" />
+</form>
+{% endblock %}
