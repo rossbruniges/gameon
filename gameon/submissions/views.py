@@ -19,10 +19,10 @@ def create(request, template='submissions/create.html'):
             entry.slug = slugify(entry.title)
             form.save()
             return HttpResponseRedirect(reverse('submissions.entry_list'))
-    else:
-        data = {
-            'form': EntryForm()
-        }
+        else:
+            data = {
+                'form': EntryForm()
+            }
     log.debug("Single submission page")
     return render(request, template, data)
 
