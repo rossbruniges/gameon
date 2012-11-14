@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Entry List{% endblock %}
+{% block page_id %}all_submissions{% endblock %}
+{% block section_class %}submissions{% endblock %}
+
+{% block content %}
+<h1>ALL ENTRIES</h1>
+<ol>
+{% for sub in submissions %}
+<li><a href="{{ url('submissions.entry_single', slug=sub.slug) }}">{{ sub.title }}</a></li>
+{% endfor %}
+</ol>
+{% endblock %}

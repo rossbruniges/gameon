@@ -19,6 +19,7 @@ INSTALLED_APPS = list(INSTALLED_APPS) + [
     # Static website base, containing global templates.
     '%s.static_site' % PROJECT_MODULE,
     '%s.users' % PROJECT_MODULE,
+    '%s.submissions' % PROJECT_MODULE,
     'south',
 ]
 

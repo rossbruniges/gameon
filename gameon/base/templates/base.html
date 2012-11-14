@@ -24,6 +24,7 @@
         <nav>
             <ul>
                 <li><a href="{{ url('static_site.home') }}">Home</a></li>
+                <li><a href="{{ url('submissions.entry_list') }}">All submissions</a></li>
                 <li><a href="{{ url('static_site.rules') }}">Rules</a></li>
                 <li><a href="{{ url('static_site.prizes') }}">Prizes</a></li>
                 <li><a href="{{ url('static_site.resources') }}">Resources</a></li>
@@ -50,6 +51,9 @@
     {% block content %}
     {% endblock %}
     {% block footer %}
+    {% if request.user.is_active %}
+        <a href="{{ url('submissions.create_entry') }}">APPLY NOW!!!!</a>
+    {% endif %}
     <footer>
         <p>I am a footer</p>
     </footer>

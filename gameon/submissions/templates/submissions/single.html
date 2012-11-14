@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Single{% endblock %}
+{% block page_id %}entry_page{% endblock %}
+{% block section_class %}submissions{% endblock %}
+
+{% block content %}
+<h1>{{ entry.title }}</h1>
+<p>Entry made in <strong>{{ entry.category }}</strong></p>
+<p>{{ entry.description }}</p>
+<p><a href="{{ entry.url }}">Check me out on the internetz</a></p>
+{% endblock %}

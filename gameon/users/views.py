@@ -12,17 +12,17 @@ def signout(request):
     return redirect('static_site.home')
 
 
-def profile(request, username):
+def profile(request, username, template='users/profile.html'):
     """Display profile page for user specified by ``username``."""
     user = get_object_or_404(auth.models.User, username=username)
     profile = get_object_or_404(Profile, user=user)
-    return render(request, 'users/profile.html', {
+    return render(request, template, {
         'profile': profile,
     })
 
 
 @login_required
-def edit(request):
+def edit(request, template='users/profile_edit.html'):
     """Edit the currently logged in users profile."""
     profile = request.user.get_profile()
     form_class = ProfileForm
@@ -41,7 +41,7 @@ def edit(request):
             return redirect(profile)
     else:
         form = form_class(instance=profile)
-    return render(request, 'users/profile_edit.html', {
+    return render(request, template, {
         'form': form,
         'profile': profile,
         'page_mode': mode,
