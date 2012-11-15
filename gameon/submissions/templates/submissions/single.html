@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>{{ entry.title }}</h1>
-<p>Entry made in <strong>{{ entry.category }}</strong></p>
+<p>Entry made in <a href="{{ url('submissions.entry_list', category=entry.category.slug) }}">{{ entry.category }}</a></p>
 <p>{{ entry.description }}</p>
 <p><a href="{{ entry.url }}">Check me out on the internetz</a></p>
 {% endblock %}

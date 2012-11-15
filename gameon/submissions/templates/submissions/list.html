@@ -8,7 +8,10 @@
 <h1>ALL ENTRIES</h1>
 <ol>
 {% for sub in submissions %}
-<li><a href="{{ url('submissions.entry_single', slug=sub.slug) }}">{{ sub.title }}</a></li>
+<li>
+    <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">{{ sub.title }}</a>
+    <p>in the <a href="{{ url('submissions.entry_list', category=sub.category.slug) }}">{{sub.category.name }} category</a></p>
+</li>
 {% endfor %}
 </ol>
 {% endblock %}
