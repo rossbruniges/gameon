@@ -5,8 +5,21 @@
 {% block section_class %}submissions{% endblock %}
 
 {% block content %}
-<h1>{{ entry.title }}</h1>
-<p>Entry made in <a href="{{ url('submissions.entry_list', category=entry.category.slug) }}">{{ entry.category }}</a></p>
-<p>{{ entry.description }}</p>
-<p><a href="{{ entry.url }}">Check me out on the internetz</a></p>
+<article>
+    <header class="mast-head">
+        <h1 class="busta shout">{{ entry.title }}</h1>
+    </header>
+    <div class="busta">
+        <div class="cf">
+            <div class="main-col">
+                <p>Entry made in <a href="{{ url('submissions.entry_list', category=entry.category.slug) }}">{{ entry.category }}</a></p>
+                <p>{{ entry.description }}</p>
+                <p><a href="{{ entry.url }}">Check me out on the internetz</a></p>
+            </div>
+            <aside class="meta mini-col">
+                <h2 class="whimper">???</h2>
+            </aside>
+        </div>
+    </div>
+</article>
 {% endblock %}

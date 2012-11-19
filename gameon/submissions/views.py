@@ -37,7 +37,8 @@ def list(request, category='all', template='submissions/list.html'):
     else:
         submissions = Entry.objects.filter(category__slug=category)
     data = {
-        'submissions': submissions
+        'submissions': submissions,
+        'category': category
     }  # You'd add data here that you're sending to the template.
     log.debug("List view of all submissions")
     return render(request, template, data)
