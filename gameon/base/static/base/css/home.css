@@ -1,0 +1,77 @@
+.big-picture {
+    background: #000a14; /* Old browsers */
+    background: -moz-linear-gradient(left,  #000a14 0%, #00283a 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#000a14), color-stop(100%,#00283a)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #000a14 0%,#00283a 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #000a14 0%,#00283a 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #000a14 0%,#00283a 100%); /* IE10+ */
+    background: linear-gradient(to right,  #000a14 0%,#00283a 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000a14', endColorstr='#00283a',GradientType=1 ); /* IE6-9 */
+    color: #fff;
+}
+.big-picture .busta {
+    padding: 2em 30px 2em 360px;
+}
+.big-picture .shout {
+    margin: 0.6em 0;
+}
+.build ul {
+    overflow: hidden;
+    padding-left: 0;
+    list-style-type: none;
+}
+.build li {
+    float: left;
+    width: 220px;
+    margin-left: 20px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 150px;
+    position: relative;
+}
+.build li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 140px;
+    background: #ebebeb;
+    border-radius: 4px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #666;
+    display: block;
+}
+.build li:first-child {
+    margin-left: 0;
+}
+.participate {
+    background: #37d09e;
+    font-size: 13px;
+}
+.participate .busta {
+    padding: 3em 0;
+}
+.participate .exclaim {
+    color: #37d09e;
+}
+.participate article {
+    background: #00283a;
+    color: #fff;
+    width: 45%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1em 20px;
+    float: left;
+    margin: 0 1%;
+    border-radius: 16px;
+}
+.participate article footer {
+    padding: 20px;
+    margin: 0 -20px -1em -20px;
+    border-radius: 0 0 16px 16px;
+}

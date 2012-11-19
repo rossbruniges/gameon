@@ -1,9 +1,61 @@
 {% extends 'base.html' %}
 
+{% block page_css %}
+<link rel="stylesheet" href="{{ static('base/css/home.css') }}">
+{% endblock %}
+
 {% block page_title %}Homepage{% endblock %}
 {% block page_id %}home{% endblock %}
 {% block section_class %}landing{% endblock %}
 
 {% block content %}
-<h1>HOMEPAGE</h1>
+<section class="big-picture cf">
+    <div class="busta">
+        <p class="announce">The web is the platform.</p>
+        <p class="shout">Show us what's possible using the web as an open gaming platform for the world.</p>
+        {% if request.user.is_active %}
+            <a class="cta" href="{{ url('submissions.create_entry') }}">Submit a game</a>
+        {% endif %}
+    </div>
+</section>
+<section class="build cf">
+    <div class="busta">
+        <h2 class="exclaim">Build the next generation of web-based games</h2>
+        <ul>
+            <li class="make whimper">Make browser-based mobile games, hackabke games and games for learning.</li>
+            <li class="invent whimper">Invent new games mechanics, create new storylines, engage, diverse audiences, introduce visually challenging content.</li>
+            <li class="win whimper">Win a trip to the <a href="#">Game Developers Conference</a> to meet industry pioneers.</li>
+            <li class="market whimper">Have your completed game featured in Mozilla's Marketplace.</li>
+        </ul>
+        <div class="shout-box">
+            <p class="announce">Excited? Good! Want to get involved? <a href="#">Sign up for more information here</a></p>
+        </div>
+    </div>
+</section>
+<section class="participate cf">
+    <div class="busta cf">
+        <article>
+            <h2 class="exclaim">Come to a Game Jam!</h2>
+            <ul class="checks">
+                <li>Got a game idea for the competition you would like help testing and finishing up?</li>
+                <li>Want to participate but need help coming up with a cool idea?</li>
+                <li>Want to learn about, showcase or teach others about a new technology?</li>
+                <li>Interested in playing with new technologies and meeting people who love making and hacking games as much as you do?</li>
+            </ul>
+            <footer>
+                <a href="#">Register for an upcoming game jam or run your own here</a>
+            </footer>
+        </article>
+        <article>
+            <h2 class="exclaim">Submit Your Game</h2>
+            <p>Mozilla invites you to imagine how next-generation web technologies can revolutionise the way we make and play games. It's your opportunity to invent new game mechanics, create new storylines, engage diverse audiences, introduce aesthetically challenging content and re-imagine the web as a gaming platform.</p>
+            {% if request.user.is_active %}
+                <a class="cta" href="{{ url('submissions.create_entry') }}">Submit a game</a>
+            {% endif %}
+            <footer>
+                Submissions open on December 3rd, 2012 and close February 20, 2013.
+            </footer>
+        </article>
+    </div>
+</section>
 {% endblock %}

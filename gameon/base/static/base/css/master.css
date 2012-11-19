@@ -1,0 +1,238 @@
+body {
+    font-family: "Open Sans";
+    font-size: 18px;
+    color: #00283a;
+    background: #000a14; /* Old browsers */
+    background: -moz-linear-gradient(left,  #000a14 0%, #00283a 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#000a14), color-stop(100%,#00283a)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #000a14 0%,#00283a 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #000a14 0%,#00283a 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #000a14 0%,#00283a 100%); /* IE10+ */
+    background: linear-gradient(to right,  #000a14 0%,#00283a 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000a14', endColorstr='#00283a',GradientType=1 ); /* IE6-9 */
+}
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: #37D09E;
+}
+.cta {
+    color: #fff !important;
+    text-transform: uppercase;
+    background: #37d09e;
+    display: inline-block;
+    padding: 0.5em 30px;
+    border-radius: 4px;
+}
+.cf:before,
+.cf:after {
+    content: " "; 
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+.shout-box {
+    padding: 1em 20px;
+    border: 1px solid #ccc;
+    background: #f0f0f0;
+    text-align: center;
+    margin-bottom: 1em;
+    border-radius: 8px;
+}
+.shout-box p {
+    margin: 0;
+}
+.busta {
+    max-width: 940px;
+    margin: 0 auto;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.main-col {
+    float: left;
+    width: 74%;
+    margin-right: 2%;
+}
+.mini-col {
+    float: left;
+    width: 24%;
+    position: relative;
+    padding-top: 150px;
+}
+.mini-col:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 140px;
+    background: #ebebeb;
+    border-radius: 4px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #666;
+    display: block;
+}
+.shout {
+    font-size: 48px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+.yell {
+    font-size: 24px;
+    font-weight: bold;
+}
+.exclaim {
+    font-size: 21px;
+    font-weight: bold;
+}
+.announce {
+    font-size: 18px;
+    font-weight: bold;
+}
+.whimper {
+    font-size: 14px;
+    font-weight: bold;
+}
+.meta {
+    font-size: 13px;
+}
+.mast-head {
+    background: #00283a;
+    color: #fff;
+    margin-bottom: 1em;
+}
+.mast-head h1 {
+    padding: 0.75em 0;
+}
+.sub-head {
+    background: #00283a;
+    color: #37D09E;
+    padding: 1em 20px;
+    border-radius: 8px;
+}
+.vcard {
+    padding-left: 150px;
+    position: relative;
+}
+.vcard .fn {
+    color: #37D09E;
+}
+.vcard .photo {
+    border-radius: 50%;
+    border: 4px solid #e4e4e4;
+    background: #e4e4e4;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+div[role="main"] {
+    background: #fff;
+    min-height: 500px;
+    overflow: hidden;
+}
+.site-nav {
+    background: #37D09E;
+    background: -moz-linear-gradient(left,  #379e9e 0%, #37d09e 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#379e9e), color-stop(100%,#37d09e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #379e9e 0%,#37d09e 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #379e9e 0%,#37d09e 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #379e9e 0%,#37d09e 100%); /* IE10+ */
+    background: linear-gradient(to right,  #379e9e 0%,#37d09e 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#379e9e', endColorstr='#37d09e',GradientType=1 ); /* IE6-9 */
+    overflow: hidden;
+    border-top: 2px solid #fff;
+}
+.site-nav a:link,
+.site-nav a:visited,
+.site-nav a:focus,
+.site-nav a:hover,
+.site-nav a:active {
+    color: #00283a;
+}
+#rules_page .rules-page,
+#prize_list .prizes-page,
+#resource_list .resources-page,
+#judges_list .judges-page {
+    color: #fff !important;
+}
+.logo {
+    float: left;
+}
+.logo img {
+    float: left
+}
+nav ul {
+    margin: 0;
+    float: left;
+    font-size: 14px;
+}
+nav li {
+    float: left;
+    display: block;
+}
+nav li a {
+    display: block;
+    padding: 1.9em 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.personal {
+    display: block;
+    clear: both;
+    font-size: 14px;
+}
+.personal p {
+    float: left;
+}
+.personal ul {
+    float: left;
+    list-style-type: none;
+    padding-left: 0;
+}
+.personal li {
+    float: left;
+    padding-left: 20px;
+}
+.checks {
+    list-style-type: none;
+    padding-left: 0;
+}
+.checks li {
+    background: url('/static/base/img/css/check.png') no-repeat left top;
+    padding: 0 0 0.5em 34px;
+    margin-bottom: 0.2em;
+}
+.big-winner {
+    color: #37D09E;
+}
+.big-winner span {
+    color: #00283a;
+}
+.prize {
+    padding-left: 80px;
+    background: url('/static/base/img/css/prize.png') no-repeat left top;
+}
+.site-footer .logo {
+    padding: 3em 0 3em 200px;
+    position: relative;
+}
+.site-footer ul {
+    margin-top: 2.5em;
+}
+.site-footer .logo:after {
+    content: url('/static/base/img/css/footer-trophy.png');
+    height: 178px;
+    width: 172px;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+}

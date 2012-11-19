@@ -6,10 +6,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <link rel="stylesheet" href="//www.mozilla.org/tabzilla/media/css/tabzilla.css">
-    {% block site_css %}{% endblock %}
+    <link rel="stylesheet" href="{{ static('base/css/libs/normalize.css') }}">
+    <link rel="stylesheet" href="{{ static('base/css/master.css') }}">
     <!--[if lt IE 9]>
         <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    {% block page_css %}{% endblock %}
     <link rel="icon" href="{{ MEDIA_URL }}img/favicon.ico" />
     {% block social_meta %}{% endblock %}
 </head>
@@ -17,45 +19,43 @@
     <script type="text/javascript">
         document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, '');
     </script>
-    {% block header %}
-    <header>
-        <a href="http://www.mozilla.org/" id="tabzilla">Mozilla</a>
-        <p>I am a header</p>
-        <nav>
-            <ul>
-                <li><a href="{{ url('static_site.home') }}">Home</a></li>
-                <li><a href="{{ url('submissions.entry_list') }}">All submissions</a></li>
-                <li><a href="{{ url('static_site.rules') }}">Rules</a></li>
-                <li><a href="{{ url('static_site.prizes') }}">Prizes</a></li>
-                <li><a href="{{ url('static_site.resources') }}">Resources</a></li>
-                <li><a href="{{ url('static_site.previous') }}">Previous winners</a></li>
-                <li><a href="{{ url('static_site.categories') }}">Categories</a></li>
-            </ul>
-        </nav>
-        {% if not request.user.is_active %}
-            <a id="browserid" href="#">Sign In</a>
-            <form method="POST" action="{{ url('browserid_verify') }}">
-                {{ csrf() }}
-                {{ browserid_form.as_p() }}
-            </form>
-        {% else %}
-            <p><strong>Welcome</strong> - {{ request.user.get_profile().display_name }}</p>
-            <ul>
-                <li><a href="{{ url('users_profile', request.user.username) }}">View Profile</a></li>
-                <li><a href="{{ url('users_edit') }}">Edit Profile</a></li>
-                <li><a href="{{ url('users_signout') }}">Log out</a></li>
-            </ul>
-        {% endif %}
-    </header>
-    {% endblock %}
-    {% block content %}
-    {% endblock %}
+    <div class="site-nav">
+        <header class="busta">
+            <a href="http://www.mozilla.org/" id="tabzilla">Mozilla</a>
+            <nav>
+                {% block header_logo %}
+                    <div class="logo"><a href="{{ url('static_site.home') }}"><img src="{{ static('base/img/logo.png') }}" alt="Game on" width="262" height="72" /></a></div>
+                {% endblock %}
+                {% include('_nav.html') %}
+            </nav>
+            <div class="personal">
+                {% if not request.user.is_active %}
+                    <a id="browserid" href="#">Sign In</a>
+                    <form method="POST" action="{{ url('browserid_verify') }}">
+                        {{ csrf() }}
+                        {{ browserid_form.as_p() }}
+                    </form>
+                {% else %}
+                    <p><strong>Welcome</strong> - {{ request.user.get_profile().display_name }}</p>
+                    <ul>
+                        <li><a href="{{ url('users_profile', request.user.username) }}">View Profile</a></li>
+                        <li><a href="{{ url('users_edit') }}">Edit Profile</a></li>
+                        <li><a href="{{ url('users_signout') }}">Log out</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </header>
+    </div>
+    <div role="main">
+        {% block content %}
+        {% endblock %}
+    </div>
     {% block footer %}
-    {% if request.user.is_active %}
-        <a href="{{ url('submissions.create_entry') }}">APPLY NOW!!!!</a>
-    {% endif %}
-    <footer>
-        <p>I am a footer</p>
+    <footer class="site-footer">
+        <nav class="busta cf">
+            <div class="logo"><a href="{{ url('static_site.home') }}"><img src="{{ static('base/img/footer-logo.png') }}" alt="Game on" width="200" height="40" /></a></div>
+            {% include('_nav.html') %}
+        </nav>
     </footer>
     {% endblock %}
     {% compress js %}
