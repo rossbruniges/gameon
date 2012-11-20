@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
 
-from gameon.submissions.models import Entry
+from gameon.submissions.models import Entry, Category
 from gameon.submissions.forms import EntryForm
 
 log = commonware.log.getLogger('playdoh')
@@ -21,10 +21,12 @@ def create(request, template='submissions/create.html'):
             return HttpResponseRedirect(reverse('submissions.entry_list'))
         else:
             data = {
-                'form': EntryForm()
+                'categories': Category.objects.all(),
+                'form': form
             }
     else:
         data = {
+            'categories': Category.objects.all(),
             'form': EntryForm()
         }
     log.debug("Single submission page")

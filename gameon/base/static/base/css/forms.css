@@ -1,0 +1,56 @@
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+legend {
+    position: relative;
+    margin-top: -2em;
+}
+legend span {
+    position: relative;
+    left: -9999em;
+    height: 1px;
+    overflow: hidden;
+    margin-top: -1em;
+}
+label {
+    display: inline-block;
+    margin: 0 10px 0.3em 0;
+    cursor: pointer;
+}
+input[type=text],
+textarea {
+    width: 100%;
+}
+textarea {
+    height: 100px;
+}
+.form_wrapper {
+    border: 1px solid #ccc;
+    background: #f0f0f0;
+    margin-bottom: 1em;
+    border-radius: 8px;
+}
+.form_wrapper ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+.field {
+    padding: 2em 40px;
+    border-top: 1px solid #ccc;
+}
+.first-field {
+    border-top: none;
+}
+.submit_row {
+    background: #000;
+    text-align: left;
+    color: #fff;
+    font-weight: bold;
+}
+.submit_row input {
+    text-transform: uppercase;
+    margin-left: 20px;
+}

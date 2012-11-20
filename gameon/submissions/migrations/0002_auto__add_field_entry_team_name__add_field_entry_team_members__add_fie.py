@@ -8,49 +8,31 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Challenge'
-        db.create_table('submissions_challenge', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=200)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=100)),
-            ('start_date', self.gf('django.db.models.fields.DateTimeField')()),
-            ('end_date', self.gf('django.db.models.fields.DateTimeField')()),
-        ))
-        db.send_create_signal('submissions', ['Challenge'])
+        # Adding field 'Entry.team_name'
+        db.add_column('submissions_entry', 'team_name',
+                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True),
+                      keep_default=False)
 
-        # Adding model 'Category'
-        db.create_table('submissions_category', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=100)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=100)),
-        ))
-        db.send_create_signal('submissions', ['Category'])
+        # Adding field 'Entry.team_members'
+        db.add_column('submissions_entry', 'team_members',
+                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      keep_default=False)
 
-        # Adding model 'Entry'
-        db.create_table('submissions_entry', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(unique=True, max_length=255)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=255)),
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=255)),
-            ('thumbnail', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
-            ('created_by', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['users.Profile'], null=True, blank=True)),
-            ('video_url', self.gf('django.db.models.fields.URLField')(default='http://webmaker.org', max_length=255)),
-            ('description', self.gf('django.db.models.fields.TextField')(default='foo')),
-            ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['submissions.Category'], null=True, blank=True)),
-            ('to_market', self.gf('django.db.models.fields.BooleanField')(default=False)),
-        ))
-        db.send_create_signal('submissions', ['Entry'])
+        # Adding field 'Entry.team_desciption'
+        db.add_column('submissions_entry', 'team_desciption',
+                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Challenge'
-        db.delete_table('submissions_challenge')
+        # Deleting field 'Entry.team_name'
+        db.delete_column('submissions_entry', 'team_name')
 
-        # Deleting model 'Category'
-        db.delete_table('submissions_category')
+        # Deleting field 'Entry.team_members'
+        db.delete_column('submissions_entry', 'team_members')
 
-        # Deleting model 'Entry'
-        db.delete_table('submissions_entry')
+        # Deleting field 'Entry.team_desciption'
+        db.delete_column('submissions_entry', 'team_desciption')
 
 
     models = {
@@ -108,14 +90,17 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Entry'},
             'category': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['submissions.Category']", 'null': 'True', 'blank': 'True'}),
             'created_by': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['users.Profile']", 'null': 'True', 'blank': 'True'}),
-            'description': ('django.db.models.fields.TextField', [], {'default': "'foo'"}),
+            'description': ('django.db.models.fields.TextField', [], {'default': "''"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '255'}),
+            'team_desciption': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'team_members': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'team_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'thumbnail': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'}),
             'to_market': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'url': ('django.db.models.fields.URLField', [], {'max_length': '255'}),
-            'video_url': ('django.db.models.fields.URLField', [], {'default': "'http://webmaker.org'", 'max_length': '255'})
+            'video_url': ('django.db.models.fields.URLField', [], {'default': "''", 'max_length': '255'})
         },
         'users.profile': {
             'Meta': {'object_name': 'Profile'},
