@@ -53,7 +53,7 @@
                 <a class="cta" href="{{ url('submissions.create_entry') }}">Submit a game</a>
             {% endif %}
             <footer>
-                Submissions open on December 3rd, 2012 and close February 20, 2013.
+                Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }} and close {{ request.challenge.end_date.strftime('%B %e, %Y') }}.
             </footer>
         </article>
     </div>
