@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ static('base/css/forms.css') }}">
 {% endblock %}
 
-{% block page_title %}Apply{% endblock %}
+{% block page_title %}{% if form.errors %}Errors in your submission | {% endif %}Apply{% endblock %}
 {% block page_id %}create_entry{% endblock %}
 {% block section_class %}submissions{% endblock %}
 
@@ -20,23 +20,32 @@
             <fieldset>
                 <legend><span>Game details</span></legend>
                 <div class="field first-field">
-                    <label for="id_title" class="announce">Game name</label>
-                    {% for error in form.title.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    <label for="id_title" class="announce">
+                        Game name
+                        {% for error in form.title.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
+                    
                     {{ form.title }}
                 </div>
                 <div class="field">
-                    <label for="id_url" class="announce">Game URL</label>
-                    {% for error in form.url.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    <label for="id_url" class="announce">
+                        Game URL
+                        {% for error in form.url.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
                     {{ form.url }}
                 </div>
                 <div class="field">
-                    <label for="id_description" class="announce">Game Description</label>
-                    {% for error in form.description.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    <label for="id_description" class="announce">
+                        Game Description
+                        {% for error in form.description.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
                     {{ form.description }}
                 </div>
                 <div class="field">
-                    <label for="id_thumbnail" class="announce">Upload Thumbnail Image</label>
-                    {% for error in form.thumbnail.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    <label for="id_thumbnail" class="announce">
+                        Upload Thumbnail Image <span class="opt">(optional)</span>
+                        {% for error in form.thumbnail.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
                     {{ form.thumbnail }}
                 </div>
                 <div class="field">
@@ -44,32 +53,44 @@
                     {{ form.category }}
                 </div>
                 <div class="field">
-                    <label for="id_video_url" class="announce">Online Gameplay URL</label>
-                    {% for error in form.video_url.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    <label for="id_video_url" class="announce">
+                        Online Gameplay URL
+                        {% for error in form.video_url.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
                     {{ form.video_url }}
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset class="team-details">
                 <legend><span>Team details</span></legend>
-                <div class="field">
-                    <label for="id_team_name" class="announce">Team name</label>
-                    {% for error in form.team_name.errors %}<strong>{{ error }}</strong>{% endfor %}
+                <div class="field" tabindex="-1">
+                    <label for="id_team_name" class="announce">
+                        Team name <span class="opt">(optional)</span>
+                        {% for error in form.team_name.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
                     {{ form.team_name }}
                 </div>
                 <div class="field">
-                    <label for="id_team_members" class="announce">Team members</label>
-                    {% for error in form.team_members.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    <label for="id_team_members" class="announce">
+                        Team members <span class="opt">(optional)</span>
+                        {% for error in form.team_members.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
                     {{ form.team_members }}
                 </div>
                 <div class="field">
-                    <label for="id_team_desciption" class="announce">Team bio</label>
-                    {% for error in form.team_desciption.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    <label for="id_team_desciption" class="announce">
+                        Team bio <span class="opt">(optional)</span>
+                        {% for error in form.team_desciption.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
                     {{ form.team_desciption }}
                 </div>
             </fieldset>
             <div class="field">
                 <p class="announce">Submit to Marketplace</p>
-                {% for error in form.to_market.errors %}<strong>{{ error }}</strong>{% endfor %}
+                <article class="submit_row shout-box marketplace">
+                    <h2 class="whimper">What is Marketplace and why is it awesome?</h2>
+                    <p class="meta">The Firefox Marketplace  gives users the opportunity to find,  try and buy Apps and content that  matters most to them. This means  exciting, useful and high-quality Apps  relevant to local markets across  all categories that users can use to  get the most out of their daily  lives. Mozilla's  global reach extends to hundreds of millions of  Firefox users  worldwide. Through the competition Mozilla can help  developers get their  App featured and into the hands of their target users around the  world. <a href="http://www.mozilla.org/en-US/apps/" target="_blank">Learn more about Firefox Marketplace here</a>.</p>
+                </article>
+                {% for error in form.to_market.errors %}<em>{{ error }}</em>{% endfor %}
                 {{ form.to_market }}
             </div>
             </div>
@@ -80,4 +101,11 @@
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block page_js %}
+<script type="text/javascript" src="{{ static('base/js/forms.js') }}"></script>
+<script type="text/javascript">
+mgo.formsets.init();
+</script>
 {% endblock %}

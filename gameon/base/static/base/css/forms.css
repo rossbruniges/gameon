@@ -19,9 +19,15 @@ label {
     margin: 0 10px 0.3em 0;
     cursor: pointer;
 }
+label em {
+    color: #DA1C21;
+    font-style: normal;
+}
 input[type=text],
 textarea {
     width: 100%;
+    border-radius: 8px;
+    padding: 0.2em 4px;
 }
 textarea {
     height: 100px;
@@ -44,11 +50,45 @@ textarea {
 .first-field {
     border-top: none;
 }
+.trigger {
+    font-weight: bold;
+    background: none;
+    color: #37D09E;
+    border: 1px solid #ccc;
+    border-width: 1px 0 0;
+    display: block;
+    padding: 1em 40px;
+    width: 100%;
+    text-align: left;
+}
+.trigger:after {
+    content: '';
+    display: inline-block;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #37D09E;
+    margin-left: 10px;
+}
+.trigger.open:after {
+    border-top: none;
+    border-bottom: 10px solid #37D09E;
+}
+form .opt {
+    color: #37D09E;
+}
+fieldset.js_enabled .field {
+    display: none;
+}
 .submit_row {
     background: #000;
     text-align: left;
     color: #fff;
     font-weight: bold;
+    border-color: #000;
+}
+.submit_row.marketplace {
+    padding-left: 170px;
+    background: #000 url('/static/base/img/css/marketplace.png') no-repeat 20px 1em;
 }
 .submit_row input {
     text-transform: uppercase;
