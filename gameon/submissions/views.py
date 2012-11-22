@@ -2,6 +2,7 @@ import commonware
 
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
 
@@ -18,8 +19,11 @@ def create(request, template='submissions/create.html'):
             entry = form.save(commit=False)
             entry.slug = slugify(entry.title)
             form.save()
-            return HttpResponseRedirect(reverse('submissions.entry_list',
-                kwargs={'category': 'all'}))
+            if entry.to_market == True:
+                return HttpResponseRedirect(settings.MARKETPLACE_URL)
+            else:
+                return HttpResponseRedirect(reverse('submissions.entry_list',
+                    kwargs={'category': 'all'}))
         else:
             data = {
                 'categories': Category.objects.all(),
