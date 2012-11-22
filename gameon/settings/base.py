@@ -8,6 +8,8 @@ from funfactory.settings_base import *
 # clone.
 PROJECT_MODULE = 'gameon'
 
+GAMEON_CHALLENGE_SLUG = 'gameon-2013'
+
 # Defines the views served for root URLs.
 ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 
@@ -54,7 +56,15 @@ TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
 
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
     'gameon.users.middleware.ProfileMiddleware',
+    'gameon.submissions.middleware.ChallengeStatusMiddleware',
 ]
+
+MIDDLEWARE_URL_EXCEPTIONS = [
+    '/__debug__/',
+    '/admin/',
+    '/static/',
+    MEDIA_URL,
+    ]
 
 # Should robots.txt deny everything or disallow a calculated list of URLs we
 # don't want to be crawled?  Default is false, disallow everything.

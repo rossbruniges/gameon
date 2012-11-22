@@ -18,3 +18,4 @@ build
 tmp/*
 *~
 *.mo
+media/submission-entry/

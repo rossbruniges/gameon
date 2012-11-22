@@ -1,14 +1,83 @@
 {% extends 'base.html' %}
 
+{% block page_css %}
+<link rel="stylesheet" href="{{ static('base/css/forms.css') }}">
+{% endblock %}
+
 {% block page_title %}Apply{% endblock %}
 {% block page_id %}create_entry{% endblock %}
 {% block section_class %}submissions{% endblock %}
 
 {% block content %}
-<h1>APPLY, APPLY NOW</h1>
-<form action="{{ url('submissions.create_entry') }}" method="post">
-    {{ csrf() }}
-    {{ form.as_p() }}
-    <input type="submit" name="submit" value="Apply" />
-</form>
+<div>
+    <header class="mast-head">
+        <h1 class="busta shout">Submit Your Game</h1>
+    </header>
+    <div class="busta">
+        <form action="{{ url('submissions.create_entry') }}" method="post">
+            {{ csrf() }}
+            <div class="form_wrapper">
+            <fieldset>
+                <legend><span>Game details</span></legend>
+                <div class="field first-field">
+                    <label for="id_title" class="announce">Game name</label>
+                    {% for error in form.title.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    {{ form.title }}
+                </div>
+                <div class="field">
+                    <label for="id_url" class="announce">Game URL</label>
+                    {% for error in form.url.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    {{ form.url }}
+                </div>
+                <div class="field">
+                    <label for="id_description" class="announce">Game Description</label>
+                    {% for error in form.description.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    {{ form.description }}
+                </div>
+                <div class="field">
+                    <label for="id_thumbnail" class="announce">Upload Thumbnail Image</label>
+                    {% for error in form.thumbnail.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    {{ form.thumbnail }}
+                </div>
+                <div class="field">
+                    <p class="announce">Category <span class="opt">(optional)</span></p>
+                    {{ form.category }}
+                </div>
+                <div class="field">
+                    <label for="id_video_url" class="announce">Online Gameplay URL</label>
+                    {% for error in form.video_url.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    {{ form.video_url }}
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend><span>Team details</span></legend>
+                <div class="field">
+                    <label for="id_team_name" class="announce">Team name</label>
+                    {% for error in form.team_name.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    {{ form.team_name }}
+                </div>
+                <div class="field">
+                    <label for="id_team_members" class="announce">Team members</label>
+                    {% for error in form.team_members.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    {{ form.team_members }}
+                </div>
+                <div class="field">
+                    <label for="id_team_desciption" class="announce">Team bio</label>
+                    {% for error in form.team_desciption.errors %}<strong>{{ error }}</strong>{% endfor %}
+                    {{ form.team_desciption }}
+                </div>
+            </fieldset>
+            <div class="field">
+                <p class="announce">Submit to Marketplace</p>
+                {% for error in form.to_market.errors %}<strong>{{ error }}</strong>{% endfor %}
+                {{ form.to_market }}
+            </div>
+            </div>
+            <div class="submit_row shout-box">
+                <span>All done and ready to submit?</span>
+                <input type="submit" name="submit" class="cta" value="Yup! Submit My Game!" />
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
