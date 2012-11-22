@@ -18,7 +18,8 @@ def create(request, template='submissions/create.html'):
             entry = form.save(commit=False)
             entry.slug = slugify(entry.title)
             form.save()
-            return HttpResponseRedirect(reverse('submissions.entry_list'))
+            return HttpResponseRedirect(reverse('submissions.entry_list',
+                kwargs={'category': 'all'}))
         else:
             data = {
                 'categories': Category.objects.all(),
