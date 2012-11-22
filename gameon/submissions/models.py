@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.core.validators import MaxLengthValidator
 
@@ -21,6 +23,16 @@ class Challenge(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def has_started(self):
+        return datetime.utcnow() > self.start_date
+
+    def is_open(self):
+        now = datetime.utcnow()
+        return self.start_date < now and now < self.end_date
+
+    def has_closed(self):
+        return datetime.utcnow() < self.end_date
 
 
 class Category(models.Model):
