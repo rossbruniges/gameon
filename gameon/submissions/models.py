@@ -1,4 +1,6 @@
+import micawber
 from datetime import datetime
+import string
 
 from django.db import models
 from django.core.validators import MaxLengthValidator
@@ -81,11 +83,46 @@ class Entry(models.Model):
         return self.title
 
     def get_image_src(self):
+        """
+        If a thumbnail has been included this provides an easy way to grab it
+        from the DB and display it (or a default) in the templates
+        """
         media_url = getattr(settings, 'MEDIA_URL', '')
         static_url = getattr(settings, 'STATIC_URL', '')
         path = lambda f: f and '%s%s' % (media_url, f)
         static_path = lambda f: f and '%s%s' % (static_url, f)
         return path(self.thumbnail) or static_path('base/img/entry-default.gif')
+
+    @property
+    def has_entry_feature(self):
+        """
+        If a project has provided a URL of gameplay action we want to display
+        that in the single view template as the feature, opposed to the
+        screenshot (which could still be the default)
+        Only if the video is from a site that supported oembed do we class it as]
+        'featurable'
+        """
+        return any(v in self.video_url for v in settings.ALLOWED_OMEMBED_SITES) or self.thumbnail
+
+    def get_entry_feature(self):
+        """
+        If there is a video_url we want to include that as a feature, otherwise
+        we fall through to the thumbnail
+        """
+        if self.video_url:
+            """
+            Ensure that the video is from a site that supports oembed
+            """
+            if any(v in self.video_url for v in settings.ALLOWED_OMEMBED_SITES):
+                """
+                Extracting the oembed data using https://github.com/coleifer/micawber
+                """
+                providers = micawber.bootstrap_basic()
+                entry_oembed = micawber.parse_text(self.video_url, providers)
+                """ Ensure https, less site warnings the better """
+                return string.replace(entry_oembed, 'http://', 'https://')
+        if self.thumbnail:
+            return '<img src="%s" alt=""/>' % self.get_image_src()
 
     class Meta:
         verbose_name_plural = 'Entries'

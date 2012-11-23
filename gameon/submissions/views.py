@@ -58,8 +58,9 @@ def list(request, category='all', template='submissions/list.html'):
 
 
 def single(request, slug, template='submissions/single.html'):
+    entry = Entry.objects.get(slug=slug)
     data = {
-        'entry': Entry.objects.get(slug=slug)
+        'entry': entry,
     }
     log.debug("Single ")
     return render(request, template, data)

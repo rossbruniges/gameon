@@ -14,6 +14,14 @@ MARKETPLACE_URL = 'https://marketplace.firefox.com/developers/docs/mkt_submissio
 
 PAGINATOR_SIZE = 12
 
+# We're only allowing video embeds from there two sites
+ALLOWED_OMEMBED_SITES = (
+    'youtube',
+    'vimeo'
+)
+
+GRAVATAR_URL = 'https://secure.gravatar.com/avatar/'
+
 # Defines the views served for root URLs.
 ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 
