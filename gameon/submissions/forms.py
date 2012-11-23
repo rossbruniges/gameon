@@ -1,6 +1,7 @@
 from django import forms
 from django.forms.models import ModelChoiceField
-from django.forms.widgets import RadioSelect
+
+from gameon.submissions.widgets import CategorySelectWidget
 
 from gameon.submissions.models import Entry, Category
 
@@ -16,7 +17,7 @@ class EntryForm(forms.ModelForm):
 
     category = ModelChoiceField(queryset=Category.objects.all(),
                                 empty_label=None,
-                                widget=RadioSelect())
+                                widget=CategorySelectWidget())
 
     class Meta:
         model = Entry
