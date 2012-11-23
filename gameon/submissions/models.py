@@ -41,6 +41,8 @@ class Category(models.Model):
         unique=True)
     slug = models.SlugField(max_length=100,
         unique=True, verbose_name=_(u'Slug'))
+    description = models.CharField(max_length=255, verbose_name=_(u'Description'),
+        blank=True)
 
     def __unicode__(self):
         return self.name
