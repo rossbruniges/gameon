@@ -16,17 +16,62 @@
     <div class="busta">
         <div class="cf">
             <div class="main-col">
-                <ol>
+                <ol class="entries cf">
                     {% for sub in submissions %}
-                    <li>
-                        <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">{{ sub.title }}</a>
-                        <p>in <a href="{{ url('submissions.entry_list', category=sub.category.slug) }}">{{ sub.category.name }} category</a></p>
+                    <li class="whimper">
+                        <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">
+                            <span class="frame"><img src="{{ sub.get_image_src() }}" width="180" height="102" alt="" /></span>
+                            {{ sub.title }}
+                        </a>
                     </li>
                     {% endfor %}
                 </ol>
+                {% if submissions.paginator.num_pages > 1 %}
+                <footer class="pagination cf whimper">
+                    <nav>
+                        {% if submissions.has_previous() %}
+                            <a href="?page={{ submissions.previous_page_number() }}" class="btn prev">prev</a>
+                        {% endif %}
+                        <ol class="cf">
+                            {% for i in range(submissions.paginator.num_pages) %}
+                                <li>
+                                    {% if i + 1 == submissions.number %}
+                                        <span>{{ i + 1 }}</span>
+                                    {% else %}
+                                        <a href="?page={{ i + 1 }}">{{ i + 1 }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                        {% if submissions.has_next() %}
+                            <a href="?page={{ submissions.next_page_number() }}" class="btn next">next</a>
+                        {% endif %}
+                    </nav>
+                </footer>
+            {% endif %}
             </div>
             <aside class="meta mini-col">
-                <h2 class="whimper">???</h2>
+                <h2 class="whimper">Filter entries</h2>
+                <nav class="filter">
+                    <ul>
+                        <li>
+                            {% if category == 'all' %}
+                                <span>All</span>
+                            {% else %}
+                                <a href="{{ url('submissions.entry_list') }}">All</a>
+                            {% endif %}
+                        </li>
+                        {% for cat in categories %}
+                            <li>
+                                {% if category == cat.slug %}
+                                    <span>{{ cat.name }}</span>
+                                {% else %}
+                                    <a href="{{ url('submissions.entry_list', category=cat.slug) }}">{{ cat.name }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
             </aside>
         </div>
     </div>

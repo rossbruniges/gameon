@@ -6,6 +6,7 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
 
+from gameon.base.utils import get_page, get_paginator
 from gameon.submissions.models import Entry, Category
 from gameon.submissions.forms import EntryForm
 
@@ -39,14 +40,19 @@ def create(request, template='submissions/create.html'):
 
 
 def list(request, category='all', template='submissions/list.html'):
+    page_number = get_page(request.GET)
     if category == 'all':
-        submissions = Entry.objects.all()
+        entry_set = Entry.objects.all().order_by('-pk')
     else:
-        submissions = Entry.objects.filter(category__slug=category)
+        entry_set = Entry.objects.filter(category__slug=category).order_by('-pk')
+
+    submissions = get_paginator(entry_set, page_number)
+
     data = {
         'submissions': submissions,
-        'category': category
-    }  # You'd add data here that you're sending to the template.
+        'category': category,
+        'categories': Category.objects.all(),
+    }
     log.debug("List view of all submissions")
     return render(request, template, data)
 
@@ -54,6 +60,6 @@ def list(request, category='all', template='submissions/list.html'):
 def single(request, slug, template='submissions/single.html'):
     data = {
         'entry': Entry.objects.get(slug=slug)
-    }  # You'd add data here that you're sending to the template.
+    }
     log.debug("Single ")
     return render(request, template, data)
