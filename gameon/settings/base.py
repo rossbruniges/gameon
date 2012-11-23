@@ -10,6 +10,8 @@ PROJECT_MODULE = 'gameon'
 
 GAMEON_CHALLENGE_SLUG = 'gameon-2013'
 
+MARKETPLACE_URL = 'https://marketplace.firefox.com/developers/docs/mkt_submission'
+
 # Defines the views served for root URLs.
 ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 

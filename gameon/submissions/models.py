@@ -63,14 +63,14 @@ class Entry(models.Model):
         default="")
     description = models.TextField(verbose_name=_(u'Description'),
         validators=[MaxLengthValidator(150)], default="")
-    category = models.ManyToManyField(Category, verbose_name=_(u'Category'), blank=True,
+    category = models.ForeignKey(Category, verbose_name=_(u'Category'), blank=True,
         null=True)
     team_name = models.CharField(max_length=255, verbose_name=_(u'Team name'),
-        null=True, blank=True)
+        blank=True)
     team_members = models.TextField(verbose_name=_(u'Members'),
-        validators=[MaxLengthValidator(300)], null=True, blank=True)
+        validators=[MaxLengthValidator(300)], blank=True)
     team_desciption = models.TextField(verbose_name=_(u'Description'),
-        validators=[MaxLengthValidator(200)], null=True, blank=True)
+        validators=[MaxLengthValidator(200)], blank=True)
     to_market = models.BooleanField(verbose_name="redirect to marketplace",
         default=False)
 

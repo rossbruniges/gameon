@@ -20,7 +20,7 @@
                     {% for sub in submissions %}
                     <li>
                         <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">{{ sub.title }}</a>
-                        <p>in the <a href="{{ url('submissions.entry_list', category=sub.category.slug) }}">{{sub.category.name }} category</a></p>
+                        <p>in <a href="{{ url('submissions.entry_list', category=sub.category.slug) }}">{{ sub.category.name }} category</a></p>
                     </li>
                     {% endfor %}
                 </ol>
