@@ -16,6 +16,7 @@ class EntryAdmin(admin.ModelAdmin):
     model = models.Entry
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('title', 'category')
+    list_filter = ('category',)
 
 
 admin.site.register(models.Challenge, ChallengeAdmin)

@@ -18,6 +18,7 @@
     <div class="busta">
         <div class="cf">
             <div class="main-col">
+                {% if submissions %}
                 <ol class="entries cf">
                     {% for sub in submissions %}
                     <li class="whimper">
@@ -50,7 +51,16 @@
                         {% endif %}
                     </nav>
                 </footer>
-            {% endif %}
+                {% endif %}
+                {% else %}
+                <p class="yell">No entries yet!</p>
+                {% if category %}
+                    <p>We currently don't have any entries in the {{ category }} category, this means that if you're quick you might be able to be the first.</p>
+                {% else %}
+                     <p>We currently don't have any entries, this means that if you're quick you might be able to be the first.</p>
+                {% endif %}
+                <a href="{{ url('submissions.create_entry') }}" class="cta">Submit a game!</a>
+                {% endif %}
             </div>
             <aside class="meta mini-col">
                 <h2 class="whimper">Filter entries</h2>
