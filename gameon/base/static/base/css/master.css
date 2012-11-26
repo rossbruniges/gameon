@@ -198,6 +198,10 @@ nav li a {
     display: block;
     clear: both;
     font-size: 14px;
+    background: #00283A;
+    color: #fff;
+    border: 1px solid #FFFFFF;
+    border-width: 1px 0;
 }
 .personal p {
     float: left;

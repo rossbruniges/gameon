@@ -2,6 +2,8 @@ from datetime import datetime
 
 from django.db import models
 from django.core.validators import MaxLengthValidator
+from django.contrib.auth.models import AnonymousUser
+
 
 from tower import ugettext_lazy as _
 
@@ -49,6 +51,7 @@ class Category(models.Model):
 
 
 class Entry(models.Model):
+
     title = models.CharField(max_length=255, verbose_name=_(u'Entry title'),
         unique=True)
     slug = models.SlugField(max_length=255,
@@ -76,6 +79,13 @@ class Entry(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def editable_by(self, user=AnonymousUser()):
+        if not user.is_anonymous():
+            print self.created_by
+            print user
+            if self.created_by == user.get_profile():
+                return True
 
     class Meta:
         verbose_name_plural = 'Entries'

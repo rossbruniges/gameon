@@ -5,5 +5,31 @@
 {% block section_class %}profile{% endblock %}
 
 {% block content %}
-<h1>PROFILE for {{ profile.display_name }}</h1>
+<section>
+    <header class="mast-head">
+        <h1 class="busta shout">{{ profile.display_name }}</h1>
+    </header>
+    <div class="busta">
+        <div class="cf">
+            <aside class="meta mini-col">
+                <h2 class="whimper">???</h2>
+            </aside>
+            <div class="main-col">
+            {% if entries %}
+            <ol>
+                {% for sub in entries %}
+                <li>
+                    <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">{{ sub.title }}</a>
+                    <p>in <a href="{{ url('submissions.entry_list', category=sub.category.slug) }}">{{ sub.category.name }} category</a></p>
+                    {% if sub.editable_by(user=request.user) %}
+                        <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=sub.slug) }}">Edit your game</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ol>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
 {% endblock %}

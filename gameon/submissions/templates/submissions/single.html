@@ -18,6 +18,9 @@
             </div>
             <aside class="meta mini-col">
                 <h2 class="whimper">???</h2>
+                {% if entry.editable_by(user=request.user) %}
+                    <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=entry.slug) }}">Edit your game</a>
+                {% endif %}
             </aside>
         </div>
     </div>

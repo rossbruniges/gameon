@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 
 from gameon.users.forms import ProfileForm, ProfileCreateForm
 from gameon.users.models import Profile
+from gameon.submissions.models import Entry
 
 
 def signout(request):
@@ -16,8 +17,10 @@ def profile(request, username, template='users/profile.html'):
     """Display profile page for user specified by ``username``."""
     user = get_object_or_404(auth.models.User, username=username)
     profile = get_object_or_404(Profile, user=user)
+    entries = Entry.objects.filter(created_by=user)
     return render(request, template, {
         'profile': profile,
+        'entries': entries
     })
 
 
