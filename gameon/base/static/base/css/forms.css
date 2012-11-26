@@ -50,6 +50,10 @@ textarea {
 .first-field {
     border-top: none;
 }
+.field li span {
+    display: block;
+    margin-bottom: 0.5em;
+}
 .trigger {
     font-weight: bold;
     background: none;
@@ -78,6 +82,12 @@ form .opt {
 }
 fieldset.js_enabled .field {
     display: none;
+}
+.category_select p {
+    margin-top: 0;
+}
+.category_select ul {
+    margin-bottom: 0;
 }
 .submit_row {
     background: #000;
