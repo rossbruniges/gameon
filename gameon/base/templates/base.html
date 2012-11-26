@@ -2,7 +2,7 @@
 <!--[if (lt IE 9)]><html class="no-js bad-ie" lang="{{ LANG }}" dir="{{ DIR }}"><![endif]-->
 <!--[if (gt IE 8)|!(IE)]><!--><html class="no-js" lang="{{ LANG }}" dir="{{ DIR }}"><!--<![endif]-->
 <head>
-    <title>{% block page_title %}{% endblock %} | Mozilla Gameon</title>
+    <title>{% if APP_STAGE %}[{{ APP_STAGE }}] | {% endif %}{% block page_title %}{% endblock %} | Mozilla Gameon</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <link rel="stylesheet" href="//www.mozilla.org/tabzilla/media/css/tabzilla.css">
@@ -19,6 +19,11 @@
     <script type="text/javascript">
         document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, '');
     </script>
+    {% if APP_MSG %}
+    <div id="app_stage_box" class="whimper">
+        <div class="busta">{{ APP_MSG|safe }}</div>
+    </div>
+    {% endif %}
     <div class="site-nav">
         <header class="busta">
             <a href="http://www.mozilla.org/" id="tabzilla">Mozilla</a>

@@ -43,14 +43,16 @@ def list(request, category='all', template='submissions/list.html'):
     page_number = get_page(request.GET)
     if category == 'all':
         entry_set = Entry.objects.all().order_by('-pk')
+        page_category = False
     else:
         entry_set = Entry.objects.filter(category__slug=category).order_by('-pk')
+        page_category = Category.objects.get(slug=category)
 
     submissions = get_paginator(entry_set, page_number)
 
     data = {
         'submissions': submissions,
-        'category': category,
+        'category': page_category,
         'categories': Category.objects.all(),
     }
     log.debug("List view of all submissions")

@@ -104,8 +104,6 @@
 {% endblock %}
 
 {% block page_js %}
-<script type="text/javascript" src="{{ static('base/js/forms.js') }}"></script>
-<script type="text/javascript">
-mgo.formsets.init();
-</script>
+<script src="{{ static('base/js/forms.js') }}"></script>
+<script>mgo.formsets.init();</script>
 {% endblock %}

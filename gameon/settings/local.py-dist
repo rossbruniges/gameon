@@ -6,6 +6,11 @@ from . import base
 # To extend any settings from settings/base.py here's an example:
 #INSTALLED_APPS = base.INSTALLED_APPS + ['debug_toolbar']
 
+# Uncomment on local/dev/staging boxes to highlight to the user that this isn't the live site!
+#APP_STAGE = 'LOCAL'
+#APP_MESSAGE = "<strong>This is the %s server</strong><br />Content here is not accurate and and we're not going to carry data over to live so please don't submit anything important." % APP_STAGE
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

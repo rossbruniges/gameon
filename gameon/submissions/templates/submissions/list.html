@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Entry List{% endblock %}
+{% block page_title %}
+{% if not category %}Entry List{% else %}Entries in {{ category }}{% endif %}
+{% endblock %}
 {% block page_id %}all_submissions{% endblock %}
 {% block section_class %}submissions{% endblock %}
 
 {% block content %}
 <article>
     <header class="mast-head">
-        {% if category != 'all' %}
+        {% if category %}
             <h1 class="busta shout">Entries in {{ category }}</h1>
         {% else %}
             <h1 class="busta shout">All Entries</h1>
@@ -55,7 +57,7 @@
                 <nav class="filter">
                     <ul>
                         <li>
-                            {% if category == 'all' %}
+                            {% if not category %}
                                 <span>All</span>
                             {% else %}
                                 <a href="{{ url('submissions.entry_list') }}">All</a>
@@ -63,7 +65,7 @@
                         </li>
                         {% for cat in categories %}
                             <li>
-                                {% if category == cat.slug %}
+                                {% if category.slug == cat.slug %}
                                     <span>{{ cat.name }}</span>
                                 {% else %}
                                     <a href="{{ url('submissions.entry_list', category=cat.slug) }}">{{ cat.name }}</a>

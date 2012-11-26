@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^resources/$', views.resources, name='static_site.resources'),
     url(r'^previous/$', views.previous, name='static_site.previous'),
     url(r'^categories/$', views.categories, name='static_site.categories'),
+    url(r'^legal/rules/$', views.legal, name='static_site.legal'),
 )

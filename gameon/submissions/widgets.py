@@ -6,9 +6,12 @@ from django.core.urlresolvers import reverse
 from gameon.submissions.models import Category
 
 
-class CustomRadioFieldRenderer(RadioFieldRenderer):
+class CategorySelectRenderer(RadioFieldRenderer):
     """Mainly duplicated from django.forms.widgets
-Adds extra supporting info to each field"""
+    A custom widget that allows us to render the standard list of radios with
+    the addition of contextural content about each option in the list (pulled
+    direct) from the category model
+    """
 
     def render(self):
         """Outputs a <ul> for this set of radio fields."""
@@ -26,7 +29,7 @@ Adds extra supporting info to each field"""
         return mark_safe(u'<ul>\n%s\n</ul>' % u'\n'.join(row_list))
 
 
-class CustomRadioSelect(RadioSelect):
+class CategorySelectWidget(RadioSelect):
     """Mainly duplicated from django.forms.widgets
 Adds extra attributes to the markup"""
-    renderer = CustomRadioFieldRenderer
+    renderer = CategorySelectRenderer

@@ -64,6 +64,7 @@ BROWSERID_CREATE_USER = True
 
 TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
     'django_browserid.context_processors.browserid_form',
+    'gameon.base.context_processors.app_stage',
 ]
 
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
