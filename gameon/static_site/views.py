@@ -47,3 +47,9 @@ def categories(request, template='static_site/categories.html'):
     """Main example view."""
     data = {}  # You'd add data here that you're sending to the template.
     return render(request, template, data)
+
+
+def legal(request, template='static_site/legal.html'):
+    """Main example view."""
+    data = {}  # You'd add data here that you're sending to the template.
+    return render(request, template, data)
