@@ -1,6 +1,7 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
+from django.core.urlresolvers import reverse
 
 from gameon.users.forms import ProfileForm, ProfileCreateForm
 from gameon.users.models import Profile
@@ -38,7 +39,14 @@ def edit(request, template='users/profile_edit.html'):
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            return redirect(profile)
+            if mode == 'edit':
+                return redirect(profile)
+            else:
+                """
+                The only reason anyone will want to create an account it to
+                submit a game, so take them right there
+                """
+                return redirect(reverse('submissions.create_entry'))
     else:
         form = form_class(instance=profile)
     return render(request, template, {
