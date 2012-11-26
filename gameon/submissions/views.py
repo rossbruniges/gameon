@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
+from django.contrib.auth.decorators import login_required
 
 from gameon.base.views import action_unavailable_response
 from gameon.base.utils import get_page, get_paginator
@@ -10,6 +11,7 @@ from gameon.submissions.models import Entry, Category
 from gameon.submissions.forms import EntryForm
 
 
+@login_required
 def create(request, template='submissions/create.html'):
     if request.method == 'POST':
         form = EntryForm(request.POST)
