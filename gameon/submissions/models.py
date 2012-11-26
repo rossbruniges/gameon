@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.core.validators import MaxLengthValidator
+from django.conf import settings
 
 from tower import ugettext_lazy as _
 
@@ -76,6 +77,13 @@ class Entry(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_image_src(self):
+        media_url = getattr(settings, 'MEDIA_URL', '')
+        static_url = getattr(settings, 'STATIC_URL', '')
+        path = lambda f: f and '%s%s' % (media_url, f)
+        static_path = lambda f: f and '%s%s' % (static_url, f)
+        return path(self.thumbnail) or static_path('base/img/entry-default.gif')
 
     class Meta:
         verbose_name_plural = 'Entries'
