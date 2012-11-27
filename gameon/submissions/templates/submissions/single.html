@@ -25,10 +25,12 @@
                     <p>{{ entry.team_members }}<p>
                     <p>{{ entry.team_desciption }}</p>
                 {% else %}
+                    {% if entry.created_by %}
                     <img src="{{ entry.created_by.get_gravatar_url() }}" alt="" />
                     <p><b>{{ entry.created_by.display_name }}</b></p>
                     {% if entry.bio %}
                         <p>{{ entry.bio }}</p>
+                    {% endif %}
                     {% endif %}
                 {% endif %}
                 <h2 class="whimper">Category</h2>
