@@ -53,7 +53,7 @@
     font-size: 13px;
 }
 .participate .busta {
-    padding: 3em 0;
+    padding: 4em 0;
 }
 .participate .exclaim {
     color: #37d09e;
@@ -74,4 +74,8 @@
     padding: 20px;
     margin: 0 -20px -1em -20px;
     border-radius: 0 0 16px 16px;
+}
+/* so that the bottom section merges with the footer */
+#home .site-footer {
+    margin-top: 0;
 }
