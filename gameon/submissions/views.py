@@ -1,5 +1,3 @@
-import commonware
-
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -9,8 +7,6 @@ from django.template.defaultfilters import slugify
 from gameon.base.utils import get_page, get_paginator
 from gameon.submissions.models import Entry, Category
 from gameon.submissions.forms import EntryForm
-
-log = commonware.log.getLogger('playdoh')
 
 
 def create(request, template='submissions/create.html'):
@@ -35,7 +31,6 @@ def create(request, template='submissions/create.html'):
             'categories': Category.objects.all(),
             'form': EntryForm()
         }
-    log.debug("Single submission page")
     return render(request, template, data)
 
 
@@ -55,14 +50,11 @@ def list(request, category='all', template='submissions/list.html'):
         'category': page_category,
         'categories': Category.objects.all(),
     }
-    log.debug("List view of all submissions")
     return render(request, template, data)
 
 
 def single(request, slug, template='submissions/single.html'):
-    entry = Entry.objects.get(slug=slug)
     data = {
-        'entry': entry,
+        'entry': Entry.objects.get(slug=slug),
     }
-    log.debug("Single ")
     return render(request, template, data)

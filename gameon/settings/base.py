@@ -14,7 +14,7 @@ MARKETPLACE_URL = 'https://marketplace.firefox.com/developers/docs/mkt_submissio
 
 PAGINATOR_SIZE = 12
 
-# We're only allowing video embeds from there two sites
+# We're only allowing video embeds from these two sites
 ALLOWED_OMEMBED_SITES = (
     'youtube',
     'vimeo'
