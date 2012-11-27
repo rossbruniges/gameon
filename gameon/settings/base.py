@@ -12,6 +12,16 @@ GAMEON_CHALLENGE_SLUG = 'gameon-2013'
 
 MARKETPLACE_URL = 'https://marketplace.firefox.com/developers/docs/mkt_submission'
 
+PAGINATOR_SIZE = 12
+
+# We're only allowing video embeds from these two sites
+ALLOWED_OMEMBED_SITES = (
+    'youtube',
+    'vimeo'
+)
+
+GRAVATAR_URL = 'https://secure.gravatar.com/avatar/'
+
 # Defines the views served for root URLs.
 ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 

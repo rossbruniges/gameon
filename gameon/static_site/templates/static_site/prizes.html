@@ -11,30 +11,55 @@
     </header>
     <div class="busta">
         <div class="shout-box">
-            <p class="announce">All games will be judges on the 10 Measurements of Awesomeness as <a href="#">listed here</a>.</p>
+            <p class="announce">All games will be judged on the <a href="{{ url('static_site.judging') }}">4 Measurements of Awesomeness</a>.</p>
         </div>
         <div class="cf">
+            <h2 class="sub-head exclaim">Grand Prize</h2>
+            <div class="prize">
+                <h3 class="exclaim">Grand Champion</h3>
+                <p>Awarded to the best darned game we could find.</p>
+                <ul class="big-winner">
+                    <li><span>an all expense paid trip to San Francisco for GDC 2013!!</span><ul>  
+                        <li><span>Get the red carpet treatment - Roundtrip airfare, 7 nights of hotel accomodations in San Francisco, two all access tickets to GDC 2013 which includes entry to Indie Game Developer Conference and more</span></li>
+                        <li><span>Dinner with EA's rockstar game developer Michael John</span></li>
+                        <li><span>A tour of Mozilla's headquarters in Mountain View and lunch with the games team</span></li>
+                    </ul></li>
+                    <li><span>The chance to be featured in the Firefox Marketplace <link to FAQs question about FM></span></li>
+                    <li><span>The opportunity to show your game to the awesome folks at Chillingo for a chance to have it published on their network</span></li>
+                    <li><span>Promotion of your game in Game On Gallery and across Mozilla networks</span></li>
+                    <li><span>Nvidia GeForce GTX690</span></li>
+                    <li><span>One year membership to top industry associations IGDA and UKIE<span></li>
+                    <li><span>Special Edition Mozilla Swag. Leave room in your luggage. Trust us.<span></li>
+                </ul>
+            </div>
+            <h2 class="sub-head exclaim">Category Prizes</h2>
             <div class="main-col">
-                <h2 class="sub-head exclaim">Grand Prize</h2>
                 <div class="prize">
-                    <h3 class="exclaim">Grand Champion</h3>
-                    <p>Awarded to the game with the highest overall score.</p>
-                    <ul class="big-winner">
-                        <li><span>Get the red carpet treatment!</span></li>
-                    </ul>
+                    <h3 class="exclaim">Best Hackable Game (Non Stop Hacking)</h3>
+                    <p>Awarded to the games with the highest "hackability" score. Games that let their players remix mechanics, fork code or use  assets from the web in order for them  to create their very own version  of an existing game.</p>
+                </div>
+                <div class="prize">
+                    <h3 class="exclaim">Best Learning Game (Head of Class)</h3>
+                    <p>Awarded   to the games that deepen an understanding of a concept or help a player  to master a set of skills.</p>
+                </div>
+                <div class="prize">
+                    <h3 class="exclaim">Best Cross-Platform Game (Mobileet)</h3>
+                    <p>Awarded  to the games that use the power of the mobile phones and cross-device play to enhance assymetric gameplay and location based mechanics.</p>
                 </div>
             </div>
-            <aside class="meta mini-col">
-                <h2 class="whimper">All prizes include</h2>
-                <ul class="checks">
-                    <li>Featured in the Firefox Marketplace</li>
-                    <li>Promotion accross Mozilla networks</li>
-                    <li>IGDA Free Membership</li>
-                    <li>Nvida Graphics Board</li>
-                    <li>Special addition Mozilla swag</li>
+            <div class="meta-col meta">
+                <h3 class="whimper">All category prizes will receive:</h3>
+                <ul>
+                    <li>Nvidia GeForce GTX670</li>
+                    <li>The chance to have your game featured in the <a href="#">Firefox Marketplace</a> - link to FAQs question about FM></li>
+                    <li>The opportunity to show your game to the awesome folks at <a href="http://www.chillingo.com/">Chillingo</a> for a chance to have it published on their network</li>
+                    <li>One year membership to top industry associations <a href="http://www.igda.org/">IGDA</a> and <a href="http://ukie.info/">UKIE</a></li>
+                    <li>Promotion of your game in the Game On Gallery and across Mozilla networks</li>
+                    <li>One year subscription to the <a href="http://gdmag.com/">Game Developers Magazine</a></li>
+                    <li>Special Edition Mozilla Swag. Leave room in your luggage. Trust us.</li>
                 </ul>
-            </aside>
-        </div>
+            </div>
+        </div>    
     </div>
 </article>
 {% endblock %}

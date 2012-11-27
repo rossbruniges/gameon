@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Entry List{% endblock %}
+{% block page_title %}
+{% if not category %}Entry List{% else %}Entries in {{ category }}{% endif %}
+{% endblock %}
 {% block page_id %}all_submissions{% endblock %}
 {% block section_class %}submissions{% endblock %}
 
 {% block content %}
 <section>
     <header class="mast-head">
-        {% if category != 'all' %}
+        {% if category %}
             <h1 class="busta shout">Entries in {{ category }}</h1>
         {% else %}
             <h1 class="busta shout">All Entries</h1>
@@ -16,20 +18,75 @@
     <div class="busta">
         <div class="cf">
             <div class="main-col">
-                <ol>
+                {% if submissions %}
+                <ol class="entries cf">
                     {% for sub in submissions %}
-                    <li>
-                        <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">{{ sub.title }}</a>
-                        <p>in <a href="{{ url('submissions.entry_list', category=sub.category.slug) }}">{{ sub.category.name }} category</a></p>
+                    <li class="whimper">
+                        <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">
+                            <span class="frame"><img src="{{ sub.get_image_src() }}" width="180" height="102" alt="" /></span>
+                            {{ sub.title }}
+                        </a>
                         {% if sub.editable_by(user=request.user) %}
                             <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=sub.slug) }}">Edit your game</a>
                         {% endif %}
                     </li>
                     {% endfor %}
                 </ol>
+                {% if submissions.paginator.num_pages > 1 %}
+                <footer class="pagination cf whimper">
+                    <nav>
+                        {% if submissions.has_previous() %}
+                            <a href="?page={{ submissions.previous_page_number() }}" class="btn prev">prev</a>
+                        {% endif %}
+                        <ol class="cf">
+                            {% for i in range(submissions.paginator.num_pages) %}
+                                <li>
+                                    {% if i + 1 == submissions.number %}
+                                        <span>{{ i + 1 }}</span>
+                                    {% else %}
+                                        <a href="?page={{ i + 1 }}">{{ i + 1 }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                        {% if submissions.has_next() %}
+                            <a href="?page={{ submissions.next_page_number() }}" class="btn next">next</a>
+                        {% endif %}
+                    </nav>
+                </footer>
+                {% endif %}
+                {% else %}
+                <p class="yell">No entries yet!</p>
+                {% if category %}
+                    <p>We currently don't have any entries in the {{ category }} category, this means that if you're quick you might be able to be the first.</p>
+                {% else %}
+                     <p>We currently don't have any entries, this means that if you're quick you might be able to be the first.</p>
+                {% endif %}
+                <a href="{{ url('submissions.create_entry') }}" class="cta">Submit a game!</a>
+                {% endif %}
             </div>
             <aside class="meta mini-col">
-                <h2 class="whimper">???</h2>
+                <h2 class="whimper">Filter entries</h2>
+                <nav class="filter">
+                    <ul>
+                        <li>
+                            {% if not category %}
+                                <span>All</span>
+                            {% else %}
+                                <a href="{{ url('submissions.entry_list') }}">All</a>
+                            {% endif %}
+                        </li>
+                        {% for cat in categories %}
+                            <li>
+                                {% if category.slug == cat.slug %}
+                                    <span>{{ cat.name }}</span>
+                                {% else %}
+                                    <a href="{{ url('submissions.entry_list', category=cat.slug) }}">{{ cat.name }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
             </aside>
         </div>
     </div>

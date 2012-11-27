@@ -1,5 +1,3 @@
-import commonware
-
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -7,10 +5,9 @@ from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
 
 from gameon.base.views import action_unavailable_response
+from gameon.base.utils import get_page, get_paginator
 from gameon.submissions.models import Entry, Category
 from gameon.submissions.forms import EntryForm
-
-log = commonware.log.getLogger('playdoh')
 
 
 def create(request, template='submissions/create.html'):
@@ -36,7 +33,6 @@ def create(request, template='submissions/create.html'):
             'categories': Category.objects.all(),
             'form': EntryForm()
         }
-    log.debug("Single submission page")
     return render(request, template, data)
 
 
@@ -65,26 +61,30 @@ def edit_entry(request, slug, template='submissions/edit.html'):
             'categories': Category.objects.all(),
             'form': EntryForm(instance=entry),
         }
-    log.debug("Single submission edit page")
     return render(request, template, data)
 
 
 def list(request, category='all', template='submissions/list.html'):
+    page_number = get_page(request.GET)
     if category == 'all':
-        submissions = Entry.objects.all()
+        entry_set = Entry.objects.all().order_by('-pk')
+        page_category = False
     else:
-        submissions = Entry.objects.filter(category__slug=category)
+        entry_set = Entry.objects.filter(category__slug=category).order_by('-pk')
+        page_category = Category.objects.get(slug=category)
+
+    submissions = get_paginator(entry_set, page_number)
+
     data = {
         'submissions': submissions,
-        'category': category
-    }  # You'd add data here that you're sending to the template.
-    log.debug("List view of all submissions")
+        'category': page_category,
+        'categories': Category.objects.all(),
+    }
     return render(request, template, data)
 
 
 def single(request, slug, template='submissions/single.html'):
     data = {
-        'entry': Entry.objects.get(slug=slug)
-    }  # You'd add data here that you're sending to the template.
-    log.debug("Single ")
+        'entry': Entry.objects.get(slug=slug),
+    }
     return render(request, template, data)

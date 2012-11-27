@@ -12,15 +12,23 @@
     <div class="busta">
         <div class="cf">
             <aside class="meta mini-col">
-                <h2 class="whimper">???</h2>
+                <span class="frame"><img src="{{ profile.get_gravatar_url() }}" alt="" /></span>
+                {% if profile.website %}
+                    <p><a href="{{ profile.website }}">{{ profile.website }}</a></p>
+                {% endif %}
+                {% if profile.bio %}
+                        <p>{{ profile.bio }}</p>
+                {% endif %}
             </aside>
             <div class="main-col">
             {% if entries %}
-            <ol>
+            <ol class="entries cf">
                 {% for sub in entries %}
                 <li>
-                    <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">{{ sub.title }}</a>
-                    <p>in <a href="{{ url('submissions.entry_list', category=sub.category.slug) }}">{{ sub.category.name }} category</a></p>
+                    <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">
+                        <span class="frame"><img src="{{ sub.get_image_src() }}" width="180" height="102" alt="" /></span>
+                        {{ sub.title }}
+                    </a>
                     {% if sub.editable_by(user=request.user) %}
                         <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=sub.slug) }}">Edit your game</a>
                     {% endif %}
