@@ -136,7 +136,7 @@ ol.no-style {
     margin-bottom: 1em;
     background: #fff;
     border:1px solid #dcdcdc;
-    max-height: 102px;
+    
     overflow: hidden;
     position: relative;
     box-shadow: 0 3px 3px #bdbdbd;
@@ -144,6 +144,13 @@ ol.no-style {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
+}
+.frame iframe {
+    width: 100%;
+}
+/* if we've got a list we'll restrain the height */
+li .frame {
+    max-height: 102px;
 }
 .frame:before {
     content: ".";
