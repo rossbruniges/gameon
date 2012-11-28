@@ -1,6 +1,7 @@
 body {
     font-family: "Open Sans";
     font-size: 18px;
+    line-height: 1.25em;
     color: #00283a;
     background: #37D09E;
     background: -moz-linear-gradient(left,  #379e9e 0%, #37d09e 100%); /* FF3.6+ */
