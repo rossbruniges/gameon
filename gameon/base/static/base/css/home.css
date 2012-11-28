@@ -65,7 +65,8 @@
     font-size: 13px;
 }
 .participate .busta {
-    padding: 4em 0;
+    padding: 175px 5em 3em;
+    background: url('/static/base/img/home/participate.png') 100% 0 no-repeat;
 }
 .participate .exclaim {
     color: #37d09e;
