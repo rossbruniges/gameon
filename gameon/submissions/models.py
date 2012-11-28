@@ -86,8 +86,6 @@ class Entry(models.Model):
 
     def editable_by(self, user=AnonymousUser()):
         if not user.is_anonymous():
-            print self.created_by
-            print user
             if self.created_by == user.get_profile():
                 return True
 
