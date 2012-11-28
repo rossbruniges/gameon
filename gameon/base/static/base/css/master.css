@@ -247,6 +247,10 @@ nav li a {
     display: block;
     clear: both;
     font-size: 14px;
+    background: #00283A;
+    color: #fff;
+    border: 1px solid #FFFFFF;
+    border-width: 1px 0;
 }
 .personal p {
     float: left;
@@ -283,6 +287,7 @@ nav li a {
 .entries {
     list-style-type: none;
     padding-left: 0;
+    margin-top: 0;
 }
 .entries li {
     width: 33%;
@@ -293,10 +298,16 @@ nav li a {
     padding: 0 10px;
     margin-bottom: 1em;
 }
+.entries li:nth-child(3n+1) {
+    clear: left;
+}
 .entries img {
     width: 100%;
     height: auto;
     display: block;
+}
+.entries .cta {
+    margin-top: 0.5em;
 }
 .filter ul {
     padding-left: 0;

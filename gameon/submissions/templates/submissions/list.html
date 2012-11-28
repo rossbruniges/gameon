@@ -7,7 +7,7 @@
 {% block section_class %}submissions{% endblock %}
 
 {% block content %}
-<article>
+<section>
     <header class="mast-head">
         {% if category %}
             <h1 class="busta shout">Entries in {{ category }}</h1>
@@ -26,6 +26,9 @@
                             <span class="frame"><img src="{{ sub.get_image_src() }}" width="180" height="102" alt="" /></span>
                             {{ sub.title }}
                         </a>
+                        {% if sub.editable_by(user=request.user) %}
+                            <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=sub.slug) }}">Edit your game</a>
+                        {% endif %}
                     </li>
                     {% endfor %}
                 </ol>
@@ -87,5 +90,5 @@
             </aside>
         </div>
     </div>
-</article>
+</section>
 {% endblock %}

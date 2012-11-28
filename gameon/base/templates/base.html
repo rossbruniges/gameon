@@ -33,24 +33,26 @@
                 {% endblock %}
                 {% include('_nav.html') %}
             </nav>
-            <div class="personal">
-                {% if not request.user.is_active %}
-                    <a id="browserid" href="#">Sign In</a>
-                    <form method="POST" action="{{ url('browserid_verify') }}">
-                        {{ csrf() }}
-                        {{ browserid_form.as_p() }}
-                    </form>
-                {% else %}
-                    <p><strong>Welcome</strong> - {{ request.user.get_profile().display_name }}</p>
-                    <ul>
-                        <li><a href="{{ url('users_profile', request.user.username) }}">View Profile</a></li>
-                        <li><a href="{{ url('users_edit') }}">Edit Profile</a></li>
-                        <li><a href="{{ url('users_signout') }}">Log out</a></li>
-                    </ul>
-                {% endif %}
-            </div>
         </header>
     </div>
+    <section class="personal cf">
+        <div class="busta">
+        {% if not request.user.is_active %}
+            <p><a id="browserid" href="#">Sign In</a></p>
+            <form method="POST" action="{{ url('browserid_verify') }}">
+                {{ csrf() }}
+                {{ browserid_form.as_p() }}
+            </form>
+        {% else %}
+            <p><strong>Welcome</strong> - {{ request.user.get_profile().display_name }}</p>
+            <ul>
+                <li><a href="{{ url('users_profile', request.user.username) }}">View Profile</a></li>
+                <li><a href="{{ url('users_edit') }}">Edit Profile</a></li>
+                <li><a href="{{ url('users_signout') }}">Log out</a></li>
+            </ul>
+        {% endif %}
+        </div>
+    </section>
     <div role="main">
         {% block content %}
         {% endblock %}

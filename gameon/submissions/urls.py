@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^entries/in/(?P<category>[\w-]+)/$', views.list, name='submissions.entry_list'),
     url(r'^entries/(?P<slug>[\w-]+)/$', views.single,
         name='submissions.entry_single'),
-    # edit entry
+    url(r'^entries/(?P<slug>[\w-]+)/edit/$', views.edit_entry,
+        name='submissions.entry_edit'),
 )

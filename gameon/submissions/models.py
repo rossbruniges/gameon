@@ -4,6 +4,7 @@ import string
 
 from django.db import models
 from django.core.validators import MaxLengthValidator
+from django.contrib.auth.models import AnonymousUser
 from django.conf import settings
 
 from tower import ugettext_lazy as _
@@ -54,6 +55,7 @@ class Category(models.Model):
 
 
 class Entry(models.Model):
+
     title = models.CharField(max_length=255, verbose_name=_(u'Entry title'),
         unique=True)
     slug = models.SlugField(max_length=255,
@@ -67,7 +69,7 @@ class Entry(models.Model):
     video_url = models.URLField(verbose_name=_(u'Gameplay URL'), max_length=255,
         default="")
     description = models.TextField(verbose_name=_(u'Description'),
-        validators=[MaxLengthValidator(150)], default="")
+        validators=[MaxLengthValidator(1000)], default="")
     category = models.ForeignKey(Category, verbose_name=_(u'Category'), blank=True,
         null=True)
     team_name = models.CharField(max_length=255, verbose_name=_(u'Team name'),
@@ -81,6 +83,11 @@ class Entry(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def editable_by(self, user=AnonymousUser()):
+        if not user.is_anonymous():
+            if self.created_by == user.get_profile():
+                return True
 
     def get_image_src(self):
         """
