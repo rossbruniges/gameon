@@ -201,9 +201,9 @@ li .frame {
 }
 div[role="main"] {
     background: #fff;
-    min-height: 500px;
     overflow: hidden;
     box-shadow: 0 3px 3px #000;
+    padding-bottom: 4em;
 }
 .site-nav {
     overflow: hidden;
