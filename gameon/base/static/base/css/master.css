@@ -1,6 +1,7 @@
 body {
     font-family: "Open Sans";
     font-size: 18px;
+    line-height: 1.25em;
     color: #00283a;
     background: #37D09E;
     background: -moz-linear-gradient(left,  #379e9e 0%, #37d09e 100%); /* FF3.6+ */
@@ -47,8 +48,8 @@ a:active {
 }
 .shout-box {
     padding: 1em 20px;
-    border: 1px solid #ccc;
-    background: #f0f0f0;
+    border: 1px inset rgba(255,255,255,0.5);
+    background: #ebebeb;
     text-align: center;
     margin-bottom: 1em;
     border-radius: 8px;
