@@ -30,13 +30,35 @@
     box-sizing: border-box;
     position: relative;
 }
+.build li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 140px;
+    background: #ebebeb 50% 50% no-repeat;
+    border-radius: 4px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px inset rgba(255,255,255,0.5);
+    display: block;
+}
+.build li.make:before {
+    background-image: url('/static/base/img/home/panel-make.png');
+}
+.build li.invent:before {
+    background-image: url('/static/base/img/home/panel-invent.png');
+}
+.build li.win:before {
+    background-image: url('/static/base/img/home/panel-win.png');
+}
+.build li.market:before {
+    background-image: url('/static/base/img/home/panel-market.png');
+}
 .build li:first-child {
     margin-left: 0;
-}
-.build li img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 0.5em;
 }
 .participate {
     background: #37d09e url('/static/base/img/css/home-gun.png') no-repeat 90% 0;
