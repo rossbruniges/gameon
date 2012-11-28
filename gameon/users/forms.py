@@ -5,6 +5,12 @@ from django import forms
 
 from gameon.users.models import Profile
 
+entry_widgets = {
+    'name': forms.TextInput(attrs={'aria-describedby': 'info_name'}),
+    'bio': forms.Textarea(attrs={'data-maxlength': '250'}),
+    'website': forms.TextInput(attrs={'aria-describedby': 'info_website'}),
+}
+
 
 class ProfileForm(forms.ModelForm):
     name = forms.CharField(required=True, error_messages={
@@ -14,6 +20,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('name', 'bio', 'website',)
+        widgets = entry_widgets
 
 
 class ProfileCreateForm(ProfileForm):

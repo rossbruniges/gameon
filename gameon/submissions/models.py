@@ -20,7 +20,7 @@ class Challenge(models.Model):
 
     name = models.CharField(max_length=200, verbose_name=(u'Challenge name'),
         unique=True)
-    slug = models.SlugField(max_length=100, unique=True,
+    slug = models.SlugField(max_length=200, unique=True,
         verbose_name=_(u'Slug'))
     start_date = models.DateTimeField(verbose_name=_(u'Start date'))
     end_date = models.DateTimeField(verbose_name=_(u'End date'))
@@ -75,9 +75,9 @@ class Entry(models.Model):
     team_name = models.CharField(max_length=255, verbose_name=_(u'Team name'),
         blank=True)
     team_members = models.TextField(verbose_name=_(u'Members'),
-        validators=[MaxLengthValidator(300)], blank=True)
+        validators=[MaxLengthValidator(250)], blank=True)
     team_desciption = models.TextField(verbose_name=_(u'Description'),
-        validators=[MaxLengthValidator(200)], blank=True)
+        validators=[MaxLengthValidator(250)], blank=True)
     to_market = models.BooleanField(verbose_name="redirect to marketplace",
         default=False)
 
