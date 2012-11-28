@@ -137,13 +137,13 @@
 .participate article {
     background: rgba(00, 40, 58, 0.8);
     color: #fff;
-    width: 45%;
+    width: 46%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 1em 40px;
     float: left;
-    margin: 0 1%;
+    margin: 0 2% 3em;
     border-radius: 16px;
 }
 .participate article footer {
