@@ -28,10 +28,12 @@
                     <p>{{ entry.team_members }}<p>
                     <p>{{ entry.team_desciption }}</p>
                 {% else %}
-                    <span class="frame"><img src="{{ entry.created_by.get_gravatar_url() }}" alt="" /></span>
-                    <p><b>{{ entry.created_by.display_name }}</b></p>
-                    {% if entry.bio %}
-                        <p>{{ entry.bio }}</p>
+                    {% if entry.created_by %}
+                        <span class="frame"><img src="{{ entry.created_by.get_gravatar_url() }}" alt="" /></span>
+                        <p><b>{{ entry.created_by.display_name }}</b></p>
+                        {% if entry.bio %}
+                            <p>{{ entry.bio }}</p>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
                 {% if entry.editable_by(user=request.user) %}
