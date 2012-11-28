@@ -130,7 +130,7 @@
     background: linear-gradient(top, rgba(0,0,0,0.33), rgba(0,0,0,0));
 }
 .participate .busta {
-    padding: 175px 5em 3em;
+    padding: 100px 5em 0;
     background: url('/static/base/img/home/participate.png') 100% 0 no-repeat;
 }
 .participate .exclaim {
@@ -178,7 +178,7 @@
         animation: none;
     }
     .participate .busta {
-        padding: 2em 0;
+        padding: 2em 0 0;
         background: none;
     }
 }
@@ -206,7 +206,7 @@
         width: 100px;
     }
     .participate .busta {
-        padding: 1.5em 1.5em 2em;
+        padding: 1.5em 1.5em 0;
     }
     .participate article {
         float: none;
