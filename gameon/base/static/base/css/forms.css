@@ -77,8 +77,19 @@ textarea {
     border-top: none;
     border-bottom: 10px solid #37D09E;
 }
+#avatar .frame {
+    float: left;
+    width: 120px;
+    height: auto;
+    margin: 0 20px 0 0;
+}
 form .opt {
     color: #37D09E;
+}
+form .extra {
+    font-weight: normal;
+    display: block;
+    margin-bottom: 0.5em;
 }
 fieldset.js_enabled .field {
     display: none;

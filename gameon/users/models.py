@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+import hashlib
 
 from django.contrib.auth.models import User
+from django.conf import settings
 from django.db import models
+from django.core.validators import MaxLengthValidator
 
 from tower import ugettext_lazy as _
 from django_browserid.auth import default_username_algo
@@ -12,6 +15,10 @@ class Profile(models.Model):
                                 verbose_name=_(u'User'))
     name = models.CharField(max_length=255, blank=True,
                             verbose_name=_(u'Display name'))
+    bio = models.TextField(verbose_name=_(u'Personal bio'),
+        validators=[MaxLengthValidator(150)], default="")
+    website = models.URLField(verbose_name=_(u'Personal website'), max_length=255,
+        default="")
 
     @models.permalink
     def get_absolute_url(self):
@@ -57,6 +64,17 @@ class Profile(models.Model):
         if self.has_chosen_identifier:
             return self.user.username
         return self.masked_email
+
+    @property
+    def email_hash(self):
+        """MD5 hash of users email address."""
+        return hashlib.md5(self.user.email).hexdigest()
+
+    def get_gravatar_url(self, size=140):
+        base_url = getattr(settings, 'GRAVATAR_URL', None)
+        if not base_url:
+            return None
+        return '%s%s?s=%d' % (base_url, self.email_hash, size)
 
 
 def get_profile_safely(user, create_if_necessary=False):

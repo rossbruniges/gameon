@@ -7,7 +7,7 @@
 {% block section_class %}submissions{% endblock %}
 
 {% block content %}
-<article>
+<section>
     <header class="mast-head">
         {% if category %}
             <h1 class="busta shout">Entries in {{ category }}</h1>
@@ -18,6 +18,7 @@
     <div class="busta">
         <div class="cf">
             <div class="main-col">
+                {% if submissions %}
                 <ol class="entries cf">
                     {% for sub in submissions %}
                     <li class="whimper">
@@ -25,6 +26,9 @@
                             <span class="frame"><img src="{{ sub.get_image_src() }}" width="180" height="102" alt="" /></span>
                             {{ sub.title }}
                         </a>
+                        {% if sub.editable_by(user=request.user) %}
+                            <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=sub.slug) }}">Edit your game</a>
+                        {% endif %}
                     </li>
                     {% endfor %}
                 </ol>
@@ -50,7 +54,16 @@
                         {% endif %}
                     </nav>
                 </footer>
-            {% endif %}
+                {% endif %}
+                {% else %}
+                <p class="yell">No entries yet!</p>
+                {% if category %}
+                    <p>We currently don't have any entries in the {{ category }} category, this means that if you're quick you might be able to be the first.</p>
+                {% else %}
+                     <p>We currently don't have any entries, this means that if you're quick you might be able to be the first.</p>
+                {% endif %}
+                <a href="{{ url('submissions.create_entry') }}" class="cta">Submit a game!</a>
+                {% endif %}
             </div>
             <aside class="meta mini-col">
                 <h2 class="whimper">Filter entries</h2>
@@ -77,5 +90,5 @@
             </aside>
         </div>
     </div>
-</article>
+</section>
 {% endblock %}

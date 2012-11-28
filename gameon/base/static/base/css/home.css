@@ -11,6 +11,7 @@
 }
 .big-picture .busta {
     padding: 2em 30px 2em 360px;
+    background: transparent url('/static/base/img/css/home-ship.png') no-repeat left bottom;
 }
 .big-picture .shout {
     margin: 0.6em 0;
@@ -22,56 +23,54 @@
 }
 .build li {
     float: left;
-    width: 220px;
-    margin-left: 20px;
+    width: 23%;
+    margin-left: 2%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding-top: 150px;
     position: relative;
-}
-.build li:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 140px;
-    background: #ebebeb;
-    border-radius: 4px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px solid #666;
-    display: block;
 }
 .build li:first-child {
     margin-left: 0;
 }
+.build li img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.5em;
+}
 .participate {
-    background: #37d09e;
+    background: #37d09e url('/static/base/img/css/home-gun.png') no-repeat 90% 0;
     font-size: 13px;
 }
 .participate .busta {
-    padding: 3em 0;
+    padding: 4em 0;
 }
 .participate .exclaim {
     color: #37d09e;
 }
 .participate article {
-    background: #00283a;
+    background: rgba(00, 40, 58, 0.8);
     color: #fff;
     width: 45%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 1em 20px;
+    padding: 1em 40px;
     float: left;
     margin: 0 1%;
     border-radius: 16px;
 }
 .participate article footer {
-    padding: 20px;
-    margin: 0 -20px -1em -20px;
+    padding: 40px;
+    margin: 2em -40px -1em -40px;
     border-radius: 0 0 16px 16px;
+    background: #00283a;
+}
+.participate .submit_now footer {
+    padding-left: 100px;
+    background: #00283a url('/static/base/img/css/clock.png') no-repeat 30px 30px;
+}
+/* so that the bottom section merges with the footer */
+#home .site-footer {
+    margin-top: 0;
 }

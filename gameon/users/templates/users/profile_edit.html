@@ -1,15 +1,65 @@
 {% extends 'base.html' %}
 
+{% block page_css %}
+<link rel="stylesheet" href="{{ static('base/css/forms.css') }}">
+{% endblock %}
+
 {% block page_title %}Edit Profile{% endblock %}
 {% block page_id %}edit_profile{% endblock %}
 {% block section_class %}profile{% endblock %}
 
 {% block content %}
-<h1>EDIT MY PROFILE ({{ profile.display_name }})</h1>
-{{ page_mode }}
-<form action="{{ url('users_edit') }}" method="post">
-    {{ csrf() }}
-    {{ form.as_p() }}
-    <input type="submit" name="submit" value="Submit" />
-</form>
+<div>
+    <header class="mast-head">
+        <h1 class="busta shout">
+            {% if page_mode == 'edit' %}
+                Edit your profile
+            {% else %}
+                Create profile
+            {% endif %}
+        </h1>
+    </header>
+    <div class="busta">
+        {% if page_mode == 'edit' %}
+        <div class="shout-box">
+            <p>Just fill in a bit of profile information, at a minimum enter a display name so we know what to call you.</p>
+        </div>
+        {% endif %}
+        <form action="{{ url('users_edit') }}" method="post">
+            {{ csrf() }}
+            <div class="form_wrapper">
+                <div class="field">
+                    <label for="id_name" class="announce">
+                        Display name
+                        <span class="extra meta" id="info_name">What you'll be called throughout the site</span>
+                        {% for error in form.name.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
+                    {{ form.name }}
+                </div>
+                <div class="field cf" id="avatar">
+                    <span class="frame"><img src="{{ profile.get_gravatar_url() }}" alt="" /></span>
+                    Profile images provided by Gravatar - <a href="https://en.gravatar.com/" target="_blank">edit Gravatar image for {{ profile.user.email }}</a>
+                </div>
+                <div class="field">
+                    <label for="id_bio" class="announce">
+                        Personal Bio <span class="opt">(optional)</span>
+                        {% for error in form.bio.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
+                    {{ form.bio }}
+                </div>
+                <div class="field">
+                    <label for="id_website" class="announce">
+                        Website <span class="opt">(optional)</span>
+                        <span class="extra meta" id="info_website">Where can people find out more about you?</span>
+                        {% for error in form.website.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
+                    {{ form.website }}
+                </div>
+                <div class="field">
+                    <input type="submit" name="submit" value="Submit" class="cta" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -12,12 +12,35 @@
     <div class="busta">
         <div class="cf">
             <div class="main-col">
-                <p>Entry made in <a href="{{ url('submissions.entry_list', category=entry.category.slug) }}">{{ entry.category }}</a></p>
+                {% if entry.has_entry_feature %}
+                    <div class="frame">{{ entry.get_entry_feature()|safe }}</div>
+                {% endif %}
                 <p>{{ entry.description }}</p>
-                <p><a href="{{ entry.url }}">Check me out on the internetz</a></p>
+                <p><a href="{{ entry.url }}">Find out more about this game</a></p>
+                {% if entry.video_url %}
+                    <p><a href="{{ entry.video_url }}">Watch some online gameplay</a></p>
+                {% endif %}
             </div>
             <aside class="meta mini-col">
-                <h2 class="whimper">???</h2>
+                <h2 class="whimper">Submitted by</h2>
+                {% if entry.team_name %}
+                    <p><b>{{ entry.team_name }}</b></p>
+                    <p>{{ entry.team_members }}<p>
+                    <p>{{ entry.team_desciption }}</p>
+                {% else %}
+                    {% if entry.created_by %}
+                        <span class="frame"><img src="{{ entry.created_by.get_gravatar_url() }}" alt="" /></span>
+                        <p><b>{{ entry.created_by.display_name }}</b></p>
+                        {% if entry.bio %}
+                            <p>{{ entry.bio }}</p>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if entry.editable_by(user=request.user) %}
+                    <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=entry.slug) }}">Edit your game</a>
+                {% endif %}
+                <h2 class="whimper">Category</h2>
+                <p><a href="{{ url('submissions.entry_list', category=entry.category.slug) }}">{{ entry.category }}</a></p>
             </aside>
         </div>
     </div>

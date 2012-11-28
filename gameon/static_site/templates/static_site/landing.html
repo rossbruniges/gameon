@@ -31,19 +31,19 @@
     <div class="busta">
         <h2 class="exclaim">Build the next generation of web-based games</h2>
         <ul>
-            <li class="make whimper">Make browser-based mobile games, hackabke games and games for learning.</li>
-            <li class="invent whimper">Invent new games mechanics, create new storylines, engage, diverse audiences, introduce visually challenging content.</li>
-            <li class="win whimper">Win a trip to the <a href="#">Game Developers Conference</a> to meet industry pioneers.</li>
-            <li class="market whimper">Have your completed game featured in Mozilla's Marketplace.</li>
+            <li class="make whimper"><img src="{{ static('base/img/cog.png') }}" alt="" />Make browser-based mobile games, hackable games and games for learning.</li>
+            <li class="invent whimper"><img src="{{ static('base/img/speech-bubble.png') }}" alt="" />Invent new games mechanics, create new storylines, engage, diverse audiences, introduce visually challenging content.</li>
+            <li class="win whimper"><img src="{{ static('base/img/cup.png') }}" alt="" />Win a trip to the <a href="http://www.gdconf.com/">Game Developers Conference</a> to meet industry pioneers.</li>
+            <li class="market whimper"><img src="{{ static('base/img/folder.png') }}" alt="" />Have your completed game featured in Mozilla's Marketplace.</li>
         </ul>
         <div class="shout-box">
-            <p class="announce">Excited? Good! Want to get involved? <a href="#">Sign up for more information here</a></p>
+            <p class="announce">Excited? Good! Want to get involved? <a href="http://www.mozilla.org/en-US/gameon/">Sign up for more information here</a></p>
         </div>
     </div>
 </section>
 <section class="participate cf">
     <div class="busta cf">
-        <article>
+        <article class="events">
             <h2 class="exclaim">Come to a Game Jam!</h2>
             <ul class="checks">
                 <li>Got a game idea for the competition you would like help testing and finishing up?</li>
@@ -55,7 +55,7 @@
                 <a href="#">Register for an upcoming game jam or run your own here</a>
             </footer>
         </article>
-        <article>
+        <article class="submit_now">
             <h2 class="exclaim">Submit Your Game</h2>
             <p>Mozilla invites you to imagine how next-generation web technologies can revolutionise the way we make and play games. It's your opportunity to invent new game mechanics, create new storylines, engage diverse audiences, introduce aesthetically challenging content and re-imagine the web as a gaming platform.</p>
             {% if request.challenge %}

@@ -1,5 +1,3 @@
-import commonware
-
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -7,11 +5,10 @@ from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 
+from gameon.base.views import action_unavailable_response
 from gameon.base.utils import get_page, get_paginator
 from gameon.submissions.models import Entry, Category
 from gameon.submissions.forms import EntryForm
-
-log = commonware.log.getLogger('playdoh')
 
 
 @login_required
@@ -20,6 +17,7 @@ def create(request, template='submissions/create.html'):
         form = EntryForm(request.POST)
         if form.is_valid():
             entry = form.save(commit=False)
+            entry.created_by = request.user.get_profile()
             entry.slug = slugify(entry.title)
             form.save()
             if entry.to_market == True:
@@ -37,7 +35,34 @@ def create(request, template='submissions/create.html'):
             'categories': Category.objects.all(),
             'form': EntryForm()
         }
-    log.debug("Single submission page")
+    return render(request, template, data)
+
+
+def edit_entry(request, slug, template='submissions/edit.html'):
+    entry = Entry.objects.get(slug=slug)
+    if not entry.editable_by(request.user):
+        return action_unavailable_response(request, case='no_edit_rights')
+    if request.method == 'POST':
+        form = EntryForm(request.POST, instance=entry)
+        if form.is_valid():
+            entry = form.save(commit=False)
+            entry.slug = slugify(entry.title)
+            form.save()
+            if entry.to_market == True:
+                return HttpResponseRedirect(settings.MARKETPLACE_URL)
+            else:
+                return HttpResponseRedirect(reverse('submissions.entry_list',
+                    kwargs={'category': 'all'}))
+        else:
+            data = {
+                'categories': Category.objects.all(),
+                'form': form,
+            }
+    else:
+        data = {
+            'categories': Category.objects.all(),
+            'form': EntryForm(instance=entry),
+        }
     return render(request, template, data)
 
 
@@ -57,13 +82,11 @@ def list(request, category='all', template='submissions/list.html'):
         'category': page_category,
         'categories': Category.objects.all(),
     }
-    log.debug("List view of all submissions")
     return render(request, template, data)
 
 
 def single(request, slug, template='submissions/single.html'):
     data = {
-        'entry': Entry.objects.get(slug=slug)
+        'entry': Entry.objects.get(slug=slug),
     }
-    log.debug("Single ")
     return render(request, template, data)

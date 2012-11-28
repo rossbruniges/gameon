@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page_title %}403 (Forbidden action){% endblock %}
+{% block page_id %}error_403{% endblock %}
+{% block section_class %}errors{% endblock %}
+
+{% block content %}
+<article>
+    <header class="mast-head">
+        <h1 class="busta shout">Error - 403 Forbidden</h1>
+    </header>
+    <div class="busta">
+        <div class="cf">
+            <div class="main-col">
+                <h2 class="exclaim">Looks like you've done something that you shouldn't have done</h2>
+                {% if case == 'no_edit_rights' %}
+                    <p>You tried to edit a game that you don't have the rights to edit.</p>
+                    <ul class="whimper">
+                        <li>You can only edit games that you have submitted to the Gameon challenge yourself.</li>
+                        <li>Make sure that you're logged in - as we'll only know you're you once you have done.</li>
+                        <li>If you believe that this is your game, or if would like to tell us something about this particular game then please <a href="mailto:gameon@mozilla.org">send us an email</a>.</li>
+                    </ul>
+                {% endif %}
+            </div>
+            <aside class="meta mini-col">
+                <p class="whimper">Here are some things you can do</p>
+            </aside>
+        </div>
+    </div>
+</article>
+{% endblock %}

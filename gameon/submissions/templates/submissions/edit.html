@@ -1,0 +1,11 @@
+{% extends "submissions/create.html" %}
+
+{% block page_title %}{% if form.errors %}Errors in your submission | {% endif %}Edit{% endblock %}
+{% block page_id %}edit_entry{% endblock %}
+
+{% block view_title %}Edit Your Game{% endblock %}
+
+{% block cta_box %}
+<span>Ready to edit?</span>
+<input type="submit" name="submit" class="cta" value="Edit my Game!" />
+{% endblock %}
