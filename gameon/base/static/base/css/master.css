@@ -47,8 +47,8 @@ a:active {
 }
 .shout-box {
     padding: 1em 20px;
-    border: 1px solid #ccc;
-    background: #f0f0f0;
+    border: 1px inset rgba(255,255,255,0.5);
+    background: #ebebeb;
     text-align: center;
     margin-bottom: 1em;
     border-radius: 8px;
