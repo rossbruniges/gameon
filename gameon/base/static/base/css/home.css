@@ -63,6 +63,18 @@
 .participate {
     background: #37d09e url('/static/base/img/css/home-gun.png') no-repeat 90% 0;
     font-size: 13px;
+    position: relative;
+}
+.participate::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.33)), to(rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.33), rgba(0,0,0,0));
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.33), rgba(0,0,0,0));
+    background: linear-gradient(top, rgba(0,0,0,0.33), rgba(0,0,0,0));
 }
 .participate .busta {
     padding: 175px 5em 3em;
