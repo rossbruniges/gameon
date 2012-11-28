@@ -160,3 +160,53 @@
 #home .site-footer {
     margin-top: 0;
 }
+
+@media all and (max-width: 1000px) {
+    .big-picture .busta {
+        background-image: none;
+        -webkit-animation: none;
+        -moz-animation: none;
+        animation: none;
+        padding: 2em 30px;
+    }
+    .big-picture .busta > i {
+        display: none;
+        -webkit-animation: none;
+        -moz-animation: none;
+        animation: none;
+    }
+    .build {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    .build ul {
+        width: 480px;
+        margin: 0 auto;
+        position: relative;
+        left: -10px;
+    }
+    .build li {
+        margin-bottom: 20px;
+    }
+    .build li:first-child {
+        margin-left: 20px;
+    }
+    .participate .busta {
+        padding: 2em 0;
+        background: none;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .build ul {
+        width: 240px;
+    }
+    .participate .busta {
+        padding: 1.5em 1.5em 2em;
+    }
+    .participate article {
+        float: none;
+        width: auto;
+        margin: 0 0 1.5em;
+    }
+}
