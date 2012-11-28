@@ -114,6 +114,7 @@
     background-image: url('/static/base/img/home/panel-market.png');
 }
 .participate {
+    background: #37d09e;
     font-size: 13px;
     position: relative;
 }
