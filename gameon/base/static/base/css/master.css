@@ -64,6 +64,11 @@ a:active {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+div[role=main] .busta {
+    max-width: 960px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .main-col {
     float: left;
     width: 74%;
@@ -80,7 +85,8 @@ a:active {
     position: absolute;
     top: 0;
     left: 0;
-    width: 220px;
+    width: 100%;
+    max-width: 220px;
     height: 140px;
     background: #ebebeb;
     border-radius: 4px;
@@ -446,6 +452,15 @@ nav li a {
     }
     .shout {
         font-size: 36px;
+    }
+    .main-col {
+        float: none;
+        width: auto;
+        margin-right: 0;
+    }
+    .mini-col {
+        float: none;
+        width: auto;
     }
 }
 
