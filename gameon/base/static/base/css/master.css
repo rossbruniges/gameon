@@ -71,13 +71,16 @@ div[role=main] .busta {
 }
 .main-col {
     float: left;
-    width: 74%;
-    margin-right: 2%;
+    width: 70%;
+    margin-right: 5%;
 }
 .mini-col {
     float: left;
-    width: 24%;
-    position: relative;
+    width: 25%;
+    overflow: hidden;
+}
+/* Removing this for now, until we get assets in place
+
     padding-top: 150px;
 }
 .mini-col:before {
@@ -96,6 +99,8 @@ div[role=main] .busta {
     border: 1px solid #666;
     display: block;
 }
+
+*/
 .shout {
     font-size: 48px;
     font-weight: bold;
