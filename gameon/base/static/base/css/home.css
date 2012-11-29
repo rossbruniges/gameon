@@ -183,7 +183,7 @@
     }
 }
 
-@media all and (max-width: 600px) {
+@media all and (max-width: 640px) {
     .build {
         padding-left: 1em;
         padding-right: 1em;
