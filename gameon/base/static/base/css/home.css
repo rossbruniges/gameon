@@ -40,6 +40,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000a14', endColorstr='#00283a',GradientType=1 ); /* IE6-9 */
     color: #fff;
 }
+div[role=main] .big-picture .busta,
 .big-picture .busta {
     padding: 2em 30px 2em 360px;
     background: url('/static/base/img/home/big-picture.png') 0 100% no-repeat;
@@ -164,6 +165,7 @@
 }
 
 @media all and (max-width: 800px) {
+    div[role=main] .big-picture .busta,
     .big-picture .busta {
         background-image: none;
         -webkit-animation: none;
