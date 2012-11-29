@@ -485,4 +485,11 @@ nav li a {
     .site-nav .logo img {
         margin: 0 auto;
     }
+    .site-footer {
+        padding: 0 0 185px;
+    }
+    .site-footer .logo:after {
+        left: 50%;
+        margin-left: -89px;
+    }
 }
