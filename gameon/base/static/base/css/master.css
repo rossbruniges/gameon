@@ -383,8 +383,8 @@ nav li a {
 }
 .site-footer .logo:after {
     content: url('/static/base/img/css/footer-trophy.png');
-    height: 178px;
-    width: 172px;
+    height: 172px;
+    width: 178px;
     left: 0;
     bottom: 0;
     position: absolute;
