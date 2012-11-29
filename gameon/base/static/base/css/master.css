@@ -461,6 +461,15 @@ nav li a {
     .mini-col {
         float: none;
         width: auto;
+        margin: 3em -10px 0;
+        padding: 10px 30px;
+        border-top: solid 1px #CCC;
+        background: repeat-x;
+        -webkit-background-size: 15px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#DDD), to(#FFF));
+        background-image: -webkit-linear-gradient(top, #DDD, #FFF 15px);
+        background-image: -moz-linear-gradient(top, #DDD, #FFF 15px);
+        background-image: linear-gradient(top, #DDD, #FFF 15px);
     }
 }
 
