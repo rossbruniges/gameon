@@ -1,8 +1,22 @@
 var mgo = window.mgo || {};
 
 mgo.formsets = function() {
-    var init;
-    init = function() {
+    var drop_down_form, textarea_counters;
+    textarea_counters = function() {
+
+        var areas = $('textarea');
+        areas.each(function() {
+            var current = $(this),
+                options = {
+                    'maxCharacterSize': current.attr('data-maxlength'),
+                    'displayFormat': '#input of #left characters used',
+                    'originalStyle': 'meta char-count',
+                    'warningStyle': 'warning-style'
+                };
+                current.textareaCount(options);
+        });
+    };
+    dropdown_form = function() {
         var formset = $('fieldset.team-details'),
             formset_first = formset.find('div.field')[0],
             closed_text = 'Submitting as part of a team? Tell us about it!',
@@ -23,8 +37,10 @@ mgo.formsets = function() {
             }
             return false;
         });
+
     };
     return {
-        'init': init
+        'textarea_counters': textarea_counters,
+        'dropdown_form': dropdown_form
     };
 }();

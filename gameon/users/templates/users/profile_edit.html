@@ -20,7 +20,7 @@
         </h1>
     </header>
     <div class="busta">
-        {% if page_mode == 'edit' %}
+        {% if page_mode == 'create' %}
         <div class="shout-box">
             <p>Just fill in a bit of profile information, at a minimum enter a display name so we know what to call you.</p>
         </div>
@@ -31,8 +31,8 @@
                 <div class="field">
                     <label for="id_name" class="announce">
                         Display name
-                        <span class="extra meta" id="info_name">What you'll be called throughout the site</span>
                         {% for error in form.name.errors %}<em>{{ error }}</em>{% endfor %}
+                        <span class="extra meta" id="info_name">What you'll be called throughout the site</span>
                     </label>
                     {{ form.name }}
                 </div>
@@ -44,14 +44,15 @@
                     <label for="id_bio" class="announce">
                         Personal Bio <span class="opt">(optional)</span>
                         {% for error in form.bio.errors %}<em>{{ error }}</em>{% endfor %}
+                        <span class="extra meta" id="info_bio">(maximum 250 characters)</span>
                     </label>
                     {{ form.bio }}
                 </div>
                 <div class="field">
                     <label for="id_website" class="announce">
                         Website <span class="opt">(optional)</span>
-                        <span class="extra meta" id="info_website">Where can people find out more about you?</span>
                         {% for error in form.website.errors %}<em>{{ error }}</em>{% endfor %}
+                        <span class="extra meta" id="info_website">Where can people find out more about you?</span>
                     </label>
                     {{ form.website }}
                 </div>
@@ -62,4 +63,10 @@
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block page_js %}
+<script src="{{ static('base/js/libs/jquery.textareaCounter.plugin.js') }}"></script>
+<script src="{{ static('base/js/forms.js') }}"></script>
+<script>mgo.formsets.textarea_counters();</script>
 {% endblock %}

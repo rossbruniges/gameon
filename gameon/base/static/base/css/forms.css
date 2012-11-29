@@ -91,6 +91,14 @@ form .extra {
     display: block;
     margin-bottom: 0.5em;
 }
+form .char-count {
+    text-align: right;
+    margin-top: 0.5em;
+}
+form .warning-style {
+    font-weight: bold;
+    color: #DA1C21;
+}
 fieldset.js_enabled .field {
     display: none;
 }
