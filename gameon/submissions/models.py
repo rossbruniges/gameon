@@ -23,15 +23,15 @@ URL_TO_EMBED_MAPPINGS = {
     # http://apiblog.youtube.com/2010/07/new-way-to-embed-youtube-videos.html
     'youtube': {
         'regexps': [
-            re.compile(r'^http://youtu\.be/(?P<VIDEO_ID>\w+)$'),
-            re.compile(r'^http://www.youtube.com/watch\?v=(?P<VIDEO_ID>\w+)$')
+            re.compile(r'^https?://youtu\.be/(?P<VIDEO_ID>\w+)$'),
+            re.compile(r'^https?://www.youtube.com/watch\?v=(?P<VIDEO_ID>\w+)$')
         ],
         'embed': """<iframe class="youtube-player" type="text/html" width="%(WIDTH)d" height="%(HEIGHT)d" src="https://www.youtube.com/embed/%(VIDEO_ID)s" frameborder="0"></iframe>"""
     },
     # Embed code obtained through inference.
     'vimeo': {
         'regexps': [
-            re.compile(r'^http://vimeo.com/.*?(?P<VIDEO_ID>[0-9]+)$')
+            re.compile(r'^https?://vimeo.com/.*?(?P<VIDEO_ID>[0-9]+)$')
         ],
         'embed': """<iframe src="https://player.vimeo.com/video/%(VIDEO_ID)s?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="%(WIDTH)d" height="%(HEIGHT)d" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>"""
     }
