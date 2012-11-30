@@ -1,4 +1,3 @@
-import micawber
 from datetime import datetime
 import string
 import re
