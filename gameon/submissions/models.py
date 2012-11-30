@@ -13,11 +13,6 @@ from gameon.users.models import Profile
 from gameon.base.utils import _upload_path
 from managers import ChallengeManager
 
-EMBED_DEFAULTS = {
-    'WIDTH': 640,
-    'HEIGHT': 385
-}
-
 URL_TO_EMBED_MAPPINGS = {
     # Embed code is taken from:
     # http://apiblog.youtube.com/2010/07/new-way-to-embed-youtube-videos.html
@@ -28,7 +23,9 @@ URL_TO_EMBED_MAPPINGS = {
         ],
         'embed': """<iframe class="youtube-player" type="text/html" width="%(WIDTH)d" height="%(HEIGHT)d" src="https://www.youtube.com/embed/%(VIDEO_ID)s" frameborder="0"></iframe>"""
     },
-    # Embed code obtained through inference.
+    # Embed code obtained through inference/reverse-engineering. Not
+    # ideal, but worst-case scenario means a blank iframe or none at all,
+    # rather than e.g. an XSS attack.
     'vimeo': {
         'regexps': [
             re.compile(r'^https?://vimeo.com/.*?(?P<VIDEO_ID>[0-9]+)$')
@@ -40,12 +37,12 @@ URL_TO_EMBED_MAPPINGS = {
 def url2embed(url):
     if not url:
         return
-    for service_name in settings.ALLOWED_OMEMBED_SITES:
+    for service_name in URL_TO_EMBED_MAPPINGS:
         service = URL_TO_EMBED_MAPPINGS[service_name]
         for regexp in service['regexps']:
             result = regexp.match(url)
             if result:
-                args = EMBED_DEFAULTS.copy()
+                args = settings.VIDEO_EMBED_SETTINGS.copy()
                 args.update(result.groupdict())
                 return service['embed'] % args
 

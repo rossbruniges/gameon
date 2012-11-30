@@ -1,3 +1,4 @@
+from django.conf import settings
 import test_utils
 
 from . import models
@@ -11,15 +12,15 @@ class Url2EmbedTests(test_utils.TestCase):
 
     def test_vimeo_url_works(self):
         self.assertEqual(models.url2embed("http://vimeo.com/channels/staffpicks/34062273"),
-                         '<iframe src="https://player.vimeo.com/video/34062273?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="640" height="385" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>')
+                         '<iframe src="https://player.vimeo.com/video/34062273?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="%(WIDTH)d" height="%(HEIGHT)d" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>' % settings.VIDEO_EMBED_SETTINGS)
 
     def test_short_youtube_url_works(self):
         self.assertEqual(models.url2embed("http://youtu.be/ITTxTCz4Ums"),
-                         '<iframe class="youtube-player" type="text/html" width="640" height="385" src="https://www.youtube.com/embed/ITTxTCz4Ums" frameborder="0"></iframe>')
+                         '<iframe class="youtube-player" type="text/html" width="%(WIDTH)d" height="%(HEIGHT)d" src="https://www.youtube.com/embed/ITTxTCz4Ums" frameborder="0"></iframe>' % settings.VIDEO_EMBED_SETTINGS)
 
     def test_long_youtube_url_works(self):
         self.assertEqual(models.url2embed("http://www.youtube.com/watch?v=ITTxTCz4Ums"),
-                         '<iframe class="youtube-player" type="text/html" width="640" height="385" src="https://www.youtube.com/embed/ITTxTCz4Ums" frameborder="0"></iframe>')
+                         '<iframe class="youtube-player" type="text/html" width="%(WIDTH)d" height="%(HEIGHT)d" src="https://www.youtube.com/embed/ITTxTCz4Ums" frameborder="0"></iframe>' % settings.VIDEO_EMBED_SETTINGS)
     
 class EntryFeatureVideoUrlTests(test_utils.TestCase):
     def _repr(self, model):
