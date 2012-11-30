@@ -50,5 +50,11 @@ def resources(request, template='static_site/resources.html'):
 
 def legal(request, template='static_site/legal.html'):
     """Main example view."""
-    data = {}  # You'd add data here that you're sending to the template.
+    data = {}
+    return render(request, template, data)
+
+
+def faqs(request, template='static_site/faqs.html'):
+    """Main example view."""
+    data = {}
     return render(request, template, data)
