@@ -8,13 +8,13 @@ from django.contrib.auth.decorators import login_required
 from gameon.base.views import action_unavailable_response
 from gameon.base.utils import get_page, get_paginator
 from gameon.submissions.models import Entry, Category
-from gameon.submissions.forms import EntryForm
+from gameon.submissions.forms import EntryForm, NewEntryForm
 
 
 @login_required
 def create(request, template='submissions/create.html'):
     if request.method == 'POST':
-        form = EntryForm(request.POST)
+        form = NewEntryForm(request.POST)
         if form.is_valid():
             entry = form.save(commit=False)
             entry.created_by = request.user.get_profile()
@@ -33,7 +33,7 @@ def create(request, template='submissions/create.html'):
     else:
         data = {
             'categories': Category.objects.all(),
-            'form': EntryForm()
+            'form': NewEntryForm()
         }
     return render(request, template, data)
 

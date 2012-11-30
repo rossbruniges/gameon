@@ -99,6 +99,17 @@
                 {% for error in form.to_market.errors %}<em>{{ error }}</em>{% endfor %}
                 {{ form.to_market }}
             </div>
+            
+            {% if form.terms_and_conditions %}
+                <div class="field">
+                    {{ form.terms_and_conditions }}
+                    <label for="id_terms_and_conditions" class="announce">
+                    I accept the <a href="{{ url('static_site.legal') }}" target="_blank">Game On rules</a>
+                    {% for error in form.terms_and_conditions.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
+                    
+                </div>
+            {% endif %}
             </div>
             <div class="submit_row shout-box">
                 {% block cta_box %}
