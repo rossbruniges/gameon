@@ -13,6 +13,8 @@ from gameon.submissions.forms import EntryForm
 
 @login_required
 def create(request, template='submissions/create.html'):
+    if not request.challenge.is_open():
+        return action_unavailable_response(request, case='challenge_closed')
     if request.method == 'POST':
         form = EntryForm(request.POST)
         if form.is_valid():
@@ -42,6 +44,8 @@ def edit_entry(request, slug, template='submissions/edit.html'):
     entry = Entry.objects.get(slug=slug)
     if not entry.editable_by(request.user):
         return action_unavailable_response(request, case='no_edit_rights')
+    if not request.challenge.is_open():
+        return action_unavailable_response(request, case='challenge_closed')
     if request.method == 'POST':
         form = EntryForm(request.POST, instance=entry)
         if form.is_valid():

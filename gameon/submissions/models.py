@@ -36,7 +36,7 @@ class Challenge(models.Model):
         return self.start_date < now and now < self.end_date
 
     def has_closed(self):
-        return datetime.utcnow() < self.end_date
+        return datetime.utcnow() > self.end_date
 
 
 class Category(models.Model):
