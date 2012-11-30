@@ -10,7 +10,7 @@ mgo.pages = function() {
     */
     init = function() {
         var master_trigger = $('#browserid');
-        if (master_trigger) {
+        if (master_trigger.length) {
             $('a.additional_persona').each(function(){
                 $(this).click(function(){
                     master_trigger.click();
