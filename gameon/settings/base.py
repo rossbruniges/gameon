@@ -34,6 +34,7 @@ INSTALLED_APPS = list(INSTALLED_APPS) + [
     '%s.static_site' % PROJECT_MODULE,
     '%s.users' % PROJECT_MODULE,
     '%s.submissions' % PROJECT_MODULE,
+    '%s.events' % PROJECT_MODULE,
     'south',
 ]
 

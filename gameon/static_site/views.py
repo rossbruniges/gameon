@@ -3,13 +3,21 @@ from django.shortcuts import render
 import commonware
 
 from gameon.submissions.models import Category
+from gameon.events.models import Event
+
 
 log = commonware.log.getLogger('playdoh')
 
 
 def home(request, template='static_site/landing.html'):
     """Main example view."""
-    data = {}
+
+    upcoming_events = Event.objects.get_upcoming()
+
+    data = {
+        'events': upcoming_events.order_by('start_date')[:3],
+        'num_events': upcoming_events.count()
+    }
     return render(request, template, data)
 
 

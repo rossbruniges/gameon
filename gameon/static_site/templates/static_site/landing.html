@@ -52,8 +52,22 @@
                 <li>Want to learn about, showcase or teach others about a new technology?</li>
                 <li>Interested in playing with new technologies and meeting people who love making and hacking games as much as you do?</li>
             </ul>
+            {% if events %}
+                <h3>Upcoming events</h3>
+                <ol class="no-style">
+                    {% for ev in events %}
+                    <li class="vevent">
+                        <h4><a class="summary url" href="{{ ev.url }}">{{ ev.name }}</a></h4>
+                        <p><span class="dtstart">{{ ev.start_date.strftime('%B %d, %Y %l:%M%p') }}</span> in {{ ev.location.town }}, <span class="location">{{ ev.location.country }}</span></p>
+                    </li>
+                    {% endfor %}
+                </ol>
+                {% if num_events > 3 %}
+                    <a href="{{ url('events.list') }}">See all upcoming Game Jams</a>
+                {% endif %}
+            {% endif %}
             <footer>
-                <a href="#">Register for an upcoming game jam or run your own here</a>
+                <a href="{{ url('events.list') }}">Register for an upcoming game jam</a> or <a href="https://donate.mozilla.org/page/event/create/">run your own</a></a>
             </footer>
         </article>
         <article class="submit_now">

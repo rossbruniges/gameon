@@ -15,6 +15,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Example:
     (r'', include(urls)),
+    (r'', include('gameon.events.urls')),
     (r'', include('gameon.users.urls')),
     (r'', include('gameon.submissions.urls')),
     (r'^browserid/', include('django_browserid.urls')),
