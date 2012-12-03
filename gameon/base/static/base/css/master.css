@@ -292,6 +292,7 @@ nav li a {
 }
 .big-winner {
     color: #37D09E;
+    line-height: 1.5;
 }
 .big-winner span {
     color: #00283a;
