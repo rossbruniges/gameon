@@ -1,9 +1,24 @@
 # encoding: utf-8
 from south.v2 import DataMigration
 from django.core.exceptions import ObjectDoesNotExist
-from django.conf import settings
 
-CATEGORIES = settings.CATEGORIES
+CATEGORIES = (
+    {
+        'title': 'Multi Device Games',
+        'slug': 'multi-device-games',
+        'desc': 'Use the power of mobile devices and the web to explore concepts like asymmetric gaming, alternate reality games, and companion apps. This category is searching for games that take place across multiple devices to offer a unique gameplay experience.'
+    },
+    {
+        'title': 'Learning Games',
+        'slug': 'learning-games',
+        'desc': 'Create games that deepen players\' understanding of a concept or help them master a set of skills. Check out some great examples in the "Playmakers" series by our friends at the <a href="http://playmakers.instituteofplay.org/">Institute of Play</a>.'
+    },
+    {
+        'title': 'Hackable Games',
+        'slug': 'hackable-games',
+        'desc': 'Create games that let players remix game mechanics, fork code, or use assets from the web to create their own version. Check out some examples at <a href="https://hackagame.org">hackagame.org</a>.'
+    },
+)
 
 
 class Migration(DataMigration):
