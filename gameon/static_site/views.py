@@ -15,11 +15,8 @@ def home(request, template='static_site/landing.html'):
 
 def rules(request, template='static_site/rules.html'):
     """Main example view."""
-    categories = Category.objects.all()
     data = {
-        'hackable': categories.get(slug='hackable-games'),
-        'learning': categories.get(slug='learning-games'),
-        'mobile': categories.get(slug='cross-platform-games'),
+        'categories': Category.objects.all().order_by('name'),
     }
     return render(request, template, data)
 

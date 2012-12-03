@@ -14,17 +14,15 @@
             <div class="main-col">
                 <h2 class="exclaim">What Can I Submit?</h2>
                 <p>You can submit games in one of three categories:</p>
-                <ul class="no-style">
-                    <li>1) Hackable Games</li>
-                    <li>2) Learning Games</li> 
-                    <li>3) Cross-Platform Games</li>
-                </ul>
-                <h3 class="announce">1) Best Hackable Game</h3> 
-                <p>{{ hackable.description|safe }}</p>
-                <h3 class="announce">2) Best Learning Game</h3>
-                <p>{{ learning.description|safe }}</p>
-                <h3 class="announce">3) Best Cross-Platform Game</h3>
-                <p>{{ mobile.description|safe }}</p>
+                <ol>
+                    {% for cat in categories %}
+                        <li>{{ cat.name }}</li>
+                    {% endfor %}
+                </ol>
+                {% for cats in categories %}
+                    <h3 class="announce">Best {{ cats.name }}</h3> 
+                    <p>{{ cats.description|safe }}</p>
+                {% endfor %}
 
                 <h2>Check out the "Game On" blog for more</h2>
                 <p>Each month we'll be curating content on <a href="https://blog.mozilla.org/gameon/">our blog</a> showcasing examples from each of these categories. You can learn more about each category, find inspiration from industry experts, and see what others are building in Game On jams around the world.</p>
