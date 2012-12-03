@@ -21,7 +21,7 @@
                 {% if not request.challenge.has_started() %}
                     <p>Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }}</p>
                 {% endif %}
-                {% if not request.challenge.has_closed() %}
+                {% if request.challenge.has_closed() %}
                     <p><a href="{{ url('submissions.entry_list') }}">See what people submitted</a></p>
                 {% endif %}
             {% endif %}
