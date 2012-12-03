@@ -1,15 +1,34 @@
-<!DOCTYPE html>
-<html LANG="{{ LANG }}" dir="{{ DIR }}">
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-    <title>{{ _('Page not found') }}</title>
-  </head>
-  <body>
-    <h1>{{ _('Page not found') }}</h1>
-    <p>
-      {% trans %}
-        Sorry, but we couldn't find the page you're looking for.
-      {% endtrans %}
-    </p>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block page_title %}404 (Page not found){% endblock %}
+{% block page_id %}error_404{% endblock %}
+{% block section_class %}errors{% endblock %}
+
+{% block content %}
+<article>
+    <header class="mast-head">
+        <h1 class="busta shout">Error (404 page not found)</h1>
+    </header>
+    <div class="busta">
+        <div class="cf">
+            <div class="main-col">
+                <h2 class="exclaim">Oops - looks like you've found a broken link</h2>
+                <p>Nothing to worry about, probably one of the things below:</p>
+                <ul class="whimper">
+                    <li>Check your spelling and check again.</li>
+                    <li>if you clicked a link from somewhere else check that they're aren't any special hidden characters, if you find out that they've posted the wrong link then it would be awesome if you could let them know.</li>
+                </ul>
+                <p>If you think something weird might have gone on in our application <a href="mailto:gameon@mozilla.org">send us an email</a>.</p>
+            </div>
+            <aside class="meta mini-col">
+                <h2 class="whimper">Here are some links that should work</h2>
+                <ul class="no-style">
+                    <li>Read the latest news in the <a href="https://blog.mozilla.org/gameon/">Game On blog</a>.</li>
+                    <li>Ensure that you know the <a href="{{ url('static_site.rules') }}">challenge rules</a>,</li>
+                    <li>See what amazing <a href="{{ url('static_site.judges') }}">judges we have</a>.</li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+</article>
+{% endblock %}

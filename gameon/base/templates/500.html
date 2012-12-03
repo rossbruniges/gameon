@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html LANG="{{ LANG }}" dir="{{ DIR }}">
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-    <title>{{ _('Something went wrong!') }}</title>
-  </head>
-  <body>
-    <h1>{{ _('Page not found') }}</h1>
-    <p>
-      {% trans %}
-        Sorry, but something went wrong.
-      {% endtrans %}
-    </p>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block page_title %}500 (Server error){% endblock %}
+{% block page_id %}error_500{% endblock %}
+{% block section_class %}errors{% endblock %}
+
+{% block user_nav %}{% endblock %}
+
+{% block content %}
+<article>
+    <header class="mast-head">
+        <h1 class="busta shout">Error (500 server error)</h1>
+    </header>
+    <div class="busta">
+        <div class="cf">
+            <h2 class="exclaim">Oh dear - looks something has gone rather wrong</h2>
+            <p>Hopefully this might just be a temporary blip but if you try again and the same thing happens it's probably worth giving us a bit of time to fix things. We will be been notified of the error so hopefully have all the information we need to looking into what has caused it.</p>
+            <p><strong>We're really sorry for the inconvenience, hopefully we can have this fixed up ASAP.</strong>
+        </div>
+    </div>
+</article>
+{% endblock %}
+
+{% block browser_id_code %}{% endblock %}
