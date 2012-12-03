@@ -198,6 +198,16 @@ li .frame {
     padding: 1em 20px;
     border-radius: 8px;
 }
+#grand-prize {
+    background-image: url(/static/base/img/css/grand-prize.png);
+    background-position: 95% 0;
+    background-repeat: no-repeat;
+}
+#category-prizes {
+    background-image: url(/static/base/img/css/category-prizes.png);
+    background-position: 95% 0;
+    background-repeat: no-repeat;
+}
 .vcard {
     padding-left: 150px;
     position: relative;
