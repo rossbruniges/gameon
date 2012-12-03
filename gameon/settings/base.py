@@ -10,6 +10,24 @@ PROJECT_MODULE = 'gameon'
 
 GAMEON_CHALLENGE_SLUG = 'gameon-2013'
 
+CATEGORIES = (
+    {
+        'title': 'Cross Platform Games',
+        'slug': 'cross-platform-games',
+        'desc': 'Use the power of mobile phones and other new devices to push the limits of asymetric gaming. This category is searching for games that feel "native" to the platforms they inhabit. <a href="http://www.worldofgoo.com/">World of Goo</a> and <a href="http://snuggletruck.com/">Snuggle Truck</a> are two great examples.'
+    },
+    {
+        'title': 'Learning Games',
+        'slug': 'learning-games',
+        'desc': 'Create games that deepen players\' understanding of a concept or help them master a set of skills. Check out some great examples in the "Playmakers" series by our friends at the <a href="http://playmakers.instituteofplay.org/">Institute of Play</a>.'
+    },
+    {
+        'title': 'Hackable Games',
+        'slug': 'hackable-games',
+        'desc': 'Create games that let players remix game mechanics, fork code, or use assets from the web to create their own version. Check out some examples at <a href="https://hackagame.org">hackagame.org</a>.'
+    },
+)
+
 MARKETPLACE_URL = 'https://marketplace.firefox.com/developers/docs/mkt_submission'
 
 PAGINATOR_SIZE = 12

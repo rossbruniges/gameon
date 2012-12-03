@@ -20,11 +20,11 @@
                     <li>3) Cross-Platform</li>
                 </ul>
                 <h3 class="announce">1) Best Hackable Game</h3> 
-                <p>{{ hackable.description }} Check out some examples here - link to hackagame.org videocast ready by next Friday 30/11>.</p>
+                <p>{{ hackable.description|safe }}</p>
                 <h3 class="announce">2) Best Learning Game</h3>
-                <p>{{ learning.description }} Check out some great examples in the <a href="http://playmakers.instituteofplay.org/">Playmakers" series by our friends at the Institute of Play</a></p>
+                <p>{{ learning.description|safe }}</p>
                 <h3 class="announce">3) Best Cross-Platform Game</h3>
-                <p>{{ mobile.description }} This category is searching for games that feel "native" to the platforms they inhabit. Two great examples are <a href="http://www.worldofgoo.com/">World of Goo</a> and <a href="http://snuggletruck.com/">Snuggle Truck</a>.</p>
+                <p>{{ mobile.description|safe }}</p>
                 <p>Each month we'll be curating content on our blog <link> showcasing examples from each of these categories, so you can learn more, find inspiration from industry experts and see what we're building in Game On jams around the world.</p>
                 <h2 class="exclaim">Playable Prototypes</h2>
                 <p>Entries should be playable prototypes, built to run in modern browsers like Firefox without any plug-ins. They don't have to be fully polished or 100%  complete — the judges will be looking for interesting gameplay ideas in motion.</p>

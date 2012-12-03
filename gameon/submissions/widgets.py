@@ -20,11 +20,9 @@ class CategorySelectRenderer(RadioFieldRenderer):
         for w in self:
             # extra attributes
             cat = Category.objects.filter(name=w.choice_label)[0]
-            cat_url = reverse('submissions.entry_list', args=(cat.slug,))
-            row_list.append(u'<li>%s <span class="meta">%s <a href="%s" target="_blank">Like these ones</a>.</span></li>' %
+            row_list.append(u'<li>%s <span class="meta">%s</span></li>' %
                                                 (force_unicode(w),
-                                                force_unicode(cat.description),
-                                                 cat_url))
+                                                force_unicode(cat.description)))
 
         return mark_safe(u'<ul>\n%s\n</ul>' % u'\n'.join(row_list))
 
