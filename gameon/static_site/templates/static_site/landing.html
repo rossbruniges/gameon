@@ -13,7 +13,7 @@
     <div class="busta">
         <i></i>
         <p class="announce">The web is the platform.</p>
-        <p class="shout">Show us what's possible using the web as an open gaming platform for the world.</p>
+        <p class="shout">Show what's possible using the web as an open gaming platform for the world.</p>
         {% if request.challenge %}
             {% if request.challenge.is_open() %}
                 {% include '_signup_login.html' %}
@@ -30,36 +30,23 @@
 </section>
 <section class="build cf">
     <div class="busta">
-        <h2 class="exclaim">Build the next generation of web-based games</h2>
+        <h2 class="exclaim">Submit your game prototype by {{ request.challenge.end_date.strftime('%B %e, %Y') }}</h2>
         <ul>
-            <li class="make whimper">Make browser-based mobile games, hackable games and games for learning.</li>
-            <li class="invent whimper">Invent new games mechanics, create new storylines, engage, diverse audiences, introduce visually challenging content.</li>
+            <li class="make whimper">Make web-based hackable games, games for learning or cross-platform games.</li>
+            <li class="invent whimper"><a href="#">Attend a Game Jam near you [link through to gameon event page when merged in]</a> or host your own! Our <a href="https://webmaker.org/events/guides/game-jam/">handy Event Kits</a> make it easy.</li>
             <li class="win whimper">Win a trip to the <a href="http://www.gdconf.com/">Game Developers Conference</a> to meet industry pioneers.</li>
-            <li class="market whimper">Have your completed game featured in Mozilla's Marketplace.</li>
+            <li class="market whimper">Have your completed game featured in <a href="http://www.mozilla.org/en-US/apps/">Mozilla's Marketplace</a> and published on <a href="http://www.chillingo.com/">Chilingo</a>.</li>
         </ul>
-        <div class="shout-box">
-            <p class="announce">Excited? Good! Want to get involved? <a href="http://www.mozilla.org/en-US/gameon/">Sign up for more information here</a></p>
-        </div>
     </div>
 </section>
 <section class="participate cf">
     <div class="busta cf">
-        <article class="events">
-            <h2 class="exclaim">Come to a Game Jam!</h2>
-            <ul class="checks">
-                <li>Got a game idea for the competition you would like help testing and finishing up?</li>
-                <li>Want to participate but need help coming up with a cool idea?</li>
-                <li>Want to learn about, showcase or teach others about a new technology?</li>
-                <li>Interested in playing with new technologies and meeting people who love making and hacking games as much as you do?</li>
-            </ul>
-            <footer>
-                <a href="#">Register for an upcoming game jam or run your own here</a>
-            </footer>
-        </article>
         <article class="submit_now">
             <h2 class="exclaim">Submit Your Game</h2>
-            <p>Mozilla invites you to imagine how next-generation web technologies can revolutionise the way we make and play games. It's your opportunity to invent new game mechanics, create new storylines, engage diverse audiences, introduce aesthetically challenging content and re-imagine the web as a gaming platform.</p>
+            <p>Mozilla invites you to imagine how next-generation web technologies can revolutionize the way we make and play games. It's your opportunity to invent new game mechanics and re-imagine the web as a gaming platform.</p>
+            <p>Excited? Good! Want to get involved? <a href="https://mozilla.org/gameon/">Sign up for more information</a>.</p>
             {% if request.challenge %}
+                <p><strong>Submit your game prototype by {{ request.challenge.end_date.strftime('%B %e, %Y') }}</strong></p>
                 {% if request.challenge.is_open() %}
                     {% include '_signup_login.html' %}
                 {% endif %}
@@ -67,6 +54,17 @@
                     Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }} and close {{ request.challenge.end_date.strftime('%B %e, %Y') }}.
                 </footer>
             {% endif %}
+        </article>
+        <article class="events">
+            <h2 class="exclaim">Come to a Game Jam!</h2>
+            <ul class="checks">
+                <li>Got a game idea for the competition you'd like help testing and finishing up?</li>
+                <li>Interested in playing with new technologies and meeting people who love making and  hacking games as much as you do?</li>
+            </ul>
+            [include upcoming game jam lists when merged]
+            <footer>
+                <a href="#">Register for an upcoming game jam [link through to gameon event page when merged in]</a> or <a href="https://webmaker.org/events/guides/game-jam/">run your own here</a>
+            </footer>
         </article>
     </div>
 </section>
