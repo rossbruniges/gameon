@@ -19,7 +19,7 @@ def rules(request, template='static_site/rules.html'):
     data = {
         'hackable': categories.get(slug='hackable-games'),
         'learning': categories.get(slug='learning-games'),
-        'mobile': categories.get(slug='mobile-games'),
+        'mobile': categories.get(slug='cross-platform-games'),
     }
     return render(request, template, data)
 
