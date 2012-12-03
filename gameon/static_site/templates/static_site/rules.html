@@ -15,9 +15,9 @@
                 <h2 class="exclaim">What Can I Submit?</h2>
                 <p>You can submit games in one of three categories:</p>
                 <ul class="no-style">
-                    <li>1) Hackable</li>
-                    <li>2) Learning</li> 
-                    <li>3) Cross-Platform</li>
+                    <li>1) Hackable Games</li>
+                    <li>2) Learning Games</li> 
+                    <li>3) Cross-Platform Games</li>
                 </ul>
                 <h3 class="announce">1) Best Hackable Game</h3> 
                 <p>{{ hackable.description|safe }}</p>
@@ -25,31 +25,42 @@
                 <p>{{ learning.description|safe }}</p>
                 <h3 class="announce">3) Best Cross-Platform Game</h3>
                 <p>{{ mobile.description|safe }}</p>
-                <p>Each month we'll be curating content on our blog <link> showcasing examples from each of these categories, so you can learn more, find inspiration from industry experts and see what we're building in Game On jams around the world.</p>
+
+                <h2>Check out the "Game On" blog for more</h2>
+                <p>Each month we'll be curating content on <a href="https://blog.mozilla.org/gameon/">our blog</a> showcasing examples from each of these categories. You can learn more about each category, find inspiration from industry experts, and see what others are building in Game On jams around the world.</p>
+
                 <h2 class="exclaim">Playable Prototypes</h2>
-                <p>Entries should be playable prototypes, built to run in modern browsers like Firefox without any plug-ins. They don't have to be fully polished or 100%  complete — the judges will be looking for interesting gameplay ideas in motion.</p>
+                <p>Entries should be <strong>playable prototypes</strong>, built to run in modern browsers like Firefox, without any plug-ins. They don't have to be fully polished or 100% complete — the judges will mostly be looking for interesting gameplay ideas in motion.</p>
+
                 <h2 class="exclaim">Open web technologies</h2>
-                <p>All games must be built using open web technologies. This includes but is not limited to HTML, CSS, JavaScript, WebGL, WebRTC et al, as well as server-side code such as PHP,  Python, Ruby or Java. You can and should use freely available libraries and modules (no worries, you don’t need to reinvent the wheel). Please list all libraries and stock resources that you use on your team’s profile page to give fair attribution. </p>
-                <p>We also encourage you to make use of third-party web services and their APIs (e.g Twitter, Flickr, Google Maps).  We want to see mashups and it’s fun to see what you can do with them in the context of a game. Just make sure to update your team profile listing the services you use.</p>   
-                <h2 class="exclaim">No plug-ins</h2>
-                <p>We're pretty flexible on what you can enter. We have only one ironclad rule: no browser plug-ins are allowed (and we’re strict on this one!). So Flash, Silverlight, or Unity plugins must not be required to play your game.</p>
+                <p>All games must be built using open web technologies. This includes but is not limited to HTML, CSS, JavaScript, WebGL and WebRTC, as well as server-side code like PHP, Python, Ruby or Java. Please go ahead and use freely available libraries and modules -- there's no need to reinvent the wheel. Please list all the libraries and stock resources you use on your team’s profile page to provide fair attribution.</p>
+                <p>We also encourage you to make use of third-party web services and their APIs (like Twitter, Flickr, Google Maps, etc).  We love mashups and would love to see what you can do with these kinds of web services in the context of a game. Again, please be sure to list any of these services you use on your game entry page.</p>
+
+                <h2 class="exclaim">No plug-ins, please</h2>
+                <p>As you can tell, we're pretty darn flexible on what you can enter. Buit we have only one ironclad rule: no browser plug-ins are allowed. So plug-ins like Flash, Silverlight, or Unity are out of bounds and must not be required to play your game.</p>
+
                 <h2 class="exclaim">Ownership and open source</h2> 
-                <p>The code you write is yours. If you intend to share it or keep working on it after the competition, you can pick whatever license you prefer. We encourage contestants to open source their code, but that’s entirely up to you. If you decide to start a business selling millions of copies of your indie darling game, we wish you much success.</p>  
+                <p>The code you write is yours. If you intend to share it or keep working on it after the competition, you can feel free to pick whatever license you prefer. We encourage contestants to open source their code, but that’s entirely up to you. If you decide to start a business selling millions of copies of your indie darling game, we wish you much success!</p> 
+
                 <h2 class="exclaim">Deployment</h2>
-                <p>It’s completely up to you where you deploy your code. You can use your own webserver, public webspace you have somewhere, stores like the Firefox Marketplace, cloud hosting services such as Google’s App Engine... or simply contact us if you need help with that.  Whatever you decide to do – make sure your server is up and running during the judging period. It would be a shame if we couldn’t judge your awesome  game only because someone poured coffee over the server behind your fridge. Entries have to remain up until winners are announced.</p> 
-                <h2 class="exclaim">When is This Going Down?</h2>
-                <p>The competition kicks off in December and will end  on {{ request.challenge.end_date.strftime('%B %e, %Y') }}. This gives you a bit more than 10 weeks and an entire holiday season to develop your open web game during the GameOn competiton.</p>  
-                <p>You are welcome to share work on the concept for your game before making your final submission: napkin doodles, insomniac wire-framing, robots in disguise - even some hacking if you like.</p>  
-                <p>After time expires, an expert panel of industry experts and gamers will be invited to play your game and judge it against the competition. No additional features, fixes, or modifications are allowed during the judging period, or you will be disqualified. We really want to play your game, so please don’t make us disqualify you before we have the chance.</p> 
-                <h2 class="exclaim">Who Can Work on My Game?</h2>
-                <p>Individuals as well as teams are welcome to participate. To be eligible, individuals and teams must submit their entry before the official competition deadline. Don’t be too late – as much as we all thrive on getting the finishing touches done in the 11th hour, we don’t want you to miss the deadline.</p> 
-                <p>If you work for a sponsor – sorry, but we can’t accept your submission to this competition. And don’t worry if you know a judge: We’ll prevent judges from voting on any entrant they know personally and make sure they commit to being  fair and objective in their evaluation.</p>  
-                <p>During the course of the competition we will be hosting a series of game jams! Whether you have a game for  the competition and need help testing and finishing  it up, a  technology you want to showcase or teach others how to use,  ideas for new games or just  want  to  come play with great new  technologies and  meet people who  love making and  hacking games as much  as you do, join  us in one of our upcoming game jams. It is not mandatory to participate in the game jams to be part of the competition but we strongly encourage you to do so. Find out a game jam near you here - were is this linking to?</p>
-                <h2 class="exclaim">How Can I Get Help?</h2>
-                <p>If you need help or have a technology specific question you can reach out to the <a href="https://lists.mozilla.org/listinfo/community-games">Mozilla gaming lists</a>. For specific questions about the competition or if you want to be featured on the competition blog you can contact directly <a href="mailto:gameon@mozilla.com">gameon@mozilla.com</a>.</p>
+                <p>It’s completely up to you where you deploy your code. You can use your own webserver, public webspace, stores like the Firefox Marketplace, cloud hosting services like Google’s App Engine, or get in touch with us if you need help.</p>
+                <p>Whatever you decide to do, please ensure your server is up and running during the judging period. It'd be a shame if we couldn’t judge your amazing game entry just because someone spilled coffee on the server behind your fridge! Entries must remain up until winners are announced.  </p> 
+
+                <h2 class="exclaim">When is all this happening?</h2>
+                <p>The competition kicks off in December and will end  on {{ request.challenge.end_date.strftime('%B %e, %Y') }}.</p>
+                <p>You're welcome to share work on the concept for your game before making your final submission. Napkin sketches, doodles, insomniac wire-framing, robots in disguise or even some early prototype hacking if you like.</p>
+                <p>After the final deadline, an expert panel of industry experts and gamers will be invited to play your game and judge it against the competition. <strong>To respect the rules for everyone, no additional features, fixes, or modifications will be allowed during the judging period.</strong> Otherwise, we'll be forced to disqualify your entry -- and we really don't want to do that!</p> 
+
+                <h2 class="exclaim">Who can work on my game?</h2>
+                <p>Individuals as well as teams are welcome to participate. To be eligible, individuals and teams must submit their entry before the official competition deadline. So please don't be late! As much as we all thrive on getting the finishing touches done in the 11th hour, we'd really hate for you to miss the deadline.</p>
+                <p>If you are employed by a sponsor of the competition, we are unable to accept your submission. And if you happen to know one of the judges, no worries -- we’ll prevent judges from voting on any entrant they know personally.</p>
+
+                <h2 class="exclaim">How can I get help for my game entry?</h2>
+                <p>If you need help or have a technology-specific question, feel free to reach out to the <a href="https://lists.mozilla.org/listinfo/community-games">Mozilla gaming lists</a>. For specific questions about the competition, or if you'd like to be featured on the competition blog, please get in touch through <a href="mailto:gameon@mozilla.com">gameon@mozilla.com</a>.</p>
             </div>
             <aside class="meta mini-col header-block rules">
                 <p class="whimper">The Fine Print: less humanised, more legalised version of these rules can be found <a href="{{ url('static_site.legal') }}">here</a>.</p>
+                <p class="whimper">You will be to find additional answers in our <a href="{{ url('static_site.faqs') }}">FAQs</a>.</p>
             </aside>
         </div>
     </div>
