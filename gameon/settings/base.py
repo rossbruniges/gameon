@@ -32,11 +32,11 @@ MARKETPLACE_URL = 'https://marketplace.firefox.com/developers/docs/mkt_submissio
 
 PAGINATOR_SIZE = 12
 
-# We're only allowing video embeds from these two sites
-ALLOWED_OMEMBED_SITES = (
-    'youtube',
-    'vimeo'
-)
+# Default settings for video (youtube, vimeo, etc) embeds.
+VIDEO_EMBED_SETTINGS = {
+    'WIDTH': 640,
+    'HEIGHT': 385
+}
 
 GRAVATAR_URL = 'https://secure.gravatar.com/avatar/'
 
