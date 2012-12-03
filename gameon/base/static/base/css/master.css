@@ -82,28 +82,27 @@ div[role=main] .busta {
     width: 25%;
     overflow: hidden;
 }
-/* Removing this for now, until we get assets in place
-
-    padding-top: 150px;
+.mini-col.header-block {
+    overflow: hidden;
 }
-.mini-col:before {
+.mini-col.header-block::before {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 220px;
+    display: block;
     height: 140px;
-    background: #ebebeb;
+    background: #EBEBEB 50% 50% no-repeat;
     border-radius: 4px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border: 1px solid #666;
-    display: block;
+    border: 1px inset rgba(255,255,255,0.5);
 }
-
-*/
+.mini-col.header-block.judges::before {
+    background-image: url(/static/base/img/css/judges.png);
+}
+.mini-col.header-block.rules::before,
+.mini-col.header-block.resources::before {
+    background-image: url(/static/base/img/css/rules.png);
+}
 .shout {
     font-size: 48px;
     font-weight: bold;
