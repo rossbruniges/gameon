@@ -108,7 +108,7 @@ class Entry(models.Model):
         blank=True)
     team_members = models.TextField(verbose_name=_(u'Members'),
         validators=[MaxLengthValidator(250)], blank=True)
-    team_desciption = models.TextField(verbose_name=_(u'Description'),
+    team_description = models.TextField(verbose_name=_(u'Description'),
         validators=[MaxLengthValidator(250)], blank=True)
     to_market = models.BooleanField(verbose_name="redirect to marketplace",
         default=False)

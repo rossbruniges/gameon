@@ -27,7 +27,7 @@ def profile(request, username, template='users/profile.html'):
 
 @login_required
 def edit(request, template='users/profile_edit.html'):
-    """Edit the currently logged in users profile."""
+    """Edit the currently logged-in users profile."""
     profile = request.user.get_profile()
     form_class = ProfileForm
     mode = 'edit'
@@ -46,7 +46,7 @@ def edit(request, template='users/profile_edit.html'):
                 return redirect(profile)
             else:
                 """
-                The only reason anyone will want to create an account it to
+                The only reason anyone will want to create an account is to
                 submit a game, so take them right there
                 """
                 return redirect(reverse('submissions.create_entry'))

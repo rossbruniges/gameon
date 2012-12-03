@@ -9,7 +9,7 @@ MARKET_CHOICES = (('True', 'Yes, I want to submit by game to the marketplace (yo
     ('False', "No, I don't want to submit my game to the marketplace"))
 
 entry_fields = ('title', 'url', 'description', 'category', 'thumbnail',
-            'video_url', 'team_name', 'team_members', 'team_desciption',
+            'video_url', 'team_name', 'team_members', 'team_description',
             'to_market')
 
 entry_widgets = {
@@ -19,7 +19,7 @@ entry_widgets = {
     'video_url': forms.TextInput(attrs={'aria-describedby': 'info_video_url'}),
     'team_members': forms.Textarea(attrs={'aria-describedby': 'info_team_members',
         'data-maxlength': '250'}),
-    'team_desciption': forms.Textarea(attrs={'aria-describedby': 'info_team_desciption',
+    'team_description': forms.Textarea(attrs={'aria-describedby': 'info_team_description',
         'data-maxlength': '250'}),
     'to_market': forms.RadioSelect(choices=MARKET_CHOICES),
 }
