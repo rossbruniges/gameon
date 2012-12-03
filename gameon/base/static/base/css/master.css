@@ -501,6 +501,12 @@ nav li a {
         background-image: -moz-linear-gradient(top, #DDD, #FFF 15px);
         background-image: linear-gradient(top, #DDD, #FFF 15px);
     }
+    .mini-col.header-block::before {
+        float: left;
+        width: 100px;
+        height: 100px;
+        margin: 10px 10px 10px 0;
+    }
 }
 
 @media all and (max-width: 412px) {
