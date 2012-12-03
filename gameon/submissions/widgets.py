@@ -1,7 +1,6 @@
 from django.forms.widgets import RadioSelect, RadioFieldRenderer
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
-from django.core.urlresolvers import reverse
 
 from gameon.submissions.models import Category
 

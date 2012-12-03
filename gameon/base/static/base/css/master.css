@@ -292,6 +292,7 @@ nav li a {
 }
 .big-winner {
     color: #37D09E;
+    line-height: 1.5;
 }
 .big-winner span {
     color: #00283a;
@@ -343,9 +344,11 @@ nav li a {
 }
 .page-index li {
     margin-bottom: 0.5em;
+    float: none;
 }
 .page-index a {
     padding: 0;
+    text-transform: none;
 }
 .pagination {
     border-top: 1px solid #ccc;
