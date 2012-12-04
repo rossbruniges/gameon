@@ -191,6 +191,7 @@ li .frame {
 }
 .mast-head h1 {
     padding: 0.75em 0;
+    background: url(/static/base/img/css/mast-head.png) 100% 0 no-repeat;
 }
 .sub-head {
     background: #00283a;
