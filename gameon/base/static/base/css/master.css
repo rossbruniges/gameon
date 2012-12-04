@@ -102,28 +102,6 @@ div[role=main] .busta {
 #rules_page .mini-col::before {
     background-image: url(/static/base/img/css/docs-panel.png);
 }
-/* Removing this for now, until we get assets in place
-
-    padding-top: 150px;
-}
-.mini-col:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 220px;
-    height: 140px;
-    background: #ebebeb;
-    border-radius: 4px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px solid #666;
-    display: block;
-}
-
-*/
 .shout {
     font-size: 48px;
     font-weight: bold;
