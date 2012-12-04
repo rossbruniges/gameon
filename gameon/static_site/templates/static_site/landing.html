@@ -33,9 +33,23 @@
         <h2 class="exclaim">Submit your game prototype by {{ request.challenge.end_date.strftime('%B %e, %Y') }}</h2>
         <ul>
             <li class="make whimper">Make web-based hackable games, games for learning or cross-platform games.</li>
-            <li class="invent whimper"><a href="#">Attend a Game Jam near you [link through to gameon event page when merged in]</a> or host your own! Our <a href="https://webmaker.org/events/guides/game-jam/">handy Event Kits</a> make it easy.</li>
+            <li class="invent whimper"><a href="{{ url('events.list') }}">Attend a Game Jam near you</a> or host your own! Our <a href="https://webmaker.org/events/guides/game-jam/">handy Event Kits</a> make it easy.</li>
             <li class="win whimper">Win a trip to the <a href="http://www.gdconf.com/">Game Developers Conference</a> to meet industry pioneers.</li>
             <li class="market whimper">Have your completed game featured in the <a href="http://www.mozilla.org/en-US/apps/">Firefox Marketplace</a> and published on <a href="http://www.chillingo.com/">Chilingo</a>.</li>
+        </ul>
+        <h2 class="exclaim">Game On is generously supported by:</h2>
+        <ul class="partners">
+            <li><a href="http://www.nesta.org.uk/"><img src="{{ static('base/img/partners/nesta-logo.png') }}" alt="Nesta" /></a></li>
+            <li><a href="http://www.nominettrust.org.uk/"><img src="{{ static('base/img/partners/nominet-logo.png') }}" alt="Nominet Trust" /></a></li>
+        </ul>
+        <h2 class="announce">In partnerhip with:</h2>
+        <ul class="partners with">
+            <li><a href="http://globalgamejam.org/"><img src="{{ static('base/img/partners/globalgamejam.png') }}" alt="Global Game Jam" /></a></li>
+            <li><a href="http://www.igda.org/"><img src="{{ static('base/img/partners/igda.png') }}" alt="IDGA" /></a></li>
+            <li><a href="http://www.chillingo.com/"><img src="{{ static('base/img/partners/Chillingo.png') }}" alt="Chillingo" /></a></li>
+            <li><a href="http://ukie.info/"><img src="{{ static('base/img/partners/UKIE.jpg') }}" alt="UKIE" /></a></li>
+            <li><a href="https://github.com/"><img src="{{ static('base/img/partners/GitHub.png') }}" alt="github" /></a></li>
+            <li><a href="http://www.nvidia.co.uk"><img src="{{ static('base/img/partners/NVLogo_2D.jpg') }}" alt="Nvidia" /></a></li>
         </ul>
     </div>
 </section>
