@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Game Jams{% endblock %}
+{% block page_id %}event_list{% endblock %}
+{% block section_class %}events{% endblock %}
+
+{% block content %}
+<section>
+    <header class="mast-head">
+        <h1 class="busta shout">All Game Jams</h1>
+    </header>
+    <div class="busta">
+        <div class="cf">
+            <div class="main-col">
+                {% if events %}
+                <ol class="no-style">
+                    {% for ev in events %}
+                    <li class="vevent">
+                        <h2 class="summary">{{ ev.name }}</h2>
+                        <p class="location vcard"><span class="fn">{{ ev.location.name }}</span>, <span class="adr"><span class="street-address">{{ ev.location.street }}</span>, {{ ev.location.town }}, <span class="country-name">{{ ev.location.country }}</span></span></p>
+                        <p><span class="dtstart">{{ ev.start_date.strftime('%B %d, %Y %l:%M%p') }}</span> to <span class="dtend">{{ ev.end_date.strftime('%B %d, %Y %l:%M%p') }}</span></p>
+                        <a class="url" href="{{ ev.url }}">Register for this Game Jam</a>
+                    </li>
+                    {% endfor %}
+                </ol>
+                {% else %}
+                <h2>We currently have no Game Jams planned</h2>
+                <p>Keep an eye on the <a href="https://mozilla.org/gameon/">Game On blog</a> for further announcements, or equally you can try and <a href="https://donate.mozilla.org/page/event/create/">organise your own jam</a>!</p>
+                {% endif %}
+            </div>
+            <aside class="meta mini-col">
+                <h2 class="whimper">More about Game Jams</h2>
+                <ul class="no-style">
+                    <li><a href="{{ url('static_site.faqs') }}#game-jams">What exactly is a Game Jam?</a></li>
+                    <li><a href="https://webmaker.org/en-US/events/guides/game-jam/">Game Jam event guide</a></li>
+                    <li><a href="https://donate.mozilla.org/page/event/create/">Organise your own Game Jam</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+</section>
+{% endblock %}

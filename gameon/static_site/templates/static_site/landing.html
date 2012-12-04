@@ -21,7 +21,7 @@
                 {% if not request.challenge.has_started() %}
                     <p>Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }}</p>
                 {% endif %}
-                {% if not request.challenge.has_closed() %}
+                {% if request.challenge.has_closed() %}
                     <p><a href="{{ url('submissions.entry_list') }}">See what people submitted</a></p>
                 {% endif %}
             {% endif %}
@@ -65,9 +65,22 @@
                         <li>Got a game idea for the competition you'd like help testing and finishing up?</li>
                         <li>Interested in playing with new technologies and meeting people who love making and  hacking games as much as you do?</li>
                     </ul>
-                    <p>[include upcoming game jam lists when merged]</p>
+                    {% if events %}
+                        <h3>Upcoming events</h3>
+                        <ol class="no-style">
+                            {% for ev in events %}
+                            <li class="vevent">
+                                <h4><a class="summary url" href="{{ ev.url }}">{{ ev.name }}</a></h4>
+                                <p><span class="dtstart">{{ ev.start_date.strftime('%B %d, %Y %l:%M%p') }}</span> in {{ ev.location.town }}, <span class="location">{{ ev.location.country }}</span></p>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                        {% if num_events > 3 %}
+                            <a href="{{ url('events.list') }}">See all upcoming Game Jams</a>
+                        {% endif %}
+                    {% endif %}
                     <footer>
-                        <a href="#">Register for an upcoming game jam [link through to gameon event page when merged in]</a> or <a href="https://webmaker.org/events/guides/game-jam/">run your own here</a>
+                        <a href="{{ url('events.list') }}">Register for an upcoming game jam</a> or <a href="https://webmaker.org/events/guides/game-jam/">run your own here</a>
                     </footer>
                 </div>
             </article>

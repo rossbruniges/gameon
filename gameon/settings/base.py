@@ -8,6 +8,9 @@ from funfactory.settings_base import *
 # clone.
 PROJECT_MODULE = 'gameon'
 
+# This is used by get_current_challenge in gameon/submissions/managers.py
+# It gets added into the DB as part of gameon/submissions/migrations/0009_initial_challenge.py
+# If the DB value changes, or you add in a new current challenge also change this
 GAMEON_CHALLENGE_SLUG = 'gameon-2013'
 
 MARKETPLACE_URL = 'https://marketplace.firefox.com/developers/docs/mkt_submission'
@@ -34,6 +37,7 @@ INSTALLED_APPS = list(INSTALLED_APPS) + [
     '%s.static_site' % PROJECT_MODULE,
     '%s.users' % PROJECT_MODULE,
     '%s.submissions' % PROJECT_MODULE,
+    '%s.events' % PROJECT_MODULE,
     'south',
 ]
 

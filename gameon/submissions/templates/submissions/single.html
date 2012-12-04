@@ -39,8 +39,10 @@
                 {% if entry.editable_by(user=request.user) and request.challenge.is_open() %}
                     <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=entry.slug) }}">Edit your game</a>
                 {% endif %}
+                {% if entry.category %}
                 <h2 class="whimper">Category</h2>
                 <p><a href="{{ url('submissions.entry_list', category=entry.category.slug) }}">{{ entry.category }}</a></p>
+                {% endif %}
             </aside>
         </div>
     </div>

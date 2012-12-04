@@ -173,6 +173,16 @@ div[role=main] .big-picture .busta {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+.participate .vevent {
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+}
+.participate .vevent h4 {
+    margin: 0.5em 0 0;
+}
+.participate .vevent p {
+    margin: 0;
+}
 .participate article footer {
     padding: 30px 40px;
     border-radius: 0 0 16px 16px;
