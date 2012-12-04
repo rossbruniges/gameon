@@ -82,28 +82,26 @@ div[role=main] .busta {
     width: 25%;
     overflow: hidden;
 }
-/* Removing this for now, until we get assets in place
-
-    padding-top: 150px;
-}
-.mini-col:before {
+#judges_list .mini-col::before,
+#resource_list .mini-col::before,
+#rules_page .mini-col::before {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 220px;
+    display: block;
     height: 140px;
-    background: #ebebeb;
+    background: #EBEBEB 50% 50% no-repeat;
     border-radius: 4px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border: 1px solid #666;
-    display: block;
+    border: 1px inset rgba(255,255,255,0.5);
 }
-
-*/
+#judges_list .mini-col::before {
+    background-image: url(/static/base/img/css/find-panel.png);
+}
+#resource_list .mini-col::before,
+#rules_page .mini-col::before {
+    background-image: url(/static/base/img/css/docs-panel.png);
+}
 .shout {
     font-size: 48px;
     font-weight: bold;
@@ -183,6 +181,7 @@ li .frame {
     position: relative;
     z-index: 10;
     width: 100%;
+    display: block;
 }
 .mast-head {
     background: #00283a;
@@ -191,12 +190,23 @@ li .frame {
 }
 .mast-head h1 {
     padding: 0.75em 0;
+    background: url(/static/base/img/css/mast-head.png) 100% 0 no-repeat;
 }
 .sub-head {
     background: #00283a;
     color: #37D09E;
     padding: 1em 20px;
     border-radius: 8px;
+}
+#grand-prize {
+    background-image: url(/static/base/img/css/grand-prize.png);
+    background-position: 95% 0;
+    background-repeat: no-repeat;
+}
+#category-prizes {
+    background-image: url(/static/base/img/css/category-prizes.png);
+    background-position: 95% 0;
+    background-repeat: no-repeat;
 }
 .judges .vcard {
     padding-left: 150px;
@@ -497,6 +507,20 @@ nav li a {
         background-image: -webkit-linear-gradient(top, #DDD, #FFF 15px);
         background-image: -moz-linear-gradient(top, #DDD, #FFF 15px);
         background-image: linear-gradient(top, #DDD, #FFF 15px);
+    }
+    #judges_list .mini-col,
+    #resource_list .mini-col,
+    #rules_page .mini-col {
+        padding-left: 150px;
+    }
+    #judges_list .mini-col::before,
+    #resource_list .mini-col::before,
+    #rules_page .mini-col::before {
+        float: left;
+        width: 100px;
+        height: 100px;
+        margin: 10px 0 0 -120px;
+        background-size: 50%;
     }
 }
 
