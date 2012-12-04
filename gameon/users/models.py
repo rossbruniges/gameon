@@ -16,9 +16,9 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, blank=True,
                             verbose_name=_(u'Display name'))
     bio = models.TextField(verbose_name=_(u'Personal bio'),
-        validators=[MaxLengthValidator(250)], default="")
+        validators=[MaxLengthValidator(250)], default="", blank=True)
     website = models.URLField(verbose_name=_(u'Personal website'), max_length=255,
-        default="")
+        default="", blank=True)
 
     @models.permalink
     def get_absolute_url(self):
