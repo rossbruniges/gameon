@@ -135,28 +135,62 @@ div[role=main] .big-picture .busta {
 }
 .participate .exclaim {
     color: #37d09e;
+    margin-top: 0;
+}
+.participate .wrapper {
+    display: table;
+    border-spacing: 20px;
+    margin-bottom: 12em;
+    height: 100%;
 }
 .participate article {
+    width: 50%;
+
+    display: table-cell;
+    position: relative;
+    height: 100%;
+}
+.participate article ul {
+    margin: 0;
+}
+.participate article p {
+    margin: 1em 0 0;
+}
+.participate article li {
+    margin: 1em 0 0;
+    padding: 0 0 0 34px;
+}
+.participate article .inner {
+    display: table;
+    height: 100%;
+    border-spacing: 0;
+    position: relative;
+    padding: 40px;
     background: rgba(00, 40, 58, 0.8);
-    color: #fff;
-    width: 46%;
+    border-radius: 16px 16px 0 0;
+    color: #FFF;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 1em 40px;
-    float: left;
-    margin: 0 2% 3em;
-    border-radius: 16px;
 }
 .participate article footer {
-    padding: 40px;
-    margin: 2em -40px -1em -40px;
+    padding: 30px 40px;
     border-radius: 0 0 16px 16px;
     background: #00283a;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    min-height: 3em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .participate .submit_now footer {
     padding-left: 100px;
-    background: #00283a url('/static/base/img/css/clock.png') no-repeat 30px 30px;
+    background-image: url('/static/base/img/css/clock.png');
+    background-repeat: no-repeat;
+    background-position: 30px 30px;
 }
 /* so that the bottom section merges with the footer */
 #home div[role=main] {
@@ -211,9 +245,22 @@ div[role=main] .big-picture .busta {
     .participate .busta {
         padding: 1.5em 1.5em 0;
     }
+    .participate .wrapper {
+        display: block;
+        margin-bottom: 0;
+    }
     .participate article {
-        float: none;
         width: auto;
         margin: 0 0 1.5em;
+        display: block;
+    }
+    .participate article .inner {
+        display: block;
+        border-radius: 16px;
+    }
+    .participate article footer {
+        position: static;
+        margin: 40px -40px -40px;
+        width: auto;
     }
 }
