@@ -7,7 +7,7 @@ mgo.formsets = function() {
             var current = $(this),
                 options = {
                     'maxCharacterSize': current.attr('data-maxlength'),
-                    'displayFormat': '#input of #left characters used',
+                    'displayFormat': '#input of #max characters used',
                     'originalStyle': 'meta char-count',
                     'warningStyle': 'warning-style'
                 };
