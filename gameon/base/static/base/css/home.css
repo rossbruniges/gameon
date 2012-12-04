@@ -209,6 +209,7 @@ div[role=main] .big-picture .busta {
 .participate .vevent {
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
+    padding-left: 0;
 }
 .participate .vevent h4 {
     margin: 0.5em 0 0;
