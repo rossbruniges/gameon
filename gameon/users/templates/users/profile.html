@@ -35,9 +35,12 @@
                 </li>
                 {% endfor %}
             </ol>
+            {% else %}
+                <h2 class="announce">No entries yet</h2>
+                <p>Feels like now is a great time to <a class="cta" href="{{ url('submissions.create_entry') }}">submit a game</a></p>
+            {% endif %}
             </div>
         </div>
     </div>
 </section>
-{% endif %}
 {% endblock %}

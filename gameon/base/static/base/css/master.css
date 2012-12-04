@@ -77,6 +77,10 @@ div[role=main] .busta {
     width: 70%;
     margin-right: 5%;
 }
+#user_profile .main-col {
+    margin-right: 0;
+    margin-left: 5%;
+}
 .mini-col {
     float: left;
     width: 25%;
