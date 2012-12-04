@@ -132,22 +132,20 @@ div[role=main] .big-picture .busta {
 .participate .busta {
     padding: 100px 5em 0;
     background: url('/static/base/img/home/participate.png') 100% 0 no-repeat;
-    margin-bottom: 3em;
-    overflow: hidden;
 }
 .participate .exclaim {
     color: #37d09e;
 }
-.participate .hack-col {
+.participate article {
     background: rgba(00, 40, 58, 0.8);
     color: #fff;
     width: 46%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 1em 40px 99999px 40px;
+    padding: 1em 40px;
     float: left;
-    margin: 0 2% -99999px 2%;
+    margin: 0 2% 3em;
     border-radius: 16px;
 }
 .participate .vevent {
