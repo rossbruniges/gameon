@@ -34,4 +34,4 @@ class ProfileCreateForm(ProfileForm):
         self.fields['agreement'].label = jinja2.Markup(_(
             u"I'm okay with Mozilla handling this info as you explain in your "
             u"<a href='{url}' target='_blank'>privacy policy</a>.")).format(
-                url='http://www.mozilla.org/en-US/privacy-policy.html')
+                url='http://www.mozilla.org/privacy-policy.html')
