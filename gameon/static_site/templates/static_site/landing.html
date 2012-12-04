@@ -41,44 +41,50 @@
 </section>
 <section class="participate cf">
     <div class="busta cf">
-        <article class="submit_now">
-            <h2 class="exclaim">Submit Your Game</h2>
-            <p>Mozilla invites you to imagine how next-generation web technologies can revolutionize the way we make and play games. It's your opportunity to invent new game mechanics and re-imagine the web as a gaming platform.</p>
-            <p>Excited? Good! Want to get involved? <a href="https://mozilla.org/gameon/">Sign up for more information</a>.</p>
-            {% if request.challenge %}
-                <p><strong>Submit your game prototype by {{ request.challenge.end_date.strftime('%B %e, %Y') }}</strong></p>
-                {% if request.challenge.is_open() %}
-                    {% include '_signup_login.html' %}
-                {% endif %}
-                <footer>
-                    Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }} and close {{ request.challenge.end_date.strftime('%B %e, %Y') }}.
-                </footer>
-            {% endif %}
-        </article>
-        <article class="events">
-            <h2 class="exclaim">Come to a Game Jam!</h2>
-            <ul class="checks">
-                <li>Got a game idea for the competition you'd like help testing and finishing up?</li>
-                <li>Interested in playing with new technologies and meeting people who love making and  hacking games as much as you do?</li>
-            </ul>
-            {% if events %}
-                <h3>Upcoming events</h3>
-                <ol class="no-style">
-                    {% for ev in events %}
-                    <li class="vevent">
-                        <h4><a class="summary url" href="{{ ev.url }}">{{ ev.name }}</a></h4>
-                        <p><span class="dtstart">{{ ev.start_date.strftime('%B %d, %Y %l:%M%p') }}</span> in {{ ev.location.town }}, <span class="location">{{ ev.location.country }}</span></p>
-                    </li>
-                    {% endfor %}
-                </ol>
-                {% if num_events > 3 %}
-                    <a href="{{ url('events.list') }}">See all upcoming Game Jams</a>
-                {% endif %}
-            {% endif %}
-            <footer>
-                <a href="{{ url('events.list') }}">Register for an upcoming game jam</a> or <a href="https://webmaker.org/events/guides/game-jam/">run your own here</a>
-            </footer>
-        </article>
+        <div class="wrapper">
+            <article class="submit_now">
+                <div class="inner">
+                    <h2 class="exclaim">Submit Your Game</h2>
+                    <p>Mozilla invites you to imagine how next-generation web technologies can revolutionize the way we make and play games. It's your opportunity to invent new game mechanics and re-imagine the web as a gaming platform.</p>
+                    <p>Excited? Good! Want to get involved? <a href="https://mozilla.org/gameon/">Sign up for more information</a>.</p>
+                    {% if request.challenge %}
+                        <p><strong>Submit your game prototype by {{ request.challenge.end_date.strftime('%B %e, %Y') }}</strong></p>
+                        {% if request.challenge.is_open() %}
+                            {% include '_signup_login.html' %}
+                        {% endif %}
+                        <footer>
+                            Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }} and close {{ request.challenge.end_date.strftime('%B %e, %Y') }}.
+                        </footer>
+                    {% endif %}
+                </div>
+            </article>
+            <article class="events">
+                <div class="inner">
+                    <h2 class="exclaim">Come to a Game Jam!</h2>
+                    <ul class="checks">
+                        <li>Got a game idea for the competition you'd like help testing and finishing up?</li>
+                        <li>Interested in playing with new technologies and meeting people who love making and  hacking games as much as you do?</li>
+                    </ul>
+                    {% if events %}
+                        <h3>Upcoming events</h3>
+                        <ol class="no-style">
+                            {% for ev in events %}
+                            <li class="vevent">
+                                <h4><a class="summary url" href="{{ ev.url }}">{{ ev.name }}</a></h4>
+                                <p><span class="dtstart">{{ ev.start_date.strftime('%B %d, %Y %l:%M%p') }}</span> in {{ ev.location.town }}, <span class="location">{{ ev.location.country }}</span></p>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                        {% if num_events > 3 %}
+                            <a href="{{ url('events.list') }}">See all upcoming Game Jams</a>
+                        {% endif %}
+                    {% endif %}
+                    <footer>
+                        <a href="{{ url('events.list') }}">Register for an upcoming game jam</a> or <a href="https://webmaker.org/events/guides/game-jam/">run your own here</a>
+                    </footer>
+                </div>
+            </article>
+        </div>
     </div>
 </section>
 {% endblock %}
