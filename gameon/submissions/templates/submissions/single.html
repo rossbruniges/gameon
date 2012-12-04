@@ -26,7 +26,7 @@
                 {% if entry.team_name %}
                     <p><b>{{ entry.team_name }}</b></p>
                     <p>{{ entry.team_members }}<p>
-                    <p>{{ entry.team_desciption }}</p>
+                    <p>{{ entry.team_description }}</p>
                 {% else %}
                     {% if entry.created_by %}
                         <span class="frame"><img src="{{ entry.created_by.get_gravatar_url() }}" alt="" /></span>
@@ -36,7 +36,7 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
-                {% if entry.editable_by(user=request.user) %}
+                {% if entry.editable_by(user=request.user) and request.challenge.is_open() %}
                     <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=entry.slug) }}">Edit your game</a>
                 {% endif %}
                 <h2 class="whimper">Category</h2>

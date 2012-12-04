@@ -21,9 +21,21 @@
                         <li>If you believe that this is your game, or if would like to tell us something about this particular game then please <a href="mailto:gameon@mozilla.org">send us an email</a>.</li>
                     </ul>
                 {% endif %}
+                {% if case == 'challenge_closed' %}
+                    {% if request.challenge.has_closed() %}
+                        <p>The Game On challenge closed on {{ request.challenge.end_date.strftime('%B %e, %Y') }}. To know when we're planning on running the next one check out the <a href="https://blog.mozilla.org/gameon/">Game On blog</a></p>
+                    {% else %}
+                        <p>The Game On challenge hasn't opened yet, you can continue working on your game now but you won't be able to submit it until {{ request.challenge.start_date.strftime('%B %e, %Y') }}.</p>
+                    {% endif %}
+                {% endif %}
             </div>
             <aside class="meta mini-col">
-                <p class="whimper">Here are some things you can do</p>
+                <h2 class="whimper">Here are some things you can do</h2>
+                <ul class="no-style">
+                    <li>Read the latest news in the <a href="https://blog.mozilla.org/gameon/">Game On blog</a>.</li>
+                    <li>Ensure that you know the <a href="{{ url('static_site.rules') }}">challenge rules</a>,</li>
+                    <li>See what amazing <a href="{{ url('static_site.judges') }}">judges we have</a>.</li>
+                </ul>
             </aside>
         </div>
     </div>

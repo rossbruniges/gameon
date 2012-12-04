@@ -82,12 +82,12 @@
                     {{ form.team_members }}
                 </div>
                 <div class="field">
-                    <label for="id_team_desciption" class="announce">
+                    <label for="id_team_description" class="announce">
                         Team bio <span class="opt">(optional)</span>
-                        {% for error in form.team_desciption.errors %}<em>{{ error }}</em>{% endfor %}
-                        <span class="extra meta" id="info_team_desciption">(maximum 250 characters)</span>
+                        {% for error in form.team_description.errors %}<em>{{ error }}</em>{% endfor %}
+                        <span class="extra meta" id="info_team_description">(maximum 250 characters)</span>
                     </label>
-                    {{ form.team_desciption }}
+                    {{ form.team_description }}
                 </div>
             </fieldset>
             <div class="field">
@@ -99,6 +99,17 @@
                 {% for error in form.to_market.errors %}<em>{{ error }}</em>{% endfor %}
                 {{ form.to_market }}
             </div>
+            
+            {% if form.terms_and_conditions %}
+                <div class="field">
+                    {{ form.terms_and_conditions }}
+                    <label for="id_terms_and_conditions" class="announce">
+                    I accept the <a href="{{ url('static_site.legal') }}" target="_blank">Game On rules</a>
+                    {% for error in form.terms_and_conditions.errors %}<em>{{ error }}</em>{% endfor %}
+                    </label>
+                    
+                </div>
+            {% endif %}
             </div>
             <div class="submit_row shout-box">
                 {% block cta_box %}

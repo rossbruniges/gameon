@@ -3,9 +3,7 @@ var mgo = window.mgo || {};
 mgo.formsets = function() {
     var drop_down_form, textarea_counters;
     textarea_counters = function() {
-
-        var areas = $('textarea');
-        areas.each(function() {
+        $('textarea').each(function() {
             var current = $(this),
                 options = {
                     'maxCharacterSize': current.attr('data-maxlength'),

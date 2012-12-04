@@ -1,6 +1,6 @@
-import micawber
 from datetime import datetime
 import string
+import re
 
 from django.db import models
 from django.core.validators import MaxLengthValidator
@@ -13,6 +13,38 @@ from gameon.users.models import Profile
 from gameon.base.utils import _upload_path
 from managers import ChallengeManager
 
+URL_TO_EMBED_MAPPINGS = {
+    # Embed code is taken from:
+    # http://apiblog.youtube.com/2010/07/new-way-to-embed-youtube-videos.html
+    'youtube': {
+        'regexps': [
+            re.compile(r'^https?://youtu\.be/(?P<VIDEO_ID>\w+)$'),
+            re.compile(r'^https?://www.youtube.com/watch\?v=(?P<VIDEO_ID>\w+)$')
+        ],
+        'embed': """<iframe class="youtube-player" type="text/html" width="%(WIDTH)d" height="%(HEIGHT)d" src="https://www.youtube.com/embed/%(VIDEO_ID)s" frameborder="0"></iframe>"""
+    },
+    # Embed code obtained through inference/reverse-engineering. Not
+    # ideal, but worst-case scenario means a blank iframe or none at all,
+    # rather than e.g. an XSS attack.
+    'vimeo': {
+        'regexps': [
+            re.compile(r'^https?://vimeo.com/.*?(?P<VIDEO_ID>[0-9]+)$')
+        ],
+        'embed': """<iframe src="https://player.vimeo.com/video/%(VIDEO_ID)s?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="%(WIDTH)d" height="%(HEIGHT)d" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>"""
+    }
+}
+
+def url2embed(url):
+    if not url:
+        return
+    for service_name in URL_TO_EMBED_MAPPINGS:
+        service = URL_TO_EMBED_MAPPINGS[service_name]
+        for regexp in service['regexps']:
+            result = regexp.match(url)
+            if result:
+                args = settings.VIDEO_EMBED_SETTINGS.copy()
+                args.update(result.groupdict())
+                return service['embed'] % args
 
 class Challenge(models.Model):
 
@@ -36,7 +68,7 @@ class Challenge(models.Model):
         return self.start_date < now and now < self.end_date
 
     def has_closed(self):
-        return datetime.utcnow() < self.end_date
+        return datetime.utcnow() > self.end_date
 
 
 class Category(models.Model):
@@ -44,7 +76,7 @@ class Category(models.Model):
         unique=True)
     slug = models.SlugField(max_length=100,
         unique=True, verbose_name=_(u'Slug'))
-    description = models.CharField(max_length=255, verbose_name=_(u'Description'),
+    description = models.TextField(verbose_name=_(u'Description'),
         blank=True)
 
     def __unicode__(self):
@@ -76,7 +108,7 @@ class Entry(models.Model):
         blank=True)
     team_members = models.TextField(verbose_name=_(u'Members'),
         validators=[MaxLengthValidator(250)], blank=True)
-    team_desciption = models.TextField(verbose_name=_(u'Description'),
+    team_description = models.TextField(verbose_name=_(u'Description'),
         validators=[MaxLengthValidator(250)], blank=True)
     to_market = models.BooleanField(verbose_name="redirect to marketplace",
         default=False)
@@ -109,25 +141,18 @@ class Entry(models.Model):
         Only if the video is from a site that supported oembed do we class it as]
         'featurable'
         """
-        return any(v in self.video_url for v in settings.ALLOWED_OMEMBED_SITES) or self.thumbnail
+        return url2embed(self.video_url) or self.thumbnail
 
     def get_entry_feature(self):
         """
         If there is a video_url we want to include that as a feature, otherwise
         we fall through to the thumbnail
         """
-        if self.video_url:
-            """
-            Ensure that the video is from a site that supports oembed
-            """
-            if any(v in self.video_url for v in settings.ALLOWED_OMEMBED_SITES):
-                """
-                Extracting the oembed data using https://github.com/coleifer/micawber
-                """
-                providers = micawber.bootstrap_basic()
-                entry_oembed = micawber.parse_text(self.video_url, providers)
-                """ Ensure https, less site warnings the better """
-                return string.replace(entry_oembed, 'http://', 'https://')
+        
+        video_embed = url2embed(self.video_url)
+        
+        if video_embed:
+            return video_embed
         if self.thumbnail:
             return '<img src="%s" alt=""/>' % self.get_image_src()
 
