@@ -208,21 +208,26 @@ li .frame {
     background-position: 95% 0;
     background-repeat: no-repeat;
 }
-.vcard {
+.judges .vcard {
     padding-left: 150px;
     position: relative;
 }
-.vcard .fn {
+.judges .vcard .fn {
     color: #37D09E;
     display: inline-block;
 }
-.vcard .photo {
+.judges .vcard .photo {
     border-radius: 50%;
     border: 4px solid #e4e4e4;
     background: #e4e4e4;
     position: absolute;
     top: 0;
     left: 0;
+}
+.events .vevent {
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
 }
 div[role="main"] {
     background: #fff;
