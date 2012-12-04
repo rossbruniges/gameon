@@ -1,7 +1,10 @@
 from django.contrib import auth
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.urlresolvers import reverse
+
+from tower import ugettext as _
 
 from gameon.users.forms import ProfileForm, ProfileCreateForm
 from gameon.users.models import Profile
@@ -43,6 +46,7 @@ def edit(request, template='users/profile_edit.html'):
             profile.user = request.user
             profile.save()
             if mode == 'edit':
+                messages.success(request, _('<strong>Profile edited!</strong>'))
                 return redirect(profile)
             else:
                 """

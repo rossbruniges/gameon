@@ -21,6 +21,13 @@
                 {% endif %}
             </aside>
             <div class="main-col">
+            {% if messages %}
+                <div class="shout-box">
+                    {% for m in messages %}
+                        {{ m|safe }}
+                    {% endfor %}
+                </div>
+            {% endif %}
             {% if entries %}
             <ol class="entries cf">
                 {% for sub in entries %}

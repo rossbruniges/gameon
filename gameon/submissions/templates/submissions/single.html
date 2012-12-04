@@ -12,6 +12,13 @@
     <div class="busta">
         <div class="cf">
             <div class="main-col">
+                {% if messages %}
+                    <div class="shout-box">
+                        {% for m in messages %}
+                            {{ m|safe }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
                 {% if entry.has_entry_feature %}
                     <div class="frame">{{ entry.get_entry_feature()|safe }}</div>
                 {% endif %}

@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
+
+from tower import ugettext as _
 
 from gameon.base.views import action_unavailable_response
 from gameon.base.utils import get_page, get_paginator
@@ -25,8 +28,9 @@ def create(request, template='submissions/create.html'):
             if entry.to_market == True:
                 return HttpResponseRedirect(settings.MARKETPLACE_URL)
             else:
-                return HttpResponseRedirect(reverse('submissions.entry_list',
-                    kwargs={'category': 'all'}))
+                messages.success(request, _('<strong>Game submitted!</strong>'))
+                return HttpResponseRedirect(reverse('submissions.entry_single',
+                    kwargs={'slug': entry.slug}))
         else:
             data = {
                 'categories': Category.objects.all(),
@@ -50,13 +54,15 @@ def edit_entry(request, slug, template='submissions/edit.html'):
         form = EntryForm(request.POST, instance=entry)
         if form.is_valid():
             entry = form.save(commit=False)
-            entry.slug = slugify(entry.title)
+            new_slug = slugify(entry.title)
+            entry.slug = new_slug
             form.save()
             if entry.to_market == True:
                 return HttpResponseRedirect(settings.MARKETPLACE_URL)
             else:
-                return HttpResponseRedirect(reverse('submissions.entry_list',
-                    kwargs={'category': 'all'}))
+                messages.success(request, _('<strong>Game edited!</strong>'))
+                return HttpResponseRedirect(reverse('submissions.entry_single',
+                    kwargs={'slug': new_slug}))
         else:
             data = {
                 'categories': Category.objects.all(),
