@@ -113,6 +113,39 @@ div[role=main] .big-picture .busta {
 .build li.market:before {
     background-image: url('/static/base/img/home/panel-market.png');
 }
+.gameon_partners .col {
+    float: left;
+    width: 50%;
+}
+.gameon_partners ul {
+    margin: 1em 0 0;
+}
+.partners li {
+    padding: 0 1%;
+    width: 35%;
+    margin-left: 0;
+    margin-bottom: 1em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.partners li:before {
+    content: none;
+}
+.partners img {
+    width: 100%;
+    height: auto;
+}
+.with li {
+    width: 25%;
+    
+}
+.with .lg {
+    width: 35%;
+}
+.with .cl {
+    clear: left;
+}
 .participate {
     background: #37d09e;
     font-size: 13px;
@@ -176,6 +209,7 @@ div[role=main] .big-picture .busta {
 .participate .vevent {
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
+    padding-left: 0;
 }
 .participate .vevent h4 {
     margin: 0.5em 0 0;
@@ -252,6 +286,23 @@ div[role=main] .big-picture .busta {
         height: 100px;
         width: 100px;
     }
+    .gameon_partners .col {
+        float: none;
+        margin-bottom: 1em;
+        width: 70%;
+    }
+    .gameon_partners .partners {
+        margin-left: 0;
+        left: 0;
+    }
+    .partners li {
+        padding-left: 0;
+        height: auto;
+        min-height: 0;
+        width: 50%;
+        float: left;
+        margin-left: 0;
+    }
     .participate .busta {
         padding: 1.5em 1.5em 0;
     }
@@ -273,5 +324,22 @@ div[role=main] .big-picture .busta {
         margin: 40px -40px -40px;
         width: auto;
         min-height: 0;
+    }
+}
+@media all and (max-width: 460px) {
+    .partners li {
+        min-height: 0;
+        width: auto;
+        float: none;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .gameon_partners .with {
+        width: 100%;
+    }
+    .with li,
+    .with .lg {
+        width: 50%;
+        float: left;
     }
 }
