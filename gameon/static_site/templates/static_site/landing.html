@@ -73,7 +73,7 @@
                             {% include '_signup_login.html' %}
                         {% endif %}
                         <footer>
-                            Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }} and close {{ request.challenge.end_date.strftime('%B %e, %Y') }}.
+                            <p>Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }} and close {{ request.challenge.end_date.strftime('%B %e, %Y') }}.</p>
                         </footer>
                     {% endif %}
                 </div>

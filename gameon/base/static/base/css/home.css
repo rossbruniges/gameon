@@ -175,6 +175,7 @@ div[role=main] .big-picture .busta {
     border-spacing: 20px;
     margin-bottom: 12em;
     height: 100%;
+    padding: 0 70px;
 }
 .participate article {
     width: 50%;
@@ -199,7 +200,7 @@ div[role=main] .big-picture .busta {
     border-spacing: 0;
     position: relative;
     padding: 40px;
-    background: rgba(00, 40, 58, 0.8);
+    background: #00283A;
     border-radius: 16px 16px 0 0;
     color: #FFF;
     -moz-box-sizing: border-box;
@@ -218,9 +219,9 @@ div[role=main] .big-picture .busta {
     margin: 0;
 }
 .participate article footer {
-    padding: 30px 40px;
+    padding: 44px 40px 30px 40px;
     border-radius: 0 0 16px 16px;
-    background: #00283a;
+    background: #000a14 url('/static/base/img/css//homepage-footer_bg.gif') repeat-x top left;
     position: absolute;
     top: 100%;
     left: 0;
@@ -230,11 +231,12 @@ div[role=main] .big-picture .busta {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-.participate .submit_now footer {
-    padding-left: 100px;
+.participate .submit_now footer p {
+    padding-left: 60px;
     background-image: url('/static/base/img/css/clock.png');
     background-repeat: no-repeat;
-    background-position: 30px 30px;
+    background-position: 0 0;
+    margin: 0;
 }
 /* so that the bottom section merges with the footer */
 #home div[role=main] {
@@ -309,6 +311,7 @@ div[role=main] .big-picture .busta {
     .participate .wrapper {
         display: block;
         margin-bottom: 0;
+        padding: 0;
     }
     .participate article {
         width: auto;

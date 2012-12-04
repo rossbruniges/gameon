@@ -87,6 +87,7 @@ div[role=main] .busta {
     overflow: hidden;
 }
 #judges_list .mini-col::before,
+#prize_list .mini-col::before,
 #resource_list .mini-col::before,
 #rules_page .mini-col::before {
     content: "";
@@ -101,6 +102,9 @@ div[role=main] .busta {
 }
 #judges_list .mini-col::before {
     background-image: url(/static/base/img/css/find-panel.png);
+}
+#prize_list .mini-col::before {
+    background-image: url(/static/base/img/css/prize-panel.png);
 }
 #resource_list .mini-col::before,
 #rules_page .mini-col::before {
