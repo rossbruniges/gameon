@@ -54,24 +54,25 @@ def edit_entry(request, slug, template='submissions/edit.html'):
         form = EntryForm(request.POST, request.FILES, instance=entry)
         if form.is_valid():
             entry = form.save(commit=False)
-            new_slug = slugify(entry.title)
-            entry.slug = new_slug
+            entry.slug = slugify(entry.title)
             form.save()
             if entry.to_market == True:
                 return HttpResponseRedirect(settings.MARKETPLACE_URL)
             else:
                 messages.success(request, _('<strong>Game edited!</strong>'))
                 return HttpResponseRedirect(reverse('submissions.entry_single',
-                    kwargs={'slug': new_slug}))
+                    kwargs={'slug': slugify(entry.title)}))
         else:
             data = {
                 'categories': Category.objects.all(),
                 'form': form,
+                'mode': 'edit',
             }
     else:
         data = {
             'categories': Category.objects.all(),
             'form': EntryForm(instance=entry),
+            'mode': 'edit',
         }
     return render(request, template, data)
 

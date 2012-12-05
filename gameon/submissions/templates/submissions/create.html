@@ -23,6 +23,9 @@
                     <label for="id_title" class="announce">
                         Game name
                         {% for error in form.title.errors %}<em>{{ error }}</em>{% endfor %}
+                        {% if mode == 'edit' %}
+                            <span class="extra meta">If you change the game URL and if you or anyone is linking to the games page on Game On the URL be broken</span>
+                        {% endif %}
                     </label>
                     {{ form.title }}
                 </div>
