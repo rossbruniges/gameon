@@ -249,11 +249,12 @@ div[role=main] .big-picture .busta {
         -moz-linear-gradient(-135deg, transparent 75%, #000A14 75%) 0 0,
         -moz-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 7px -15px,
         -moz-linear-gradient(-135deg, transparent 75%, #000A14 75%) 7px -15px;
+    /* FF16+ ditched the vendor-prefix, the spec changed - we the values are different */
     background:
-        linear-gradient(-45deg,  transparent 75%, #000A14 75%) 0 0,
-        linear-gradient(-135deg, transparent 75%, #000A14 75%) 0 0,
-        linear-gradient(-45deg,  transparent 75%, #000A14 75%) 7px -15px,
-        linear-gradient(-135deg, transparent 75%, #000A14 75%) 7px -15px;
+        linear-gradient(135deg,  transparent 75%, #000A14 75%) 0 0,
+        linear-gradient(225deg, transparent 75%, #000A14 75%) 0 0,
+        linear-gradient(135deg,  transparent 75%, #000A14 75%) 7px -15px,
+        linear-gradient(225deg, transparent 75%, #000A14 75%) 7px -15px;
 
     background-color: #00283A;
     background-position: 50% 100%;
