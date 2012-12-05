@@ -18,6 +18,12 @@ mgo.pages = function() {
                 });
             });
         }
+        /*
+            Due to CSP inline JS is a no-no, so I'm going to have to ditch my lovely
+            piece of inlineJS that immediately (and without a library) removes the
+            non-JS class and plonk it in here
+        */
+        $('html').removeClass('no-js');
     };
     return {
         'init': init

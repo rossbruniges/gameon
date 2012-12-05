@@ -16,9 +16,6 @@
     {% block social_meta %}{% endblock %}
 </head>
 <body id="{% block page_id %}{% endblock %}" class="{% block section_class %}{% endblock %}">
-    <script type="text/javascript">
-        document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, '');
-    </script>
     {% if APP_MSG %}
     <div id="app_stage_box" class="whimper">
         <div class="busta">{{ APP_MSG|safe }}</div>

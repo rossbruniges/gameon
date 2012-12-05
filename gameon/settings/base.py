@@ -72,6 +72,7 @@ TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
 ]
 
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
+    'csp.middleware.CSPMiddleware',
     'gameon.users.middleware.ProfileMiddleware',
     'gameon.submissions.middleware.ChallengeStatusMiddleware',
 ]
@@ -115,4 +116,37 @@ DOMAIN_METHODS['messages'] = [
 #    ('media/js/**.js', 'javascript'),
 # ]
 
-LOGGING = dict(loggers=dict(playdoh = {'level': logging.DEBUG}))
+CSP_IMG_SRC = (
+    "'self'",
+    'http://www.mozilla.org',
+    'https://www.mozilla.org',
+    'https://secure.gravatar.com',
+    'data:',
+)
+CSP_STYLE_SRC = (
+    "'self'",
+    'http://www.mozilla.org',
+    'https://www.mozilla.org',
+)
+CSP_FONT_SRC = (
+    "'self'",
+    'http://www.mozilla.org',
+    'https://www.mozilla.org',
+)
+CSP_SCRIPT_SRC = (
+    "'self'",
+    'http://browserid.org',
+    'https://browserid.org',
+    'http://login.persona.org',
+    'https://login.persona.org',
+    'http://www.mozilla.org',
+    'https://www.mozilla.org',
+    'http://html5shim.googlecode.com',
+    'https://html5shim.googlecode.com'
+)
+CSP_FRAME_SRC = (
+    'https://player.vimeo.com',
+    'https://www.youtube.com',
+)
+
+LOGGING = dict(loggers=dict(playdoh={'level': logging.DEBUG}))
