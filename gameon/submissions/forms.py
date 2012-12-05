@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.models import ModelChoiceField
 
-from gameon.submissions.widgets import CategorySelectWidget
+from gameon.submissions.widgets import CategorySelectWidget, AdvancedFileInput
 
 from gameon.submissions.models import Entry, Category
 
@@ -16,7 +16,8 @@ entry_widgets = {
     'url': forms.TextInput(attrs={'aria-describedby': 'info_url'}),
     'description': forms.Textarea(attrs={'aria-describedby': 'info_description',
         'data-maxlength': '1000'}),
-    'video_url': forms.TextInput(attrs={'aria-describedby': 'info_video_url'}),
+    'thumbnail': AdvancedFileInput(attrs={'aria-describedby': 'info_description'}),
+    'video_url': forms.TextInput(attrs={'aria-describedby': 'info_description'}),
     'team_members': forms.Textarea(attrs={'aria-describedby': 'info_team_members',
         'data-maxlength': '250'}),
     'team_description': forms.Textarea(attrs={'aria-describedby': 'info_team_description',
@@ -30,6 +31,15 @@ class EntryForm(forms.ModelForm):
     category = ModelChoiceField(queryset=Category.objects.all(),
                                 empty_label=None,
                                 widget=CategorySelectWidget())
+
+    def clean_thumbnail(self):
+        # ensure that people can't upload a HUGE file
+        # hopefully we can top and tail this with a LimitRequestBody setting in
+        # apache (http://stackoverflow.com/a/6195637/1308104)
+        thumb = self.cleaned_data.get('thumbnail', False)
+        if thumb and thumb._size > 2 * 1024 * 1024:
+            raise forms.ValidationError("That file is a bit big - please use one under 2mb")
+        return thumb
 
     class Meta:
         model = Entry

@@ -1,5 +1,4 @@
 from datetime import datetime
-import string
 import re
 
 from django.db import models
@@ -34,6 +33,7 @@ URL_TO_EMBED_MAPPINGS = {
     }
 }
 
+
 def url2embed(url):
     if not url:
         return
@@ -45,6 +45,7 @@ def url2embed(url):
                 args = settings.VIDEO_EMBED_SETTINGS.copy()
                 args.update(result.groupdict())
                 return service['embed'] % args
+
 
 class Challenge(models.Model):
 
@@ -148,9 +149,7 @@ class Entry(models.Model):
         If there is a video_url we want to include that as a feature, otherwise
         we fall through to the thumbnail
         """
-        
         video_embed = url2embed(self.video_url)
-        
         if video_embed:
             return video_embed
         if self.thumbnail:

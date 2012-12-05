@@ -19,7 +19,7 @@ def create(request, template='submissions/create.html'):
     if not request.challenge.is_open():
         return action_unavailable_response(request, case='challenge_closed')
     if request.method == 'POST':
-        form = NewEntryForm(request.POST)
+        form = NewEntryForm(request.POST, request.FILES)
         if form.is_valid():
             entry = form.save(commit=False)
             entry.created_by = request.user.get_profile()
@@ -51,7 +51,7 @@ def edit_entry(request, slug, template='submissions/edit.html'):
     if not request.challenge.is_open():
         return action_unavailable_response(request, case='challenge_closed')
     if request.method == 'POST':
-        form = EntryForm(request.POST, instance=entry)
+        form = EntryForm(request.POST, request.FILES, instance=entry)
         if form.is_valid():
             entry = form.save(commit=False)
             new_slug = slugify(entry.title)

@@ -14,7 +14,7 @@
         <h1 class="busta shout">{% block view_title %}Submit Your Game{% endblock %}</h1>
     </header>
     <div class="busta">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {{ csrf() }}
             <div class="form_wrapper">
             <fieldset>
@@ -24,7 +24,6 @@
                         Game name
                         {% for error in form.title.errors %}<em>{{ error }}</em>{% endfor %}
                     </label>
-                    
                     {{ form.title }}
                 </div>
                 <div class="field">
@@ -43,12 +42,17 @@
                     </label>
                     {{ form.description }}
                 </div>
-                <div class="field">
-                    <label for="id_thumbnail" class="announce">
-                        Upload Thumbnail Image <span class="opt">(optional)</span>
-                        {% for error in form.thumbnail.errors %}<em>{{ error }}</em>{% endfor %}
-                    </label>
-                    {{ form.thumbnail }}
+                <div class="field thumbnail_row">
+                    <div>
+                        <label for="id_thumbnail" class="announce">
+                            Upload Thumbnail Image <span class="opt">(optional)</span>
+                            {% for error in form.thumbnail.errors %}<em>{{ error }}</em>{% endfor %}
+                            <span class="extra meta" id="info_thumbnail">(maximum 2mb file size)</span>
+                        </label>
+                    </div>
+                    <div>
+                        {{ form.thumbnail }}
+                    </div>
                 </div>
                 <div class="field category_select">
                     <p class="announce">Category <span class="opt">(optional)</span></p>
