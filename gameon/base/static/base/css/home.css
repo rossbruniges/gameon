@@ -221,7 +221,7 @@ div[role=main] .big-picture .busta {
 .participate article footer {
     padding: 44px 40px 30px 40px;
     border-radius: 0 0 16px 16px;
-    background: #000a14 url('/static/base/img/css/homepage-footer_bg.gif') repeat-x top left;
+    background: #000A14;
     position: absolute;
     top: 100%;
     left: 0;
@@ -230,6 +230,34 @@ div[role=main] .big-picture .busta {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+.participate article footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+
+    background:
+        -webkit-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 0 0,
+        -webkit-linear-gradient(-135deg, transparent 75%, #000A14 75%) 0 0,
+        -webkit-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 7px -15px,
+        -webkit-linear-gradient(-135deg, transparent 75%, #000A14 75%) 7px -15px;
+    background:
+        -moz-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 0 0,
+        -moz-linear-gradient(-135deg, transparent 75%, #000A14 75%) 0 0,
+        -moz-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 7px -15px,
+        -moz-linear-gradient(-135deg, transparent 75%, #000A14 75%) 7px -15px;
+    background:
+        linear-gradient(-45deg,  transparent 75%, #000A14 75%) 0 0,
+        linear-gradient(-135deg, transparent 75%, #000A14 75%) 0 0,
+        linear-gradient(-45deg,  transparent 75%, #000A14 75%) 7px -15px,
+        linear-gradient(-135deg, transparent 75%, #000A14 75%) 7px -15px;
+
+    background-color: #00283A;
+    background-position: 50% 100%;
+    background-size: 25px 30px;
 }
 .participate .submit_now footer p {
     padding-left: 60px;
@@ -324,8 +352,9 @@ div[role=main] .big-picture .busta {
         border-radius: 16px;
     }
     .participate article footer {
-        position: static;
+        position: relative;
         margin: 40px -40px -40px;
+        top: 0;
         width: auto;
         min-height: 0;
     }
