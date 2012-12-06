@@ -21,7 +21,7 @@ class Migration(DataMigration):
                 'name': 'Gameon 2013',
                 'slug': GAMEON_CHALLENGE_SLUG,
                 'start_date': '2012-12-11 00:00:00',
-                'end_date': '2013-02-20 23:59:59',
+                'end_date': '2013-02-24 23:59:59',
                 }
             category = orm['submissions.Challenge'].objects.create(**category_data)
 
