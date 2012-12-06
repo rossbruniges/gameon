@@ -53,6 +53,7 @@ def edit(request, template='users/profile_edit.html'):
                 The only reason anyone will want to create an account is to
                 submit a game, so take them right there
                 """
+                messages.success(request, _('<strong>Profile created.</strong> Now you can submit your first game!'))
                 return redirect(reverse('submissions.create_entry'))
     else:
         form = form_class(instance=profile)

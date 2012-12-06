@@ -12,15 +12,6 @@ body {
     background: linear-gradient(to right,  #379e9e 0%,#37d09e 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#379e9e', endColorstr='#37d09e',GradientType=1 ); /* IE6-9 */
 }
-#app_stage_box {
-    background: #FFFF00;
-    padding: 0.5em 0;
-    color: 827600;
-}
-#app_stage_box a {
-    font-weight: bold;
-    text-decoration: underline;
-}
 a:link,
 a:visited,
 a:focus,

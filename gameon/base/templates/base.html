@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="//www.mozilla.org/tabzilla/media/css/tabzilla.css">
     <link rel="stylesheet" href="{{ static('base/css/libs/normalize.css') }}">
     <link rel="stylesheet" href="{{ static('base/css/master.css') }}">
+    {% if APP_MSG %}
+        <link rel="stylesheet" href="{{ static('base/css/libs/warnr.css') }}">
+    {% endif %}
     <!--[if lt IE 9]>
         <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
