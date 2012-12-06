@@ -157,7 +157,6 @@ ol.no-style {
     margin-bottom: 1em;
     background: #fff;
     border:1px solid #dcdcdc;
-    
     overflow: hidden;
     position: relative;
     box-shadow: 0 3px 3px #bdbdbd;
@@ -262,6 +261,7 @@ div[role="main"] {
 }
 .logo {
     float: left;
+    margin: 0;
 }
 .logo img {
     float: left
@@ -293,12 +293,14 @@ nav li a {
 }
 .personal p {
     float: left;
+    margin: 0.5em 0;
 }
 .personal ul {
     float: left;
     list-style-type: none;
     padding-left: 0;
     text-transform: lowercase;
+    margin: 0.5em 0;
 }
 .personal li {
     float: left;
@@ -486,6 +488,9 @@ nav li a {
         margin-top: 0;
         padding: 10px 0 20px;
     }
+    .personal ul {
+        margin-left: -20px;
+    }
     nav ul {
         padding: 10px 20px;
         overflow: hidden;
@@ -536,6 +541,23 @@ nav li a {
 }
 
 @media all and (max-width: 412px) {
+    /* a bit of nursing the header so tabzilla doesn't get in the way */
+    header .logo {
+        padding-right: 130px;
+    }
+    header .logo img {
+        width: 100%;
+        height: auto;
+    }
+    header nav ul {
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .personal ul {
+        margin: 0 0 0.5em -20px;
+    }
     .site-nav .logo a {
         display: block;
     }

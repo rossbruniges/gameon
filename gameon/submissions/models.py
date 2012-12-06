@@ -79,6 +79,8 @@ class Category(models.Model):
         unique=True, verbose_name=_(u'Slug'))
     description = models.TextField(verbose_name=_(u'Description'),
         blank=True)
+    awarded_for = models.TextField(verbose_name=_(u'Awarded for'),
+        blank=True)
 
     def __unicode__(self):
         return self.name

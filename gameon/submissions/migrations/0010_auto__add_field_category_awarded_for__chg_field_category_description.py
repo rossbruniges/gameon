@@ -1,52 +1,29 @@
-# encoding: utf-8
-from south.v2 import DataMigration
-from django.core.exceptions import ObjectDoesNotExist
-
-CATEGORIES = (
-    {
-        'title': 'Multi-Device Games',
-        'slug': 'multi-device-games',
-        'desc': 'Use the power of mobile to explore concepts like asymmetric gaming, alternate reality games, and companion apps. This category is searching for games that take advantage of the unique affordances of different platforms they inhabit.',
-        'award': 'Awarded to the game that explores best concepts like asymmetric gaming, alternate reality games, and companion apps. This category is searching for games that take advantage of the unique affordances of different platforms they inhabit.'
-    },
-    {
-        'title': 'Web-Only Games',
-        'slug': 'web-only-games',
-        'desc': 'Create games that can only be played on the web. Get inspired by web-only mechanics such as sharing links and data, finding clues on the web that will help you advance in the game, always-on multi-player, and more—creating the most webilicious game possible!',
-        'award': ' Awarded to the game that can only be played on the web. Get inspired by web-only mechanics such as sharing links and data, finding clues on the web that will help you advance in the game, always-on multi-player, and more—creating the most webilicious game possible!'
-    },
-    {
-        'title': 'Hackable Games',
-        'slug': 'hackable-games',
-        'desc': 'Create games that let players remix game mechanics, fork code, or use assets from the web to create their own version (and maybe even learn how to code along the way).',
-        'award': 'Awarded to the game with the highest "hackability" score. Hackable Games let their players remix mechanics, fork code or use assets from the web in order for them to create their very own version of an existing game. (and maybe even learn how to code along the way).'
-    },
-)
+# -*- coding: utf-8 -*-
+import datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
 
 
-class Migration(DataMigration):
-
-    depends_on = (
-        ('submissions', '0006_auto__chg_field_category_description__chg_field_challenge_slug'),
-        )
+class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        for cat in CATEGORIES:
-            try:
-                category = (orm['submissions.Category'].objects
-                            .get(slug=cat['slug']))
-            except ObjectDoesNotExist:
-                category_data = {
-                    'name': cat['title'],
-                    'slug': cat['slug'],
-                    'description': cat['desc'],
-                    }
-                category = orm['submissions.Category'].objects.create(**category_data)
+        # Adding field 'Category.awarded_for'
+        db.add_column('submissions_category', 'awarded_for',
+                      self.gf('django.db.models.fields.TextField')(default='', blank=True),
+                      keep_default=False)
+
+
+        # Changing field 'Category.description'
+        db.alter_column('submissions_category', 'description', self.gf('django.db.models.fields.TextField')())
 
     def backwards(self, orm):
-        "Write your backwards methods here."
-        print "Not removing any data from the DB, we can't know for certain what was there before"
-        pass
+        # Deleting field 'Category.awarded_for'
+        db.delete_column('submissions_category', 'awarded_for')
+
+
+        # Changing field 'Category.description'
+        db.alter_column('submissions_category', 'description', self.gf('django.db.models.fields.CharField')(max_length=255))
 
     models = {
         'auth.group': {
@@ -87,6 +64,7 @@ class Migration(DataMigration):
         },
         'submissions.category': {
             'Meta': {'object_name': 'Category'},
+            'awarded_for': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '100'}),
@@ -107,7 +85,7 @@ class Migration(DataMigration):
             'description': ('django.db.models.fields.TextField', [], {'default': "''"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '255'}),
-            'team_desciption': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'team_description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'team_members': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'team_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'thumbnail': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
@@ -118,10 +96,10 @@ class Migration(DataMigration):
         },
         'users.profile': {
             'Meta': {'object_name': 'Profile'},
-            'bio': ('django.db.models.fields.TextField', [], {'default': "''"}),
+            'bio': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True', 'primary_key': 'True'}),
-            'website': ('django.db.models.fields.URLField', [], {'default': "''", 'max_length': '255'})
+            'website': ('django.db.models.fields.URLField', [], {'default': "''", 'max_length': '255', 'blank': 'True'})
         }
     }
 
