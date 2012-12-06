@@ -77,12 +77,17 @@ div[role=main] .busta {
     width: 70%;
     margin-right: 5%;
 }
+#user_profile .main-col {
+    margin-right: 0;
+    margin-left: 5%;
+}
 .mini-col {
     float: left;
     width: 25%;
     overflow: hidden;
 }
 #judges_list .mini-col::before,
+#prize_list .mini-col::before,
 #resource_list .mini-col::before,
 #rules_page .mini-col::before {
     content: "";
@@ -97,6 +102,9 @@ div[role=main] .busta {
 }
 #judges_list .mini-col::before {
     background-image: url(/static/base/img/css/find-panel.png);
+}
+#prize_list .mini-col::before {
+    background-image: url(/static/base/img/css/prize-panel.png);
 }
 #resource_list .mini-col::before,
 #rules_page .mini-col::before {

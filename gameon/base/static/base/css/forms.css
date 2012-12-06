@@ -29,6 +29,9 @@ textarea {
     border-radius: 8px;
     padding: 0.2em 4px;
 }
+input[type=file] {
+    display: block;
+}
 textarea {
     height: 100px;
 }
@@ -108,6 +111,17 @@ fieldset.js_enabled .field {
 .category_select ul {
     margin-bottom: 0;
 }
+.thumbnail_row .frame {
+    display: inline-block;
+    width: 100px;
+    margin-right: 20px;
+}
+.thumbnail_row div  p {
+    margin-top: 0;
+}
+.thumbnail_row br {
+    clear: left;
+} 
 .submit_row {
     background: #000;
     text-align: left;

@@ -14,7 +14,7 @@
         <h1 class="busta shout">{% block view_title %}Submit Your Game{% endblock %}</h1>
     </header>
     <div class="busta">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {{ csrf() }}
             <div class="form_wrapper">
             <fieldset>
@@ -23,8 +23,10 @@
                     <label for="id_title" class="announce">
                         Game name
                         {% for error in form.title.errors %}<em>{{ error }}</em>{% endfor %}
+                        {% if mode == 'edit' %}
+                            <span class="extra meta">If you change the game URL and if you or anyone is linking to the games page on Game On the URL be broken</span>
+                        {% endif %}
                     </label>
-                    
                     {{ form.title }}
                 </div>
                 <div class="field">
@@ -43,12 +45,17 @@
                     </label>
                     {{ form.description }}
                 </div>
-                <div class="field">
-                    <label for="id_thumbnail" class="announce">
-                        Upload Thumbnail Image <span class="opt">(optional)</span>
-                        {% for error in form.thumbnail.errors %}<em>{{ error }}</em>{% endfor %}
-                    </label>
-                    {{ form.thumbnail }}
+                <div class="field thumbnail_row">
+                    <div>
+                        <label for="id_thumbnail" class="announce">
+                            Upload Thumbnail Image <span class="opt">(optional)</span>
+                            {% for error in form.thumbnail.errors %}<em>{{ error }}</em>{% endfor %}
+                            <span class="extra meta" id="info_thumbnail">(maximum 2mb file size)</span>
+                        </label>
+                    </div>
+                    <div>
+                        {{ form.thumbnail }}
+                    </div>
                 </div>
                 <div class="field category_select">
                     <p class="announce">Category <span class="opt">(optional)</span></p>
@@ -94,7 +101,7 @@
                 <p class="announce">Submit to Marketplace</p>
                 <article class="submit_row shout-box marketplace">
                     <h2 class="whimper">What is Marketplace and why is it awesome?</h2>
-                    <p class="meta">The Firefox Marketplace  gives users the opportunity to find,  try and buy Apps and content that  matters most to them. This means  exciting, useful and high-quality Apps  relevant to local markets across  all categories that users can use to  get the most out of their daily  lives. Mozilla's  global reach extends to hundreds of millions of  Firefox users  worldwide. Through the competition Mozilla can help  developers get their  App featured and into the hands of their target users around the  world. <a href="http://www.mozilla.org/en-US/apps/" target="_blank">Learn more about Firefox Marketplace here</a>.</p>
+                    <p class="meta">The Firefox Marketplace  gives users the opportunity to find,  try and buy Apps and content that  matters most to them. This means  exciting, useful and high-quality Apps  relevant to local markets across  all categories that users can use to  get the most out of their daily  lives. Mozilla's  global reach extends to hundreds of millions of  Firefox users  worldwide. Through the competition Mozilla can help  developers get their  App featured and into the hands of their target users around the  world. <a href="http://www.mozilla.org/apps/" target="_blank">Learn more about Firefox Marketplace here</a>.</p>
                 </article>
                 {% for error in form.to_market.errors %}<em>{{ error }}</em>{% endfor %}
                 {{ form.to_market }}

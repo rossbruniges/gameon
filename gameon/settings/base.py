@@ -31,6 +31,7 @@ ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 INSTALLED_APPS = list(INSTALLED_APPS) + [
     # Django admin
     'django.contrib.admin',
+    'django.contrib.messages',
     # Application base, containing global templates.
     '%s.base' % PROJECT_MODULE,
     # Static website base, containing global templates.
@@ -68,10 +69,12 @@ BROWSERID_CREATE_USER = True
 
 TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
     'django_browserid.context_processors.browserid_form',
+    'django.contrib.messages.context_processors.messages',
     'gameon.base.context_processors.app_stage',
 ]
 
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
+    'django.contrib.messages.middleware.MessageMiddleware',
     'gameon.users.middleware.ProfileMiddleware',
     'gameon.submissions.middleware.ChallengeStatusMiddleware',
 ]

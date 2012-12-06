@@ -35,7 +35,7 @@
             <li class="make whimper">Make web-based hackable games, games for learning or cross-platform games.</li>
             <li class="invent whimper"><a href="{{ url('events.list') }}">Attend a Game Jam near you</a> or host your own! Our <a href="https://webmaker.org/events/guides/game-jam/">handy Event Kits</a> make it easy.</li>
             <li class="win whimper">Win a trip to the <a href="http://www.gdconf.com/">Game Developers Conference</a> to meet industry pioneers.</li>
-            <li class="market whimper">Have your completed game featured in the <a href="http://www.mozilla.org/en-US/apps/">Firefox Marketplace</a> and published on <a href="http://www.chillingo.com/">Chilingo</a>.</li>
+            <li class="market whimper">Have your completed game featured in the <a href="http://www.mozilla.org/apps/">Firefox Marketplace</a> and published on <a href="http://www.chillingo.com/">Chilingo</a>.</li>
         </ul>
         <section class="gameon_partners cf">
             <div class="col">
@@ -46,7 +46,7 @@
                 </ul>
             </div>
             <div class="col with">
-                <h2 class="announce">In partnerhip with:</h2>
+                <h2 class="announce">In partnership with:</h2>
                 <ul class="partners with">
                     <li class="lg"><a href="http://globalgamejam.org/"><img src="{{ static('base/img/partners/ggj.png') }}" alt="Global Game Jam" /></a></li>
                     <li class="lg"><a href="http://www.igda.org/"><img src="{{ static('base/img/partners/igda.png') }}" alt="IDGA" /></a></li>
@@ -73,7 +73,7 @@
                             {% include '_signup_login.html' %}
                         {% endif %}
                         <footer>
-                            Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }} and close {{ request.challenge.end_date.strftime('%B %e, %Y') }}.
+                            <p>Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }} and close {{ request.challenge.end_date.strftime('%B %e, %Y') }}.</p>
                         </footer>
                     {% endif %}
                 </div>

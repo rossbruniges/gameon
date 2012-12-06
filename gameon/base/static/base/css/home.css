@@ -175,6 +175,7 @@ div[role=main] .big-picture .busta {
     border-spacing: 20px;
     margin-bottom: 12em;
     height: 100%;
+    padding: 0 70px;
 }
 .participate article {
     width: 50%;
@@ -199,7 +200,7 @@ div[role=main] .big-picture .busta {
     border-spacing: 0;
     position: relative;
     padding: 40px;
-    background: rgba(00, 40, 58, 0.8);
+    background: #00283A;
     border-radius: 16px 16px 0 0;
     color: #FFF;
     -moz-box-sizing: border-box;
@@ -218,9 +219,9 @@ div[role=main] .big-picture .busta {
     margin: 0;
 }
 .participate article footer {
-    padding: 30px 40px;
+    padding: 44px 40px 30px 40px;
     border-radius: 0 0 16px 16px;
-    background: #00283a;
+    background: #000A14;
     position: absolute;
     top: 100%;
     left: 0;
@@ -230,11 +231,42 @@ div[role=main] .big-picture .busta {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-.participate .submit_now footer {
-    padding-left: 100px;
+.participate article footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+
+    background:
+        -webkit-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 0 0,
+        -webkit-linear-gradient(-135deg, transparent 75%, #000A14 75%) 0 0,
+        -webkit-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 7px -15px,
+        -webkit-linear-gradient(-135deg, transparent 75%, #000A14 75%) 7px -15px;
+    background:
+        -moz-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 0 0,
+        -moz-linear-gradient(-135deg, transparent 75%, #000A14 75%) 0 0,
+        -moz-linear-gradient(-45deg,  transparent 75%, #000A14 75%) 7px -15px,
+        -moz-linear-gradient(-135deg, transparent 75%, #000A14 75%) 7px -15px;
+    /* FF16+ ditched the vendor-prefix, the spec changed - we the values are different */
+    background:
+        linear-gradient(135deg,  transparent 75%, #000A14 75%) 0 0,
+        linear-gradient(225deg, transparent 75%, #000A14 75%) 0 0,
+        linear-gradient(135deg,  transparent 75%, #000A14 75%) 7px -15px,
+        linear-gradient(225deg, transparent 75%, #000A14 75%) 7px -15px;
+
+    background-color: #00283A;
+    background-position: 50% 100%;
+    background-size: 25px 30px;
+}
+.participate .submit_now footer p {
+    padding-left: 60px;
     background-image: url('/static/base/img/css/clock.png');
     background-repeat: no-repeat;
-    background-position: 30px 30px;
+    background-position: 0 0;
+    margin: 0;
+    min-height: 46px;
 }
 /* so that the bottom section merges with the footer */
 #home div[role=main] {
@@ -309,6 +341,7 @@ div[role=main] .big-picture .busta {
     .participate .wrapper {
         display: block;
         margin-bottom: 0;
+        padding: 0;
     }
     .participate article {
         width: auto;
@@ -320,8 +353,9 @@ div[role=main] .big-picture .busta {
         border-radius: 16px;
     }
     .participate article footer {
-        position: static;
+        position: relative;
         margin: 40px -40px -40px;
+        top: 0;
         width: auto;
         min-height: 0;
     }

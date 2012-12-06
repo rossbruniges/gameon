@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
+
+from tower import ugettext as _
 
 from gameon.base.views import action_unavailable_response
 from gameon.base.utils import get_page, get_paginator
@@ -16,7 +19,7 @@ def create(request, template='submissions/create.html'):
     if not request.challenge.is_open():
         return action_unavailable_response(request, case='challenge_closed')
     if request.method == 'POST':
-        form = NewEntryForm(request.POST)
+        form = NewEntryForm(request.POST, request.FILES)
         if form.is_valid():
             entry = form.save(commit=False)
             entry.created_by = request.user.get_profile()
@@ -25,8 +28,9 @@ def create(request, template='submissions/create.html'):
             if entry.to_market == True:
                 return HttpResponseRedirect(settings.MARKETPLACE_URL)
             else:
-                return HttpResponseRedirect(reverse('submissions.entry_list',
-                    kwargs={'category': 'all'}))
+                messages.success(request, _('<strong>Game submitted!</strong>'))
+                return HttpResponseRedirect(reverse('submissions.entry_single',
+                    kwargs={'slug': entry.slug}))
         else:
             data = {
                 'categories': Category.objects.all(),
@@ -47,7 +51,7 @@ def edit_entry(request, slug, template='submissions/edit.html'):
     if not request.challenge.is_open():
         return action_unavailable_response(request, case='challenge_closed')
     if request.method == 'POST':
-        form = EntryForm(request.POST, instance=entry)
+        form = EntryForm(request.POST, request.FILES, instance=entry)
         if form.is_valid():
             entry = form.save(commit=False)
             entry.slug = slugify(entry.title)
@@ -55,17 +59,20 @@ def edit_entry(request, slug, template='submissions/edit.html'):
             if entry.to_market == True:
                 return HttpResponseRedirect(settings.MARKETPLACE_URL)
             else:
-                return HttpResponseRedirect(reverse('submissions.entry_list',
-                    kwargs={'category': 'all'}))
+                messages.success(request, _('<strong>Game edited!</strong>'))
+                return HttpResponseRedirect(reverse('submissions.entry_single',
+                    kwargs={'slug': slugify(entry.title)}))
         else:
             data = {
                 'categories': Category.objects.all(),
                 'form': form,
+                'mode': 'edit',
             }
     else:
         data = {
             'categories': Category.objects.all(),
             'form': EntryForm(instance=entry),
+            'mode': 'edit',
         }
     return render(request, template, data)
 
