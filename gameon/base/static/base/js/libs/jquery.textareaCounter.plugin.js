@@ -23,14 +23,8 @@
 		
 		$("<div class='charleft'>&nbsp;</div>").insertAfter(container);
 		
-		//create charleft css
-		var charLeftCss = {
-			'width' : container.width()
-		};
-		
 		var charLeftInfo = getNextCharLeftInformation(container);
 		charLeftInfo.addClass(options.originalStyle);
-		charLeftInfo.css(charLeftCss);
 		
 		var numInput = 0;
 		var maxCharacters = options.maxCharacterSize;

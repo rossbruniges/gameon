@@ -461,6 +461,9 @@ nav li a {
 }
 
 @media all and (max-width: 640px) {
+    .mast-head h1 {
+        background: none;
+    }
     .site-footer {
         position: relative;
         padding-left: 185px;
