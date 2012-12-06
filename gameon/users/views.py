@@ -51,10 +51,14 @@ def edit(request, template='users/profile_edit.html'):
             else:
                 """
                 The only reason anyone will want to create an account is to
-                submit a game, so take them right there
+                submit a game, so take them right there, if it's open
                 """
-                messages.success(request, _('<strong>Profile created.</strong> Now you can submit your first game!'))
-                return redirect(reverse('submissions.create_entry'))
+                if request.challenge.is_open():
+                    messages.success(request, _('<strong>Profile created.</strong> Now you can submit your first game!'))
+                    return redirect(reverse('submissions.create_entry'))
+                else:
+                    messages.success(request, _('<strong>Profile created.</strong>'))
+                    return redirect(profile)
     else:
         form = form_class(instance=profile)
     return render(request, template, {
