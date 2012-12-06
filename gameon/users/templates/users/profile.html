@@ -44,7 +44,13 @@
             </ol>
             {% else %}
                 <h2 class="announce">No entries yet</h2>
-                <p>Feels like now is a great time to <a class="cta" href="{{ url('submissions.create_entry') }}">submit a game</a></p>
+                {% if request.challenge %}
+                    {% if request.challenge.is_open() %}
+                        <p>Feels like now is a great time to <a class="cta" href="{{ url('submissions.create_entry') }}">submit a game</a></p>
+                    {% else %}
+                        <p>While you wait for submissions to open ({{ request.challenge.start_date.strftime('%B %e, %Y') }}) have a look through the site, you've got some time to plan your game!</p>
+                    {% endif %}
+                {% endif %}
             {% endif %}
             </div>
         </div>
