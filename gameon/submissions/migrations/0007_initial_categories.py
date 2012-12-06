@@ -13,7 +13,7 @@ CATEGORIES = (
         'title': 'Web-Only Games',
         'slug': 'web-only-games',
         'desc': 'Create games that can only be played on the web. Get inspired by web-only mechanics such as sharing links and data, finding clues on the web that will help you advance in the game, always-on multi-player, and more—creating the most webilicious game possible!',
-        'award': ' Awarded to the game that can only be played on the web. Get inspired by web-only mechanics such as sharing links and data, finding clues on the web that will help you advance in the game, always-on multi-player, and more—creating the most webilicious game possible!'
+        'award': 'Awarded to the game that pushes the limits of what is possible on the web. Get inspired by web-only mechanics such as sharing links and data, finding clues on the web that will help you advance in the game, always-on multi-player, and more—creating the most webilicious game possible!'
     },
     {
         'title': 'Hackable Games',
