@@ -24,8 +24,6 @@
         <form action="" method="post" enctype="multipart/form-data">
             {{ csrf() }}
             <div class="form_wrapper">
-            <fieldset>
-                <legend><span>Game details</span></legend>
                 <div class="field first-field">
                     <label for="id_title" class="announce">
                         Game name
@@ -77,7 +75,6 @@
                     </label>
                     {{ form.video_url }}
                 </div>
-            </fieldset>
             <fieldset class="team-details">
                 <legend><span>Team details</span></legend>
                 <div class="field" tabindex="-1">
@@ -106,7 +103,7 @@
             </fieldset>
             <div class="field">
                 <p class="announce">Submit to Marketplace</p>
-                <article class="submit_row shout-box marketplace">
+                <article class="highlight_row shout-box marketplace">
                     <h2 class="whimper">What is Marketplace and why is it awesome?</h2>
                     <p class="meta">The Firefox Marketplace  gives users the opportunity to find,  try and buy Apps and content that  matters most to them. This means  exciting, useful and high-quality Apps  relevant to local markets across  all categories that users can use to  get the most out of their daily  lives. Mozilla's  global reach extends to hundreds of millions of  Firefox users  worldwide. Through the competition Mozilla can help  developers get their  App featured and into the hands of their target users around the  world. <a href="http://www.mozilla.org/apps/" target="_blank">Learn more about Firefox Marketplace here</a>.</p>
                 </article>
@@ -125,7 +122,7 @@
                 </div>
             {% endif %}
             </div>
-            <div class="submit_row shout-box submit">
+            <div class="highlight_row shout-box submit">
                 {% block cta_box %}
                 <span>All done and ready to submit?</span>
                 <input type="submit" name="submit" class="cta" value="Yup! Submit My Game!" />

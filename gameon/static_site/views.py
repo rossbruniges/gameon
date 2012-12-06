@@ -43,7 +43,9 @@ def judging(request, template='static_site/judging.html'):
 
 def prizes(request, template='static_site/prizes.html'):
     """Main example view."""
-    data = {}
+    data = {
+        'categories': Category.objects.all().order_by('name'),
+    }
     return render(request, template, data)
 
 

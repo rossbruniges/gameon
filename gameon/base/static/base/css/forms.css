@@ -122,51 +122,54 @@ fieldset.js_enabled .field {
 .thumbnail_row br {
     clear: left;
 } 
-.submit_row {
+.highlight_row {
     background: #000;
     text-align: left;
     color: #fff;
     font-weight: bold;
     border-color: #000;
 }
-.submit_row.marketplace {
+.highlight_row.marketplace {
     padding-left: 170px;
     background: #000 url('/static/base/img/css/marketplace.png') no-repeat 20px 1em;
 }
-.submit_row input {
+.highlight_row input {
     text-transform: uppercase;
     margin-left: 20px;
 }
 
 @media all and (max-width: 640px) {
-    .submit_row.marketplace {
+    .highlight_row.marketplace {
         padding-left: 20px;
     }
-    .submit_row.marketplace::before {
+    .highlight_row.marketplace::before {
         content: "";
         float: left;
         display: block;
         width: 160px;
         height: 140px;
     }
-    .submit_row.submit {
+    .highlight_row.submit {
         text-align: center;
     }
-    .submit_row.submit span {
+    .highlight_row.submit span {
         display: block;
         margin-bottom: 1em;
     }
-    .submit_row.submit input {
+    .highlight_row.submit input {
         margin-left: 0;
     }
 }
 
 @media all and (max-width: 400px) {
-    .submit_row.marketplace {
+    .field {
+        padding: 1em 20px;
+    }
+    .highlight_row.marketplace {
         padding-top: 170px;
         background-position: 50% 1em;
     }
-    .submit_row.marketplace::before {
+    .highlight_row.marketplace::before {
         display: none;
     }
 }

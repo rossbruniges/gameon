@@ -26,19 +26,18 @@
                 </ul>
             </div>
             <h2 class="sub-head exclaim" id="category-prizes">Category Prizes</h2>
-            
-                <div class="prize">
-                    <h3 class="exclaim">Best Hackable Game (Non Stop Hacking)</h3>
-                    <p>Awarded to the games with the highest "hackability" score. Games that let their players remix mechanics, fork code or use  assets from the web in order for them  to create their very own version  of an existing game.</p>
+                {% for cat in categories %}
+                    <div class="prize">
+                        <h3 class="exclaim">Best {{ cat.name[:-1] }}</h3>
+                        <p>
+                            {% if cat.awarded_for %}
+                                {{ cat.awarded_for|safe }}
+                            {% else %}
+                                {{ cat.description|safe }}
+                            {% endif %}
+                        </p>
                 </div>
-                <div class="prize">
-                    <h3 class="exclaim">Best Learning Game (Head of Class)</h3>
-                    <p>Awarded   to the games that deepen an understanding of a concept or help a player  to master a set of skills.</p>
-                </div>
-                <div class="prize">
-                    <h3 class="exclaim">Best Multi-Device Game (Mobileet)</h3>
-                    <p>Awarded  to the games that use the power of the mobile phones and cross-device play to enhance assymetric gameplay and location based mechanics.</p>
-                </div>
+                {% endfor %}
                 <p>All category winners will get a Nvidia GeForce GTX670</p>
             </div>
             <div class="mini-col meta">

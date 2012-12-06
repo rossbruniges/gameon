@@ -8,6 +8,10 @@
 {% block page_id %}home{% endblock %}
 {% block section_class %}landing{% endblock %}
 
+{% block header_logo %}
+    <h1 class="logo"><a href="{{ url('static_site.home') }}"><img src="{{ static('base/img/logo.png') }}" alt="Game on" width="262" height="72" /></a></h1>
+{% endblock %}
+
 {% block content %}
 <section class="big-picture cf">
     <div class="busta">
