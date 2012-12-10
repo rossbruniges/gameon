@@ -342,6 +342,9 @@ nav li a {
 .entries .cta {
     margin-top: 0.5em;
 }
+.filter {
+    margin-bottom: 1em;
+}
 .filter ul {
     padding-left: 0;
 }

@@ -67,7 +67,7 @@
             </div>
             <aside class="meta mini-col">
                 <h2 class="whimper">Filter entries</h2>
-                <nav class="filter">
+                <nav class="filter cf">
                     <ul>
                         <li>
                             {% if not category %}
@@ -87,6 +87,12 @@
                         {% endfor %}
                     </ul>
                 </nav>
+                {% if request.challenge.has_started() %}
+                {% if not request.challenge.has_closed() %}
+                    <h2 class="whimper">Add your own game</h2>
+                    {% include '_signup_login.html' %}
+                {% endif %}
+            {% endif %}
             </aside>
         </div>
     </div>

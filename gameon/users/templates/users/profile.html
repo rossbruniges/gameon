@@ -42,6 +42,12 @@
                 </li>
                 {% endfor %}
             </ol>
+            {% if request.challenge.has_started() %}
+                {% if not request.challenge.has_closed() %}
+                    <h2 class="exclaim">Submit another game</h2>
+                    {% include '_signup_login.html' %}
+                {% endif %}
+            {% endif %}
             {% else %}
                 <h2 class="announce">No entries yet</h2>
                 {% if request.challenge %}
