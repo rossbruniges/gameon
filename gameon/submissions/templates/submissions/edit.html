@@ -5,6 +5,14 @@
 
 {% block view_title %}Edit Your Game{% endblock %}
 
+{% block image_preview %}
+{% if form.thumbnail.value %}
+<p class="meta"><strong>Current image:</strong></p>
+<span class="frame"><img src="{{ MEDIA_URL }}{{ form.thumbnail.value() }}" alt="" /></span>
+<p class="meta">Fancy a change? Feel free to upload a different thumbnail:</p> 
+{% endif %}
+{% endblock %}
+
 {% block cta_box %}
 <span>Ready to edit?</span>
 <input type="submit" name="submit" class="cta" value="Edit my Game!" />

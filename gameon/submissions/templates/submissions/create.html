@@ -58,7 +58,8 @@
                             <span class="extra meta" id="info_thumbnail">(maximum 2mb file size)</span>
                         </label>
                     </div>
-                    <div>
+                    <div class="cf">
+                        {% block image_preview %}{% endblock %}
                         {{ form.thumbnail }}
                     </div>
                 </div>
