@@ -15,7 +15,7 @@ def home(request, template='static_site/landing.html'):
     upcoming_events = Event.objects.get_upcoming()
 
     data = {
-        'events': upcoming_events.order_by('start_date')[:3],
+        'events': upcoming_events.order_by('start_date')[:5],
         'num_events': upcoming_events.count()
     }
     return render(request, template, data)
