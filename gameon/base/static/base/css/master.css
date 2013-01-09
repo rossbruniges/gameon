@@ -247,7 +247,8 @@ div[role="main"] {
 #rules_page .rules-page,
 #prize_list .prizes-page,
 #resource_list .resources-page,
-#judges_list .judges-page {
+#judges_list .judges-page,
+#all_submissions .entries-page {
     color: #fff !important;
 }
 .logo {
@@ -262,6 +263,7 @@ nav ul {
     float: left;
     font-size: 14px;
     line-height: 1.4em;
+    padding-left: 20px;
 }
 nav li {
     float: left;
@@ -269,7 +271,7 @@ nav li {
 }
 nav li a {
     display: block;
-    padding: 1.9em 20px;
+    padding: 1.9em 14px;
     text-transform: uppercase;
     font-weight: bold;
 }
