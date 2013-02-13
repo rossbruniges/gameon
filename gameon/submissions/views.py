@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 
@@ -79,7 +79,7 @@ def edit_entry(request, slug, template='submissions/edit.html'):
 
 def list(request, category='all', template='submissions/list.html'):
     page_number = get_page(request.GET)
-    if category == 'all':
+    if category == 'all': 
         entry_set = Entry.objects.all().order_by('-pk')
         page_category = False
     else:
@@ -97,7 +97,13 @@ def list(request, category='all', template='submissions/list.html'):
 
 
 def single(request, slug, template='submissions/single.html'):
+    # throwing a 404 is MUCH better than a 500 eh?
+    try:
+        entry = Entry.objects.get(slug=slug)
+    except Entry.DoesNotExist:
+        raise Http404
+
     data = {
-        'entry': Entry.objects.get(slug=slug),
+        'entry': entry,
     }
     return render(request, template, data)
