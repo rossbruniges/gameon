@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.conf import settings
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 
 from tower import ugettext as _
 
 from gameon.base.views import action_unavailable_response
-from gameon.base.utils import get_page, get_paginator
+from gameon.base.utils import get_page, get_paginator, UnicodeWriter
 from gameon.submissions.models import Entry, Category
 from gameon.submissions.forms import EntryForm, NewEntryForm
 
@@ -107,3 +107,42 @@ def single(request, slug, template='submissions/single.html'):
         'entry': entry,
     }
     return render(request, template, data)
+
+
+def export_csv(request, template='submissions/table.html'):
+    if not request.user.is_staff:
+        return action_unavailable_response(request, case='not_staff')
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="gameon_entries.csv"'
+
+    entry_set = Entry.objects.all().order_by('-pk')
+
+    # using the custom Unicode writer so the view doesn't explode
+    writer = UnicodeWriter(response)
+    # Write out the header row
+    writer.writerow([
+        'GAME NAME',
+        'CATEGORY',
+        'GAME WEBSITE',
+        'GAME DESCRIPTION',
+        'GAME SUBMISSION URL',
+        'GAME VIDEO URL',
+        'SUBMITTED BY',
+        'SUBMITTED BIO',
+        'SUBMIT TO MARKETPLACE?'
+    ])
+    for e in entry_set:
+        writer.writerow([
+            e.title,
+            e.category.name,
+            e.url,
+            e.description,
+            e.get_absolute_url(),
+            e.video_url,
+            e.created_by.display_name,
+            e.created_by.bio,
+            str(e.to_market),
+        ])
+
+    return response
