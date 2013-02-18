@@ -4,6 +4,7 @@ import re
 from django.db import models
 from django.core.validators import MaxLengthValidator
 from django.contrib.auth.models import AnonymousUser
+from django.core.urlresolvers import reverse
 from django.conf import settings
 
 from tower import ugettext_lazy as _
@@ -156,6 +157,13 @@ class Entry(models.Model):
             return video_embed
         if self.thumbnail:
             return '<img src="%s" alt=""/>' % self.get_image_src()
+
+    def get_absolute_url(self):
+        site_url = getattr(settings, 'SITE_URL', '')
+        entry_url = reverse('submissions.entry_single',
+            kwargs={'slug': self.slug})
+
+        return "%s%s" % (site_url, entry_url)
 
     class Meta:
         verbose_name_plural = 'Entries'

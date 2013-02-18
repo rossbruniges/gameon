@@ -27,6 +27,9 @@
                         <p>The Game On challenge hasn't opened yet, you can continue working on your game now but you won't be able to submit it until {{ request.challenge.start_date.strftime('%B %e, %Y') }}.</p>
                     {% endif %}
                 {% endif %}
+                {% if case == 'not_staff' %}
+                    <p>Only members of the Mozilla Game On team are able to access this page.</p>
+                {% endif %}
             </div>
             <aside class="meta mini-col">
                 <h2 class="whimper">Here are some things you can do</h2>
