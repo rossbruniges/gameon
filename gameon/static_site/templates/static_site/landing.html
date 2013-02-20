@@ -26,7 +26,7 @@
                     <p>Submissions open on {{ request.challenge.start_date.strftime('%B %e, %Y') }}</p>
                 {% endif %}
                 {% if request.challenge.has_closed() %}
-                    <p><a href="{{ url('submissions.entry_list') }}">See what people submitted</a></p>
+                    <p>Submissions for the competition are now closed. Thank you to all who submitted! Play <a href="{{ url('submissions.entry_list') }}">all the games</a> here and find out who the winners are in March.</p>
                 {% endif %}
             {% endif %}
         {% endif %}
@@ -34,7 +34,13 @@
 </section>
 <section class="build cf">
     <div class="busta">
-        <h2 class="exclaim">Submit your game prototype by {{ request.challenge.end_date.strftime('%B %e, %Y') }}</h2>
+        {% if request.challenge.is_open() %}
+            <h2 class="exclaim">Submit your game prototype by {{ request.challenge.end_date.strftime('%B %e, %Y') }}</h2>
+        {% else %}
+            <h2>Mozilla Game On</h2>
+            <p><a href="https://donate.mozilla.org/page/signup/gameon-2012">Signup for our newsletter</a> or <a href="https://twitter.com/mozgames" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @mozgames</a></p>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        {% endif %}
         <ul>
             <li class="make whimper">Make web-only, hackable or multi-device games.</li>
             <li class="invent whimper"><a href="{{ url('events.list') }}">Attend a Game Jam near you</a> or host your own! Our <a href="https://webmaker.org/events/guides/game-jam/">handy Event Kits</a> make it easy.</li>
@@ -63,6 +69,7 @@
         </section>
     </div>
 </section>
+{% if not request.challenge.has_closed() %}
 <section class="participate cf">
     <div class="busta cf">
         <div class="wrapper">
@@ -113,4 +120,5 @@
         </div>
     </div>
 </section>
+{% endif %}
 {% endblock %}
