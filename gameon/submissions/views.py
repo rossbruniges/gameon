@@ -84,7 +84,11 @@ def list(request, category='all', template='submissions/list.html'):
         page_category = False
     else:
         entry_set = Entry.objects.filter(category__slug=category).order_by('-pk')
-        page_category = Category.objects.get(slug=category)
+        # throwing a 404 is MUCH better than a 500 eh?
+        try:
+            page_category = Category.objects.get(slug=category)
+        except Category.DoesNotExist:
+            raise Http404
 
     submissions = get_paginator(entry_set, page_number)
 
