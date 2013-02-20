@@ -67,6 +67,10 @@ LOGIN_REDIRECT_URL = 'static_site.home'
 
 BROWSERID_CREATE_USER = True
 
+ALLOWED_HOSTS = [
+    'gameon.mozilla.org',
+]
+
 TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
     'django_browserid.context_processors.browserid_form',
     'django.contrib.messages.context_processors.messages',

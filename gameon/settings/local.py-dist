@@ -65,6 +65,12 @@ PASSWORD_HASHERS = get_password_hashers(base.BASE_PASSWORD_HASHERS, HMAC_KEYS)
 # Make this unique, and don't share it with anybody.  It cannot be blank.
 SECRET_KEY = ''
 
+# A list of strings containing the host/domains that the site can serve.
+# When DEBUG = True this value isn't used, but you might need to overide for staging
+#ALLOWED_HOSTS = [
+#    ''
+#]
+
 # Should robots.txt allow web crawlers?  Set this to True for production
 ENGAGE_ROBOTS = True
 
