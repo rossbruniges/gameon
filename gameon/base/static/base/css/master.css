@@ -332,6 +332,7 @@ nav li a {
     box-sizing: border-box;
     padding: 0 10px;
     margin-bottom: 1em;
+    position: relative;
 }
 .entries li:nth-child(3n+1) {
     clear: left;
@@ -340,6 +341,15 @@ nav li a {
     width: 100%;
     height: auto;
     display: block;
+    position: relative;
+    z-index: 10;
+}
+.entries .badge {
+    width: auto;
+    position: absolute;
+    top: -0.2em;
+    left: 0;
+    z-index: 20;
 }
 .entries .cta {
     margin-top: 0.5em;
@@ -506,6 +516,9 @@ nav li a {
         float: none;
         width: auto;
         margin-right: 0;
+    }
+    .entries .badge {
+        width: 40%;
     }
     .mini-col {
         float: none;

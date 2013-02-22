@@ -34,6 +34,14 @@ URL_TO_EMBED_MAPPINGS = {
     }
 }
 
+AWARD_CHOICES = (
+    ('champ', 'Grand Champion'),
+    ('best-hack', 'Best Hackable Game'),
+    ('best-device', 'Best Multi-Device Game'),
+    ('best-web', 'Best Web-Only Game'),
+    ('notable', 'Notable Runner-Up')
+)
+
 
 def url2embed(url):
     if not url:
@@ -116,13 +124,8 @@ class Entry(models.Model):
         validators=[MaxLengthValidator(250)], blank=True)
     to_market = models.BooleanField(verbose_name="redirect to marketplace",
         default=False)
-    award = models.CharField(max_length=255, blank=True, null=True, choices=(
-            ('champ', 'Grand Champion'),
-            ('best-hack', 'Best Hackable Game'),
-            ('best-device', 'Best Multi-Device Game'),
-            ('best-web', 'Best Web-Only Game'),
-            ('notable', 'Notable Runner-Up')
-        ))
+    award = models.CharField(max_length=255, blank=True, null=True,
+        choices=AWARD_CHOICES)
 
     def __unicode__(self):
         return self.title
@@ -153,6 +156,19 @@ class Entry(models.Model):
         'featurable'
         """
         return url2embed(self.video_url) or self.thumbnail
+
+    @property
+    def has_award(self):
+        return self.award or False
+
+    def get_award_badge(self):
+        static_url = getattr(settings, 'STATIC_URL', '')
+        static_path = lambda f: f and '%s%s' % (static_url, f)
+        badge_values = filter(lambda x: x[0] == self.award, AWARD_CHOICES)[0]
+        return '<img class="badge" src="%s" alt="This entry was awarded %s" />' % (
+                static_path('base/img/badges/%s.png' % badge_values[0]),
+                badge_values[1]
+            )
 
     def get_entry_feature(self):
         """
