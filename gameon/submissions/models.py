@@ -116,6 +116,13 @@ class Entry(models.Model):
         validators=[MaxLengthValidator(250)], blank=True)
     to_market = models.BooleanField(verbose_name="redirect to marketplace",
         default=False)
+    award = models.CharField(max_length=255, blank=True, null=True, choices=(
+            ('champ', 'Grand Champion'),
+            ('best-hack', 'Best Hackable Game'),
+            ('best-device', 'Best Multi-Device Game'),
+            ('best-web', 'Best Web-Only Game'),
+            ('notable', 'Notable Runner-Up')
+        ))
 
     def __unicode__(self):
         return self.title
