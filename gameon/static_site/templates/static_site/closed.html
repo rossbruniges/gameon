@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{{ static('base/css/home.css') }}">
+{% endblock %}
+
+{% block page_title %}Homepage{% endblock %}
+{% block page_id %}home{% endblock %}
+{% block section_class %}landing closed{% endblock %}
+
+{% block header_logo %}
+    <h1 class="logo"><a href="{{ url('static_site.home') }}"><img src="{{ static('base/img/logo.png') }}" alt="Game on" width="262" height="72" /></a></h1>
+{% endblock %}
+
+{% block content %}
+<section class="big-picture cf">
+    <div class="busta">
+        <span></span>
+        <p class="announce">Winners Announced!</p>
+        <p class="shout">Discover the winning entries and play the games!</p>
+    </div>
+</section>
+<section class="build cf">
+    <div class="busta">
+        <h2 class="exclaim">Winning entries</h2>
+        <ol class="winners entries cf">
+            <li class="champ">
+                <a href="{{ url('submissions.entry_single', slug=winners.champ.slug) }}">
+                    <span class="frame"><img src="{{ winners.champ.get_image_src() }}" alt="" /></span>
+                    <b class="whimper">Grand Prize Winner</b>
+                    <h2 class="announce">{{ winners.champ.title }}</h2>
+                    {{ winners.champ.get_award_badge()|safe }}
+                </a>
+                <p class="whimper">{{ winners.champ.description }}</p>
+            </li>
+            <li>
+                <a class="cf" href="{{ url('submissions.entry_single', slug=winners.best_hack.slug) }}">
+                    <span class="frame"><img src="{{ winners.best_hack.get_image_src() }}" alt="" /></span>
+                    <b class="whimper">Best Hackable Game</b>
+                    <h2 class="announce">{{ winners.best_hack.title }}</h2>
+                    {{ winners.best_hack.get_award_badge()|safe }}
+                    
+                </a>
+                <p class="whimper">{{ winners.best_hack.description|truncate(300) }}</p>
+            </li>
+            <li>
+                <a class="cf" href="{{ url('submissions.entry_single', slug=winners.best_device.slug) }}">
+                    <span class="frame"><img src="{{ winners.best_device.get_image_src() }}"  alt="" /></span>
+                    <b class="whimper">Best Multi-Device Game</b>
+                    <h2 class="announce">{{ winners.best_device.title }}</h2>
+                    {{ winners.best_device.get_award_badge()|safe }}
+                </a>
+                <p class="whimper">{{ winners.best_device.description|truncate(300) }}</p>
+            </li>
+            <li>
+                <a class="cf" href="{{ url('submissions.entry_single', slug=winners.best_web.slug) }}">
+                    <span class="frame"><img src="{{ winners.best_web.get_image_src() }}" alt="" /></span>
+                    <b class="whimper">Best Web-Only Game</b>
+                    <h2 class="announce">{{ winners.best_web.title }}</h2>
+                    {{ winners.best_web.get_award_badge()|safe }}
+                </a>
+                <p class="whimper">{{ winners.best_web.description|truncate(300) }}</p>
+            </li>
+        </ol>
+        <p><a href="{{ url('submissions.entry_list') }}" class="cta">See all entries</a></p>
+        <section class="gameon_partners cf">
+            <div class="col">
+                <h2 class="announce">Game On is generously supported by:</h2>
+                <ul class="partners">
+                    <li><a href="http://www.nesta.org.uk/"><img src="{{ static('base/img/partners/nesta.png') }}" alt="Nesta" /></a></li>
+                    <li><a href="http://www.nominettrust.org.uk/"><img src="{{ static('base/img/partners/nominettrust.png') }}" alt="Nominet Trust" /></a></li>
+                </ul>
+            </div>
+            <div class="col with">
+                <h2 class="announce">In partnership with:</h2>
+                <ul class="partners with">
+                    <li class="lg"><a href="http://globalgamejam.org/"><img src="{{ static('base/img/partners/ggj.png') }}" alt="Global Game Jam" /></a></li>
+                    <li class="lg"><a href="http://www.igda.org/"><img src="{{ static('base/img/partners/igda.png') }}" alt="IDGA" /></a></li>
+                    <li class="cl"><a href="http://www.chillingo.com/"><img src="{{ static('base/img/partners/Chillingo.png') }}" alt="Chillingo" /></a></li>
+                    <li><a href="http://ukie.info/"><img src="{{ static('base/img/partners/ukie.png') }}" alt="UKIE" /></a></li>
+                    <li><a href="https://github.com/"><img src="{{ static('base/img/partners/GitHub.png') }}" alt="github" /></a></li>
+                    <li><a href="http://www.nvidia.co.uk"><img src="{{ static('base/img/partners/nvidia.png') }}" alt="Nvidia" /></a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</section>
+{% endblock %}
