@@ -347,7 +347,7 @@ nav li a {
 .entries .badge {
     width: auto;
     position: absolute;
-    top: -0.2em;
+    top: -1em;
     left: 0;
     z-index: 20;
 }

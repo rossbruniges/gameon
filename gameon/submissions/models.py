@@ -66,6 +66,8 @@ class Challenge(models.Model):
         verbose_name=_(u'Slug'))
     start_date = models.DateTimeField(verbose_name=_(u'Start date'))
     end_date = models.DateTimeField(verbose_name=_(u'End date'))
+    announce_winners = models.BooleanField(default=False,
+        help_text="Tick when you've selected the winners and want to tell people!")
 
     def __unicode__(self):
         return self.name

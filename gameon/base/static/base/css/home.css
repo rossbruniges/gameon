@@ -48,6 +48,14 @@ div[role=main] .big-picture .busta {
     -moz-animation: float 3s infinite;
     animation: float 3s infinite;
 }
+.closed div[role=main] .big-picture .busta {
+    padding: 2em 30px 2em 360px;
+    background: url('/static/base/img/home/winning-cup.png') 40px 2em no-repeat;
+    position: relative;
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+}
 .big-picture .busta > i {
     content: "";
     width: 305px;
@@ -112,6 +120,61 @@ div[role=main] .big-picture .busta {
 }
 .build li.market:before {
     background-image: url('/static/base/img/home/panel-market.png');
+}
+.winners li {
+    padding: 30px;
+    margin: 0;
+    background: #e6e6e6;
+    border: 1px solid #c4c4c4;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    width: 31%;
+    margin-right: 2%;
+    min-height: 300px;
+}
+.entries li:nth-child(3n+1) {
+    clear: none;
+}
+.winners li:before {
+    content: none;
+}
+.winners li h2 {
+    margin-top: 0.2em;
+}
+.winners .champ {
+    width: 97%;
+    position: relative;
+    margin: 0 0 1em 0;
+    min-height: 20px;
+}
+.winners li b {
+    color: #000;
+}
+.winners li a {
+    position: relative;
+}
+.winners .champ a {
+    position: static;
+}
+.winners .frame {
+    max-height: 120px;
+}
+.champ .frame {
+    width: 300px;
+    max-height: 200px;
+    margin-right: 20px;
+}
+.winners .badge {
+    left: -10px;
+    top: 10px;
+    background: transparent;
+    padding: 0;
+    width: auto;
+}
+.winners .champ .badge {
+    top: 20px;
+    left: 25px;
 }
 .gameon_partners .col {
     float: left;
@@ -277,7 +340,8 @@ div[role=main] .big-picture .busta {
 }
 
 @media all and (max-width: 800px) {
-    div[role=main] .big-picture .busta {
+    div[role=main] .big-picture .busta,
+    .closed div[role=main] .big-picture .busta {
         background-image: none;
         -webkit-animation: none;
         -moz-animation: none;
@@ -326,6 +390,29 @@ div[role=main] .big-picture .busta {
     .gameon_partners .partners {
         margin-left: 0;
         left: 0;
+    }
+    .winners li {
+        padding: 10px;
+        margin-right: 0;
+        min-height: 30px;
+    }
+    .winners .frame {
+        max-height: 200px;
+    }
+    .winners .champ {
+        width: 100%;
+    }
+    .winners .champ .frame {
+        width: 100%;
+        max-height: 300px;
+    }
+    .winners .badge {
+        left: -5px;
+        top: 10px;
+    }
+    .winners .champ .badge {
+        top: 0;
+        left: 5px;
     }
     .partners li {
         padding-left: 0;
