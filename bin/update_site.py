@@ -51,13 +51,13 @@ def update_site(env, debug):
     here = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     #locale = os.path.join(here, 'locale')
     #unique = md5(locale).hexdigest()
-    project_branch = {'branch': ENV_BRANCH[env][PROJECT]}
+    #project_branch = {'branch': ENV_BRANCH[env][PROJECT]}
     #vendor_branch = {'branch': ENV_BRANCH[env][VENDOR]}
 
     commands = [
         (CHDIR, here),
-        (EXEC,  GIT_PULL % project_branch),
-        (EXEC,  GIT_SUBMODULE),
+        #(EXEC,  GIT_PULL % project_branch),
+        #(EXEC,  GIT_SUBMODULE),
     ]
 
     # Checkout the locale repo into locale/ if the URL is known
@@ -87,8 +87,8 @@ def update_site(env, debug):
     #    (EXEC,  GIT_PULL % vendor_branch),
     #    (EXEC,  GIT_SUBMODULE),
     #    (CHDIR, os.path.join(here)),
-        (EXEC, 'python2.6 manage.py migrate'),
         (EXEC, 'python2.6 manage.py collectstatic --noinput'),
+        (EXEC, 'python2.6 manage.py migrate'),
         # un-comment if you haven't moved to django-compressor yet
         #(EXEC, 'python2.6 manage.py compress_assets'),
     ]
