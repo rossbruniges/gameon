@@ -79,11 +79,11 @@ def edit_entry(request, slug, template='submissions/edit.html'):
 
 def list(request, category='all', template='submissions/list.html'):
     page_number = get_page(request.GET)
-    if category == 'all': 
-        entry_set = Entry.objects.all().order_by('-pk')
+    if category == 'all':
+        entry_set = Entry.objects.all().order_by('-award')
         page_category = False
     else:
-        entry_set = Entry.objects.filter(category__slug=category).order_by('-pk')
+        entry_set = Entry.objects.filter(category__slug=category).order_by('-award')
         # throwing a 404 is MUCH better than a 500 eh?
         try:
             page_category = Category.objects.get(slug=category)
