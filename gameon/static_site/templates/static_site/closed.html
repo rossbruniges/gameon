@@ -42,6 +42,9 @@
                     
                 </a>
                 <p class="whimper">{{ winners.best_hack.description|truncate(300) }}</p>
+                {% if winners.best_device.description|count > 300 %}
+                    <p class="whimper"><a href="{{ url('submissions.entry_single', slug=winners.best_hack.slug) }}">Read more <span class="hide">about {{ winners.best_hack.title }}</span></a></p>
+                {% endif %}
             </li>
             <li>
                 <a class="cf" href="{{ url('submissions.entry_single', slug=winners.best_device.slug) }}">
@@ -51,6 +54,9 @@
                     {{ winners.best_device.get_award_badge()|safe }}
                 </a>
                 <p class="whimper">{{ winners.best_device.description|truncate(300) }}</p>
+                {% if winners.best_device.description|count > 300 %}
+                    <p class="whimper"><a href="{{ url('submissions.entry_single', slug=winners.best_device.slug) }}">Read more <span class="hide">about {{ winners.best_device.title }}</span></a></p>
+                {% endif %}
             </li>
             <li>
                 <a class="cf" href="{{ url('submissions.entry_single', slug=winners.best_web.slug) }}">
@@ -60,6 +66,9 @@
                     {{ winners.best_web.get_award_badge()|safe }}
                 </a>
                 <p class="whimper">{{ winners.best_web.description|truncate(300) }}</p>
+                {% if winners.best_device.description|count > 300 %}
+                    <p class="whimper"><a href="{{ url('submissions.entry_single', slug=winners.best_web.slug) }}">Read more <span class="hide">about {{ winners.best_web.title }}</span></a></p>
+                {% endif %}
             </li>
         </ol>
         <p><a href="{{ url('submissions.entry_list') }}" class="cta">See all entries</a></p>

@@ -131,7 +131,7 @@ div[role=main] .big-picture .busta {
     border-radius: 8px;
     width: 31%;
     margin-right: 2%;
-    min-height: 300px;
+    min-height: 540px;
 }
 .entries li:nth-child(3n+1) {
     clear: none;
@@ -153,6 +153,13 @@ div[role=main] .big-picture .busta {
 }
 .winners li a {
     position: relative;
+}
+.winners li a .hide {
+    position: absolute;
+    left: -9999em;
+    height: 1px;
+    overflow: hidden;
+    display: block;
 }
 .winners .champ a {
     position: static;
