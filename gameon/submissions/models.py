@@ -35,7 +35,6 @@ URL_TO_EMBED_MAPPINGS = {
 }
 
 AWARD_CHOICES = (
-    ('champ', 'Grand Champion'),
     ('best-hack', 'Best Hackable Game'),
     ('best-device', 'Best Multi-Device Game'),
     ('best-web', 'Best Web-Only Game'),
@@ -128,6 +127,7 @@ class Entry(models.Model):
         default=False)
     award = models.CharField(max_length=255, blank=True, null=True,
         choices=AWARD_CHOICES)
+    is_grand_champ = models.BooleanField(default=False, blank=True)
 
     def __unicode__(self):
         return self.title
@@ -163,11 +163,24 @@ class Entry(models.Model):
     def has_award(self):
         return self.award or False
 
-    def get_award_badge(self):
+    def get_award_title(self):
+        badge_values = filter(lambda x: x[0] == self.award, AWARD_CHOICES)[0]
+        if self.is_grand_champ:
+            return "Grand Champion and %s" % badge_values[1]
+        else:
+            return badge_values[1]
+
+    def get_award_badge(self, check_champ=False):
         static_url = getattr(settings, 'STATIC_URL', '')
         static_path = lambda f: f and '%s%s' % (static_url, f)
         badge_values = filter(lambda x: x[0] == self.award, AWARD_CHOICES)[0]
-        return '<img class="badge" src="%s" alt="This entry was awarded %s" />' % (
+        if check_champ and self.is_grand_champ:
+            return '<img class="badge" src="%s" alt="This entry was awarded %s" />' % (
+                static_path('base/img/badges/%s.png' % "champ"),
+                "Grand Champion"
+            )
+        else:
+            return '<img class="badge" src="%s" alt="This entry was awarded %s" />' % (
                 static_path('base/img/badges/%s.png' % badge_values[0]),
                 badge_values[1]
             )
