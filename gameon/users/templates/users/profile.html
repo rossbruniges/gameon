@@ -36,6 +36,7 @@
                         <span class="frame"><img src="{{ sub.get_image_src() }}" width="180" height="102" alt="" /></span>
                         {{ sub.title }}
                     </a>
+                    {% if sub.has_award %}{{ sub.get_award_badge(check_champ=True)|safe }}{% endif %}
                     {% if sub.editable_by(user=request.user) and request.challenge.is_open() %}
                         <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=sub.slug) }}">Edit your game</a>
                     {% endif %}

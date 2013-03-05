@@ -21,7 +21,7 @@ def home(request, template='static_site/landing.html'):
     else:
         data = {
             'winners': {
-                'champ': Entry.objects.get(award="champ"),
+                'champ': Entry.objects.get(is_grand_champ=True),
                 'best_hack': Entry.objects.get(award="best-hack"),
                 'best_device': Entry.objects.get(award="best-device"),
                 'best_web': Entry.objects.get(award="best-web"),

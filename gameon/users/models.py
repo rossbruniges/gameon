@@ -28,7 +28,7 @@ class Profile(models.Model):
 
     def __unicode__(self):
         """Return a string representation of the user."""
-        return self.display_name
+        return "%s (%s)" % (self.display_name, self.user.email)
 
     @property
     def username_hash(self):

@@ -19,6 +19,11 @@
                         {% endfor %}
                     </div>
                 {% endif %}
+                {% if entry.has_award %}
+                    <div class="shout-box">
+                        This entry was awarded {{ entry.get_award_title() }}
+                    </div>
+                {% endif %}
                 {% if entry.has_entry_feature %}
                     <div class="frame">{{ entry.get_entry_feature()|safe }}</div>
                 {% endif %}

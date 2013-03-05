@@ -29,7 +29,7 @@
                     <span class="frame"><img src="{{ winners.champ.get_image_src() }}" alt="" /></span>
                     <b class="whimper">Grand Prize Winner</b>
                     <h2 class="announce">{{ winners.champ.title }}</h2>
-                    {{ winners.champ.get_award_badge()|safe }}
+                    {{ winners.champ.get_award_badge(check_champ=True)|safe }}
                 </a>
                 <p class="whimper">{{ winners.champ.description }}</p>
             </li>
